@@ -34,6 +34,7 @@
     <link href="backend/admin-asset/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="backend/css/custom.min.css" rel="stylesheet">
+    <link href="backend/css/style.css" rel="stylesheet">
   </head>
   <body class="nav-md">
     <div class="container body">
