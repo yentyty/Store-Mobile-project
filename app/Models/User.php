@@ -24,4 +24,9 @@ class User extends Model
         'password',
         'remember_token',
     ];
+
+    public function userroles()
+    {
+        return $this->hasMany('App\Models\UserRole', 'user_id', 'id');
+    }
 }
