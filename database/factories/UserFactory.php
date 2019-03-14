@@ -25,7 +25,7 @@ $factory->define(User::class, function (Faker $faker) {
         'phone' => '09716102' . $faker->numberBetween(10, 99),
         'email' => $faker->unique()->safeEmail,
         'address' => $faker->address,
-        'avatar' => $faker->image('public/uploads/images/users', 170, 170, null, false),
+        'avatar' => $faker->image('public/uploads/images/users', 170, 170, 'cats', null, false),
         'remember_token' => str_random(10),
         'created_at' => $faker->unixTime,
         'updated_at' => $faker->unixTime,
