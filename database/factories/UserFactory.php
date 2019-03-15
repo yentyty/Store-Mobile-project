@@ -21,7 +21,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'password' => bcrypt('123'),
         'birthday' => $faker->date(),
-        'gender' => $faker->numberBetween(1, 2),
+        'gender' => $faker->numberBetween(1, 2), // 1: Nam 2: Nữ
         'phone' => '09716102' . $faker->numberBetween(10, 99),
         'email' => $faker->unique()->safeEmail,
         'address' => $faker->address,

@@ -84,5 +84,25 @@
     <script src="backend/admin-asset/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="backend/js/custom.min.js"></script>
+
+    <script>
+            $("div.alert-success").delay(4000).slideUp();
+
+            $(document).ready(function() {
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#img').attr('src', e.target.result).show();
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                $("#image").change(function() {
+                    readURL(this);
+                });
+            });
+        </script>
+    @stack('script')
   </body>
 </html>

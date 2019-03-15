@@ -1,7 +1,6 @@
 <footer>
     <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by
-        <a href="https://colorlib.com">Colorlib</a>
+        Welcome to the <a href="{{ route('home.index') }}">Mobile Store</a> management page
     </div>
     <div class="clearfix"></div>
 </footer>
