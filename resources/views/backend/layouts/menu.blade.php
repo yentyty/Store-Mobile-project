@@ -26,9 +26,23 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li class="">
-                        <a href="javascript:void(0)">
+                        <a href="{{ route('home.index') }}">
                             <i class="fa fa-home"></i> Home
                         </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-users" aria-hidden="true"></i> User
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                                <li>
+                                    <a href="{{ route('user.index') }}">List User</a>
+                                </li>
+                                <li>
+                                    <a href="#">Create User</a>
+                                </li>
+                            </ul>
                     </li>
                     <li>
                         <a>
