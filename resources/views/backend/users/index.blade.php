@@ -10,14 +10,14 @@
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
-                            @include('backend.layouts.search', ['route' => route('user.index')])
+                        @include('backend.layouts.search', ['route' => route('user.index')])
                     </div>
                 </div>
             </div>
         </div>
         <div class="clearfix"></div>
         <div class="row">
-            <!-- include  -->
+            @yield('create')
         </div>
     </div>
     <div class="table-responsive">
@@ -47,9 +47,9 @@
                     <td>{{ $user->address }}</td>
                     <td>
                         @if ($user->gender == 1)
-                            Nam
+                            Male
                         @elseif ($user->gender == 2)
-                            Nữ
+                            Female
                         @endif
                     </td>
                     <td>
