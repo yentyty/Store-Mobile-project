@@ -39,6 +39,12 @@
   <body class="nav-md">
     <div class="container body">
         <div class="main_container">
+            @if(session('msg'))
+                <div class="alert alert-success alert-dismissible messag ">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{session('msg')}}
+                </div>
+            @endif
             @include('backend.layouts.header')
             @include('backend.layouts.menu')
             @yield('content')
@@ -86,23 +92,38 @@
     <script src="backend/js/custom.min.js"></script>
 
     <script>
-            $("div.alert-success").delay(4000).slideUp();
+        $("div.alert-success").delay(4000).slideUp();
 
-            $(document).ready(function() {
-                function readURL(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $('#img').attr('src', e.target.result).show();
-                        }
-                        reader.readAsDataURL(input.files[0]);
+        $(document).ready(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#img').attr('src', e.target.result).show();
                     }
+                    reader.readAsDataURL(input.files[0]);
                 }
-                $("#image").change(function() {
-                    readURL(this);
-                });
+            }
+            $("#image").change(function() {
+                readURL(this);
             });
-        </script>
+        });
+
+        $(document).ready(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#img').attr('src', e.target.result).show();
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#avatar").change(function() {
+                readURL(this);
+            });
+        });
+    </script>
     @stack('script')
   </body>
 </html>

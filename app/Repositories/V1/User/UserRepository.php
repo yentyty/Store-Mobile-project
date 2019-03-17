@@ -5,6 +5,7 @@ namespace App\Repositories\V1\User;
 use App\Repositories\BaseRepository;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\Role;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
@@ -26,5 +27,24 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $users->appends(['key' => $key]);
 
         return $users;
+    }
+
+    public function store($data)
+    {
+        $data['password'] = bcrypt($data['password']);
+
+        if (isset($data['avatar'])) {
+            $file = $data['avatar'];
+            $data['slug'] = str_slug($data['avatar']);
+
+            $forder = 'uploads/images/users';
+            $extensionFile = $file -> getClientOriginalExtension();
+            $fileName = $data['slug'] . '-' . time() . '.' . $extensionFile;
+            $file->move($forder, $fileName);
+
+            $data['avatar'] = $fileName;
+        }
+
+            return $this->model->create($data)->id;
     }
 }

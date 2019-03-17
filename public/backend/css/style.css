@@ -1,3 +1,29 @@
 .style-role-name {
     font-weight: bold;
 }
+
+.style-span {
+    color: #6C7F93;
+    padding-left: 1.4em;
+}
+
+.style-form {
+    padding-bottom: 1em;
+}
+
+.create-user {
+    color:red;
+    margin-bottom:-2em;
+}
+
+.style-request {
+    margin-left: 21em;
+    margin-bottom: 0.255em;
+}
+
+.messag{
+    position: absolute;
+    top: 58px;
+    right: 20px;
+    z-index: 999;
+}
