@@ -32,7 +32,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     public function store($data)
     {
         $data['password'] = bcrypt($data['password']);
-
         if (isset($data['avatar'])) {
             $file = $data['avatar'];
             $data['slug'] = str_slug($data['avatar']);
@@ -41,7 +40,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             $extensionFile = $file -> getClientOriginalExtension();
             $fileName = $data['slug'] . '-' . time() . '.' . $extensionFile;
             $file->move($forder, $fileName);
-
             $data['avatar'] = $fileName;
         }
 

@@ -35,10 +35,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = $this->repoUser->paginate(10);
-
         if ($request['key']) {
             $users = $this->repoUser->search($request['key']);
         }
+
         return view('backend.users.index', compact('users'));
     }
 

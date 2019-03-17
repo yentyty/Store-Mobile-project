@@ -39,7 +39,7 @@ class CreateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            //s
+            //
         ];
     }
 }
