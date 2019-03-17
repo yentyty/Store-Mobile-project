@@ -26,8 +26,7 @@ class UserController extends Controller
         UserRepositoryInterFace $repositoryUser,
         RoleRepositoryInterFace $repositoryRole,
         UserRoleRepositoryInterFace $repositoryUserRole
-    )
-    {
+    ) {
         $this->repoUser = $repositoryUser;
         $this->repoRole = $repositoryRole;
         $this->repoUserRole = $repositoryUserRole;
@@ -73,7 +72,6 @@ class UserController extends Controller
 
             return redirect()->route('user.create')->with('msg', 'Creation successful');
         } else {
-
             return redirect()->route('user.create')->with('msg', 'Creation successful');
         }
     }
