@@ -66,7 +66,7 @@
                         >
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn btn-warning">
+                        <a href="{{ route('user.edit', ['id'=>$user->id]) }}" class="btn btn-warning">
                             <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                         </a>
                         <a href="#" class="btn btn-danger">
