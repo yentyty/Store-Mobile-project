@@ -64,5 +64,4 @@ class UserRoleRepository extends BaseRepository implements UserRoleRepositoryInt
 
         return ;
     }
-
 }

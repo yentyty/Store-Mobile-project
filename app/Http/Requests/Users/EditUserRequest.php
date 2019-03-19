@@ -32,9 +32,6 @@ class EditUserRequest extends FormRequest
             'avatar' => 'image|dimensions:max_width=1000,max_height=1000',
             'role' => 'required',
         ];
-        if (request()->changePassword == "ON") {
-            $rules['password'] = 'required|min:3|max:32';
-        }
     }
 
     public function messages()

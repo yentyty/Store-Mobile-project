@@ -6,6 +6,9 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>Tables <small>Show all list users</small></h3>
+                <a class="btn btn-primary icon-btn" href="{{ route('user.create') }}">
+                    <i class="fa fa-plus"></i>Create user
+                </a>
             </div>
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -16,9 +19,6 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="row">
-            @yield('create')
-        </div>
     </div>
     <div class="table-responsive">
         <table
@@ -32,9 +32,10 @@
                     <th style="width: 3%;">#</th>
                     <th style="width: 10%;">UserName</th>
                     <th style="width: 20%;">Email</th>
-                    <th style="width: 30%;">Address</th>
+                    <th style="width: 20%;">Address</th>
                     <th style="width: 7%;">Gender</th>
                     <th style="width: 10%;">Avatar</th>
+                    <th style="width: 10%;">Role</th>
                     <th style="width: 15%;">Action</th>
                 </tr>
             </thead>
@@ -56,6 +57,18 @@
                         @if (!empty($user->avatar))
                             <img width="100%" src="uploads/images/users/{{ $user->avatar }}">
                         @endif
+                    </td>
+                    <td>
+                        <?php $role = DB::table('user_roles')
+                        ->join('roles', 'roles.id', '=', 'user_roles.role_id')
+                        ->select('roles.*')
+                        ->where('user_id', '=', $user->id)
+                        ->get();?>
+                        <ul>
+                            @foreach ($role as $roles)
+                                <li>{{ $roles->name}}</li>
+                            @endforeach
+                        </ul>
                     </td>
                     <td>
                         <a

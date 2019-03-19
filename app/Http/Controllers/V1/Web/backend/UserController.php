@@ -48,13 +48,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $users = $this->repoUser->paginate();
+        $users = $this->repoUser->paginate(3);
         $roles = $this->repoRole->index();
-        if ($request['key']) {
-            $users = $this->repoUser->search($request['key']);
-        }
 
         return view('backend.users.create', compact('users', 'roles'));
     }

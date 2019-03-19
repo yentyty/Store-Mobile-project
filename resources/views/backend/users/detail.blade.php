@@ -55,6 +55,18 @@
                             <br>
                             <span class="text-muted">Address: </span> {{ $user['address'] }}
                             <br>
+                            <span class="text-muted">Role: </span>
+                                <?php $role = DB::table('user_roles')
+                                ->join('roles', 'roles.id', '=', 'user_roles.role_id')
+                                ->select('roles.*')
+                                ->where('user_id', '=', $user->id)
+                                ->get();?>
+                                <ul>
+                                    @foreach ($role as $roles)
+                                        <li>{{ $roles->name}}</li>
+                                    @endforeach
+                                </ul>
+                            <br>
                             <br>
                             <small class="text-muted">Created: {{ $user['created_at'] }}</small>
                         </div>
