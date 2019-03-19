@@ -70,4 +70,10 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         return $user->update($data);
     }
+
+    public function delete($id)
+    {
+        $user = $this->model->find($id);
+        $user->delete();
+    }
 }

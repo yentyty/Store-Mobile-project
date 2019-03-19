@@ -82,9 +82,20 @@
                         <a href="{{ route('user.edit', ['id'=>$user->id]) }}" class="btn btn-warning">
                             <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn btn-danger">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </a>
+                        <a
+                            href="{{route('user.destroy', ['id'=>$user->id])}}"
+                            class="btn btn-danger"
+                            onclick="deleteItem({{ $user->id }}, event)"
+                            >
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
+                            {!!Form::open([
+                                'method' => 'DELETE',
+                                'route' => ['user.destroy',$user->id],
+                                'onsubmit' => 'return confirmDelete()',
+                                'id' => "form-delete-$user->id"
+                            ])!!}
+                            {!! Form::close() !!}
                     </td>
                 </tr>
                 @include('backend.users.detail')
@@ -98,4 +109,22 @@
 </div>
 @endsection
 
+@push('script')
+<script type="text/javascript">
+    function deleteItem(id,e) {
+        e.preventDefault();
+        $('#form-delete-' + id).submit();
+    }
 
+    function confirmDelete()
+    {
+        var x = confirm("Are you sure you want to delete?");
+        if (x) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+@endpush
