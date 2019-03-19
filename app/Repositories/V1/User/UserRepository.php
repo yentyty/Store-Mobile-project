@@ -6,6 +6,7 @@ use App\Repositories\BaseRepository;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
+use File;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
@@ -56,8 +57,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         if (isset($data['avatar'])) {
             $file = $data['avatar'];
             $nameImageOld = 'uploads/images/users/' . $user->avatar;
-            if (empty(file_exists(public_path($nameImageOld)))) {
-                unlink(public_path($nameImageOld));
+            if (!empty($user->avatar) && File::exists($nameImageOld)) {
+                unlink($nameImageOld);
             }
             $forder = ('uploads/images/users');
             $extensionFile = $file -> getClientOriginalExtension();
@@ -74,6 +75,11 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     public function delete($id)
     {
         $user = $this->model->find($id);
+        $nameImageOld = 'uploads/images/users/' . $user->avatar;
+        if (!empty($user->avatar) && File::exists($nameImageOld)) {
+            unlink($nameImageOld);
+        }
+
         $user->delete();
     }
 }
