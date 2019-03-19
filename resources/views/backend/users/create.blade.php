@@ -11,7 +11,15 @@
         <div class="clearfix"></div>
         <div class="row">
             <div class="x_content">
-                {{ Form::open(['method' => 'POST', 'route' => 'user.store', 'files' => true, 'class' => 'form-horizontal form-label-left input_mask', 'enctype' => 'multipart/form-data']) }}
+                {{ Form::open
+                    ([
+                        'method' => 'POST',
+                        'route' => 'user.store',
+                        'files' => true,
+                        'class' => 'form-horizontal form-label-left input_mask',
+                        'enctype' => 'multipart/form-data'
+                    ])
+                }}
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback style-form">
                         {{ Form::text('username', null, ['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess2', 'placeholder' => 'Import user name']) }}
                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
@@ -219,6 +227,6 @@
                 </tbody>
             </table>
         </div>
-        </div>
     </div>
+</div>
 @endsection
