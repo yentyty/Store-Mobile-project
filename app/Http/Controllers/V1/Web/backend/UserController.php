@@ -10,6 +10,7 @@ use App\Repositories\V1\UserRole\UserRoleRepositoryInterface;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use App\Http\Requests\Users\CreateUserRequest;
+use App\Http\Requests\Users\EditUserRequest;
 
 class UserController extends Controller
 {
@@ -47,13 +48,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $users = $this->repoUser->paginate();
+        $users = $this->repoUser->paginate(3);
         $roles = $this->repoRole->index();
-        if ($request['key']) {
-            $users = $this->repoUser->search($request['key']);
-        }
 
         return view('backend.users.create', compact('users', 'roles'));
     }
@@ -95,7 +93,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->repoUser->find($id);
+        $roles = $this->repoRole->index();
+        $oldrole = $this->repoUserRole->initUserRole($id);
+
+        return view('backend.users.edit', compact('user', 'roles', 'oldrole'));
     }
 
     /**
@@ -105,9 +107,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditUserRequest $request, $id)
     {
-        //
+        $this->repoUser->update($id, $request->except('role'));
+        $this->repoUserRole->updateUserRole($id, $request->only('role'));
+
+        return redirect()->route('user.index')->with('msg', 'Edit Successful');
     }
 
     /**
