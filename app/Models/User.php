@@ -29,4 +29,9 @@ class User extends Model
     {
         return $this->hasMany('App\Models\UserRole', 'user_id', 'id');
     }
+
+    public function news()
+    {
+        return $this->hasMany('App\Models\News', 'user_id', 'id');
+    }
 }
