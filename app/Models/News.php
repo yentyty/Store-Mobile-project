@@ -13,7 +13,7 @@ class News extends Model
         'content',
         'content_image',
         'cover_image',
-        'slug'
+        'slug',
     ];
 
     protected $primaryKey = 'id';
