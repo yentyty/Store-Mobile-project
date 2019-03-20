@@ -92,4 +92,19 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
 
         return $new->update($data);
     }
+
+    public function delete($id)
+    {
+        $new = $this->model->find($id);
+        $nameImageOldcover = 'uploads/images/news/' . $new->cover_image;
+        $nameImageOldcontent = 'uploads/images/news/' . $new->content_image;
+        if (!empty($new->cover_image) && File::exists($nameImageOldcover)) {
+            unlink($nameImageOldcover);
+        }
+        if (!empty($new->content_image) && File::exists($nameImageOldcontent)) {
+            unlink($nameImageOldcontent);
+        }
+
+        $new->delete();
+    }
 }

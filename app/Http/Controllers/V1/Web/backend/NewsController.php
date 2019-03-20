@@ -114,6 +114,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-       //
+        $this->repoNews->delete($id);
+
+        return redirect()->route('news.index')->with('msg', 'Delete successful');
     }
 }
