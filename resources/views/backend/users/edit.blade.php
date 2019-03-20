@@ -173,7 +173,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-md-offset-3" style="margin-top:1em;">
-                            {{ Form::button('<i class="fa fa-fw fa-lg fa-check-circle"></i> Edit', ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin-right:5em;'] ) }}
+                            {{ Form::button('<i class="fa fa-fw fa-lg fa-check-circle"></i> Update', ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin-right:5em;'] ) }}
                             <a
                                 href="{{route('user.index')}}"
                                 class="btn btn-warning"

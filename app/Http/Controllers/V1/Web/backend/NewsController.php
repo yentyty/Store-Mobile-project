@@ -9,6 +9,7 @@ use App\Repositories\V1\User\UserRepositoryInterFace;
 use App\Models\News;
 use Illuminate\Support\Collection;
 use App\Http\Requests\News\CreateNewsRequest;
+use App\Http\Requests\News\EditNewsRequest;
 
 class NewsController extends Controller
 {
@@ -46,6 +47,7 @@ class NewsController extends Controller
     public function create()
     {
         $user = $this->repoUser->listCreate();
+
         return view('backend.news.create', compact('user'));
     }
 
@@ -83,7 +85,10 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-       //
+        $new = $this->repoNews->find($id);
+        $user = $this->repoUser->listCreate();
+
+        return view('backend.news.edit', compact('new', 'user'));
     }
 
     /**
@@ -93,9 +98,12 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditNewsRequest $request, $id)
     {
-       //
+        $data = $request->all();
+        $this->repoNews->update($id, $data);
+
+        return redirect()->route('news.index')->with('msg', 'Edit successful');
     }
 
     /**
