@@ -88,7 +88,7 @@
                             onclick="deleteItem({{ $user->id }}, event)"
                             >
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
+                        </a>
                             {!!Form::open([
                                 'method' => 'DELETE',
                                 'route' => ['user.destroy',$user->id],

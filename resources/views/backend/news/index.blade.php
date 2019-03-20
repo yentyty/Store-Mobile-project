@@ -60,12 +60,19 @@
                             <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                         </a>
                         <a
-                            href="#"
+                            href="{{route('news.destroy', ['id'=>$new->id])}}"
                             class="btn btn-danger"
-                            onclick=""
+                            onclick="deleteItem({{ $new->id }}, event)"
                             >
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
+                            {!!Form::open([
+                                'method' => 'DELETE',
+                                'route' => ['news.destroy',$new->id],
+                                'onsubmit' => 'return confirmDelete()',
+                                'id' => "form-delete-$new->id"
+                            ])!!}
+                            {!! Form::close() !!}
                     </td>
                 </tr>
                 @endforeach
