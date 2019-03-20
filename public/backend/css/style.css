@@ -27,3 +27,9 @@
     right: 20px;
     z-index: 999;
 }
+
+.style_h2_news{
+    font-weight: bold;
+    text-align: center;
+    font-size: 2em;
+}

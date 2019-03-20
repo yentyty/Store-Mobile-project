@@ -43,7 +43,7 @@
                     <td>{{ $key + 1 }}</td>
                     <td>{{ str_limit($new->title,30)}}</td>
                     <td>{{ $new->user->name }}</td>
-                    <td>{{ str_limit($new->description,50)}}</td>
+                    <td>{{ str_limit(strip_tags($new->description,50))}}</td>
                     <td>
                         @if (!empty($new->cover_image))
                             <img width="100%" src="uploads/images/news/{{ $new->cover_image }}">

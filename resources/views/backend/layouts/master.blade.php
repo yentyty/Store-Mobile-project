@@ -90,6 +90,7 @@
     <script src="backend/admin-asset/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="backend/js/custom.min.js"></script>
+    <script type="text/javascript" language="javascript" src="backend/ckeditor/ckeditor.js"></script>
 
     <script>
         $("div.alert-success").delay(4000).slideUp();
@@ -119,7 +120,21 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
-            $("#avatar").change(function() {
+            $("#avatar, #cover_image").change(function() {
+                readURL(this);
+            });
+        });
+        $(document).ready(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#image_content').attr('src', e.target.result).show();
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#content_image").change(function() {
                 readURL(this);
             });
         });

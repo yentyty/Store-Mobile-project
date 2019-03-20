@@ -82,4 +82,11 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         $user->delete();
     }
+
+    public function listCreate()
+    {
+        $users = $this->model::all();
+
+        return $users;
+    }
 }

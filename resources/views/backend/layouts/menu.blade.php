@@ -54,7 +54,7 @@
                                 <a href="{{ route('news.index') }}">List News</a>
                             </li>
                             <li>
-                                <a href="#">Create News</a>
+                                <a href="{{ route('news.create') }}">Create News</a>
                             </li>
                         </ul>
                     </li>
