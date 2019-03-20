@@ -46,6 +46,20 @@
                     </li>
                     <li>
                         <a>
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i> News
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('news.index') }}">List News</a>
+                            </li>
+                            <li>
+                                <a href="#">Create News</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
                             <i class="fa fa-edit"></i> Forms
                             <span class="fa fa-chevron-down"></span>
                         </a>
