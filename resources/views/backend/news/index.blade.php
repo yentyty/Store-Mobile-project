@@ -65,7 +65,7 @@
                             onclick=""
                             >
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

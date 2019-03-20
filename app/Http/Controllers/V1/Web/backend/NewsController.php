@@ -19,7 +19,6 @@ class NewsController extends Controller
 
     public function __construct(
         NewsRepositoryInterFace $repositoryNews
-
     ) {
         $this->repoNews = $repositoryNews;
     }

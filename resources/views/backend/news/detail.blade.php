@@ -9,13 +9,24 @@
                     <div class="x_title">
                         <h2>Detail News: {{ $new->id }}</h2>
                         <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            <li><a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <a
+                                href="#"
+                                class="dropdown-toggle"
+                                data-toggle="dropdown" role="button"
+                                aria-expanded="false"
+                                >
+                                    <i class="fa fa-wrench"></i>
+                            </a>
                             </li>
-                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            <li>
+                                <a class="close-link">
+                                    <i class="fa fa-close"></i>
+                                </a>
                             </li>
                         </ul>
                         <div class="clearfix"></div>
@@ -33,11 +44,10 @@
                             <i class="fa fa-calendar" style="padding-bottom: 1em;"></i> {{ date('d-m-Y', strtotime($new->updated_at)) }}
                             <br>
                             <i class="fa fa-user" style="padding-bottom: 1em;"></i> Creator: {{ $new->user->name }}
-
                             <p>{{ $new->description }}</p>
                             <br>
                             @if (!empty($new->content_image))
-                            <img width='80%' src="uploads/images/news/{{ $new->content_image }}">
+                                <img width='80%' src="uploads/images/news/{{ $new->content_image }}">
                             @endif
                             <br>
                             <br>
