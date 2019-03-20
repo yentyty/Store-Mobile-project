@@ -51,12 +51,12 @@
                     </td>
                     <td>
                         <a
-                            href="{{route('news.show', ['id'=>$new->id])}}"
+                            href="{{ route('news.show', ['id'=>$new->id]) }}"
                             class="btn btn-info"
                         >
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn btn-warning">
+                        <a href="{{ route('news.edit', ['id'=>$new->id]) }}" class="btn btn-warning">
                             <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                         </a>
                         <a

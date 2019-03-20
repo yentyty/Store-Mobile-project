@@ -34,7 +34,7 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
         $data['slug'] = str_slug($data['title']);
         if (isset($data['cover_image'])) {
             $file = $data['cover_image'];
-            $data['slug'] = str_slug($data['cover_image']);
+            $data['slug'] = str_slug($data['title']);
             $forder = 'uploads/images/news';
             $extensionFile = $file -> getClientOriginalExtension();
             $fileName = $data['slug'] . '-' . time() . '.' . $extensionFile;
@@ -43,7 +43,7 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
         }
         if (isset($data['content_image'])) {
             $file = $data['content_image'];
-            $data['slug'] = str_slug($data['content_image']);
+            $data['slug'] = str_slug($data['title']);
             $forder = 'uploads/images/news';
             $extensionFile = $file -> getClientOriginalExtension();
             $fileName = $data['slug'] . '-' . time() . '.' . $extensionFile;
@@ -51,6 +51,45 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
             $data['content_image'] = $fileName;
         }
 
-            return $this->model->create($data)->id;
+        return $this->model->create($data)->id;
+    }
+
+    public function update($id, $data)
+    {
+        $new = $this->model->find($id);
+
+        $data['slug'] = str_slug($data['title']);
+
+        if (isset($data['cover_image'])) {
+            $file = $data['cover_image'];
+            $nameImageOld = 'uploads/images/news/' . $new->cover_image;
+            if (!empty($new->cover_image) && File::exists($nameImageOld)) {
+                unlink($nameImageOld);
+            }
+            $forder = ('uploads/images/news');
+            $extensionFile = $file -> getClientOriginalExtension();
+            $fileName = str_slug($data['title']) . '-' . time() . '.' . $extensionFile;
+            $file->move($forder, $fileName);
+            $data['cover_image'] = $fileName;
+        } else {
+            $data['cover_image'] = $new->cover_image;
+        }
+
+        if (isset($data['content_image'])) {
+            $file = $data['content_image'];
+            $nameImageOld = 'uploads/images/news/' . $new->content_image;
+            if (!empty($new->content_image) && File::exists($nameImageOld)) {
+                unlink($nameImageOld);
+            }
+            $forder = ('uploads/images/news');
+            $extensionFile = $file -> getClientOriginalExtension();
+            $fileName = str_slug($data['title']) . '-' . time() . '.' . $extensionFile;
+            $file->move($forder, $fileName);
+            $data['content_image'] = $fileName;
+        } else {
+            $data['content_image'] = $new->content_image;
+        }
+
+        return $new->update($data);
     }
 }
