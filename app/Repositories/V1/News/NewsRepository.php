@@ -35,7 +35,6 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
         if (isset($data['cover_image'])) {
             $file = $data['cover_image'];
             $data['slug'] = str_slug($data['cover_image']);
-
             $forder = 'uploads/images/news';
             $extensionFile = $file -> getClientOriginalExtension();
             $fileName = $data['slug'] . '-' . time() . '.' . $extensionFile;
@@ -45,7 +44,6 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
         if (isset($data['content_image'])) {
             $file = $data['content_image'];
             $data['slug'] = str_slug($data['content_image']);
-
             $forder = 'uploads/images/news';
             $extensionFile = $file -> getClientOriginalExtension();
             $fileName = $data['slug'] . '-' . time() . '.' . $extensionFile;
