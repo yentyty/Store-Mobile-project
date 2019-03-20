@@ -51,7 +51,7 @@
                             @endif
                             <br>
                             <br>
-                            <p>{{ $new->content }}</p>
+                            <p>{!! strip_tags($new["content"]) !!}</p>
                             <div class="">
                                     <a
                                     href="{{route('news.index')}}"

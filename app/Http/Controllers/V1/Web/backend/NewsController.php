@@ -5,8 +5,10 @@ namespace App\Http\Controllers\V1\Web\backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\V1\News\NewsRepositoryInterFace;
+use App\Repositories\V1\User\UserRepositoryInterFace;
 use App\Models\News;
 use Illuminate\Support\Collection;
+use App\Http\Requests\News\CreateNewsRequest;
 
 class NewsController extends Controller
 {
@@ -16,11 +18,14 @@ class NewsController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $repoNews;
+    protected $repoUser;
 
     public function __construct(
-        NewsRepositoryInterFace $repositoryNews
+        NewsRepositoryInterFace $repositoryNews,
+        UserRepositoryInterFace $repositoryUser
     ) {
         $this->repoNews = $repositoryNews;
+        $this->repoUser = $repositoryUser;
     }
 
     public function index(Request $request)
@@ -40,7 +45,8 @@ class NewsController extends Controller
      */
     public function create()
     {
-       //
+        $user = $this->repoUser->listCreate();
+        return view('backend.news.create', compact('user'));
     }
 
     /**
@@ -49,9 +55,11 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateNewsRequest $request)
     {
-       //
+        $this->repoNews->store($request->all());
+
+        return redirect()->route('news.index')->with('msg', 'Creation successful');
     }
 
     /**

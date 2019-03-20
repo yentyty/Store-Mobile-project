@@ -5,7 +5,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Tables <small>Create user</small></h3>
+                <h3>Form <small>Create user</small></h3>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -141,12 +141,13 @@
                             {{ Form::file('avatar', null, ['class' => 'form-control fileimage']) }}
                             <p>( Please select a picture of the correct size 1000 * 1000.... ) </p>
                         </div>
-                        @if ($errors->has('avatar'))
-                            @foreach ($errors->get('avatar') as $error)
-                                <span class="style-span create-user style-request">{{ $error }}</span>
-                            @endforeach
-                        @endif
+
                     </div>
+                    @if ($errors->has('avatar'))
+                    @foreach ($errors->get('avatar') as $error)
+                        <span class="style-span create-user style-request">{{ $error }}</span>
+                    @endforeach
+                @endif
                     <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-md-offset-3" style="margin-top:1em;">
                             {{ Form::button('<i class="fa fa-fw fa-lg fa-check-circle"></i> Create', ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin-right:5em;'] ) }}
