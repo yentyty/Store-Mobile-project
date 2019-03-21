@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\News;
+namespace App\Http\Requests\Informations;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditNewsRequest extends FormRequest
+class EditInformationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,7 @@ class EditNewsRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:255',
-            'user_id' => 'required',
-            'description' => 'max:255',
             'content' => 'required|min:3',
-            'content_image' => 'image|dimensions:min_width=250,min_height=250',
-            'cover_image' => 'image|dimensions:min_width=350,min_height=350',
         ];
     }
 

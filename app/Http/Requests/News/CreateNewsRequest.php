@@ -24,7 +24,7 @@ class CreateNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3',
+            'title' => 'required|min:3|max:255',
             'user_id' => 'required',
             'description' => 'max:255',
             'content' => 'required|min:3',
