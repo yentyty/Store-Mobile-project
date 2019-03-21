@@ -21,4 +21,5 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function (
     Route::resource('/user', 'UserController');
     Route::resource('/news', 'NewsController');
     Route::resource('/information', 'InformationController');
+    Route::resource('/banner', 'BannerController');
 });
