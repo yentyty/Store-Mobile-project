@@ -34,7 +34,7 @@
                             'user_id',
                             $user->pluck('name', 'id'),
                             null,
-                            ['class' => 'form-control border-input'],
+                            ['class' => 'form-control border-input', 'style' => 'padding-right:5em'],
                             ['multiple' => true])
                         }}
                         <span class="form-control-feedback right style-span" style="width: 4.5em; margin-right: 0em; padding-left: 0em;">User *</span>
