@@ -40,6 +40,7 @@
                             @endforeach
                         @endif
                     </div>
+                    <div class="clearfix"></div>
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback style-form">
                         {{ Form::email('email','',['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess4', 'placeholder' => 'Import Email']) }}
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
@@ -60,6 +61,7 @@
                             @endforeach
                         @endif
                     </div>
+                    <div class="clearfix"></div>
                     <div class="form-group">
                         {{ Form::label('birthday', 'Birthday :', ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']) }}
                         <div class="col-md-9 col-sm-9 col-xs-12">
