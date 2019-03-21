@@ -60,6 +60,20 @@
                     </li>
                     <li>
                         <a>
+                            <i class="fa fa-file-text" aria-hidden="true"></i> Information
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('information.index') }}">List Information</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('information.create') }}">Create Information</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
                             <i class="fa fa-edit"></i> Forms
                             <span class="fa fa-chevron-down"></span>
                         </a>

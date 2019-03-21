@@ -11,6 +11,8 @@ use App\Repositories\V1\UserRole\UserRoleRepository;
 use App\Repositories\V1\UserRole\UserRoleRepositoryInterface;
 use App\Repositories\V1\News\NewsRepository;
 use App\Repositories\V1\News\NewsRepositoryInterface;
+use App\Repositories\V1\Information\InformationRepository;
+use App\Repositories\V1\Information\InformationRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,5 +37,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserRoleRepositoryInterface::class, UserRoleRepository::class);
         $this->app->bind(NewsRepositoryInterface::class, NewsRepository::class);
+        $this->app->bind(InformationRepositoryInterface::class, InformationRepository::class);
     }
 }

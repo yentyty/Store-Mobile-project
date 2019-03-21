@@ -20,4 +20,5 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function (
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::resource('/user', 'UserController');
     Route::resource('/news', 'NewsController');
+    Route::resource('/information', 'InformationController');
 });
