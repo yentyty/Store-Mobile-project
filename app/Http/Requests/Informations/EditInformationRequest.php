@@ -24,7 +24,7 @@ class EditInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3|max255',
+            'title' => 'required|min:3|max:255',
             'content' => 'required|min:3',
         ];
     }
