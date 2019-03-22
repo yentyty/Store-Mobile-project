@@ -107,4 +107,11 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
 
         $new->delete();
     }
+
+    public function countNew()
+    {
+        $news = $this->model->count();
+
+        return $news;
+    }
 }

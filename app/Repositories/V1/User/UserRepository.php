@@ -89,4 +89,11 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         return $users;
     }
+
+    public function countUser()
+    {
+        $users = $this->model->count();
+
+        return $users;
+    }
 }

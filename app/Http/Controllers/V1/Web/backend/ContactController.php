@@ -24,7 +24,7 @@ class ContactController extends Controller
 
     public function index(Request $request)
     {
-        $contacts = $this->repoContact->paginate();
+        $contacts = $this->repoContact->paginate(10);
 
         if ($request['key']) {
             $contacts = $this->repoContact->search($request['key']);

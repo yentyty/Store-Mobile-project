@@ -7,4 +7,6 @@ interface UserRepositoryInterface
     public function search($key);
 
     public function listCreate();
+
+    public function countUser();
 }

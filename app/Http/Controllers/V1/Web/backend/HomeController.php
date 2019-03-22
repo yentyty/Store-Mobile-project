@@ -5,6 +5,9 @@ namespace App\Http\Controllers\V1\Web\backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\V1\Role\RoleRepositoryInterFace;
+use App\Repositories\V1\Contact\ContactRepositoryInterFace;
+use App\Repositories\V1\User\UserRepositoryInterFace;
+use App\Repositories\V1\News\NewsRepositoryInterFace;
 use App\Models\Role;
 use Illuminate\Support\Collection;
 
@@ -16,21 +19,30 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $repoRole;
+    protected $repoContact;
+    protected $repoUser;
+    protected $repoNews;
 
-    public function __construct(RoleRepositoryInterFace $repositoryRole)
-    {
+    public function __construct(
+        RoleRepositoryInterFace $repositoryRole,
+        ContactRepositoryInterFace $repositoryContact,
+        UserRepositoryInterFace $repositoryUser,
+        NewsRepositoryInterFace $repositoryNews
+    ) {
         $this->repoRole = $repositoryRole;
+        $this->repoContact = $repositoryContact;
+        $this->repoUser = $repositoryUser;
+        $this->repoNews = $repositoryNews;
     }
 
     public function index(Request $request)
     {
-        $roles = $this->repoRole->paginate();
+        $roles = $this->repoRole->index();
+        $contacts = $this->repoContact->paginate(4);
+        $users = $this->repoUser->countUser();
+        $news = $this->repoNews->countNew();
 
-        if ($request['key']) {
-            $roles = $this->repoRole->search($request['key']);
-        }
-
-        return view('backend.home.index', compact('roles'));
+        return view('backend.home.index', compact('roles', 'contacts', 'users', 'news'));
     }
 
     /**
