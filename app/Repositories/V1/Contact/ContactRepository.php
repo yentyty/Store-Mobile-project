@@ -24,7 +24,7 @@ class ContactRepository extends BaseRepository implements ContactRepositoryInter
 
     public function search($key)
     {
-        $contacts = Contact::where('fullname', 'LIKE', '%' . $key . '%')->paginate(5);
+        $contacts = Contact::where('name', 'LIKE', '%' . $key . '%')->paginate(5);
         $contacts->appends(['key' => $key]);
 
         return $contacts;

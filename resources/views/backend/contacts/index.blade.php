@@ -30,7 +30,7 @@
                     <th style="width: 20%;">Name</th>
                     <th style="width: 27%;">Email</th>
                     <th style="width: 30%;">Content</th>
-                    <th style="width: 10%;">Status</th>
+                    <th style="width: 5%;">Status</th>
                     <th style="width: 10%;">Action</th>
                 </tr>
             </thead>
@@ -44,6 +44,7 @@
                     <td class = "btn-changstatus-{{ $contact->id }}">
                         <button
                             class="btn btn-{{ $contact->status == 1 ? 'warning' : 'success' }}"
+                            style="width:100%;"
                         >
                             {{$contact->status == 1 ? 'Read' : 'Unread '}}
                         </button>
