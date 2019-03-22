@@ -39,8 +39,8 @@
                 @foreach($informations as $key => $information)
                 <tr role="row" class="odd">
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ str_limit($information->title,40)}}</td>
-                    <td>{{ str_limit(strip_tags($information->content,50))}}</td>
+                    <td>{{ str_limit($information->title,40) }}</td>
+                    <td>{{ str_limit(strip_tags($information->content,50)) }}</td>
                     <td>
                         <a
                             href="{{ route('information.show', ['id'=>$information->id]) }}"
