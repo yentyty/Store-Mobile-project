@@ -7,7 +7,7 @@
             <div class="title_left">
                 <h3>Tables <small>Show all list introduces</small></h3>
                 <a class="btn btn-primary icon-btn" href="{{ route('introduce.create') }}">
-                    <i class="fa fa-plus"></i>Create informations
+                    <i class="fa fa-plus"></i> Create informations
                 </a>
             </div>
             <div class="title_right">

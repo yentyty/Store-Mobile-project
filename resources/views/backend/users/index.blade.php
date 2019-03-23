@@ -7,7 +7,7 @@
             <div class="title_left">
                 <h3>Tables <small>Show all list users</small></h3>
                 <a class="btn btn-primary icon-btn" href="{{ route('user.create') }}">
-                    <i class="fa fa-plus"></i>Create user
+                    <i class="fa fa-plus"></i> Create user
                 </a>
             </div>
             <div class="title_right">

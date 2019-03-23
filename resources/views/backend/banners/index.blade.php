@@ -7,7 +7,7 @@
             <div class="title_left">
                 <h3>Tables <small>Show all list banners</small></h3>
                 <a class="btn btn-primary icon-btn" href="{{ route('banner.create') }}">
-                    <i class="fa fa-plus"></i>Create Banner
+                    <i class="fa fa-plus"></i> Create Banner
                 </a>
             </div>
             <div class="title_right">
