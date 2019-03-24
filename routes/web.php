@@ -28,4 +28,5 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function (
     Route::resource('/promotion', 'PromotionController');
     Route::post('/promotion/changestatus', 'promotionController@changestatus')->name('promotion.changestatus');
     Route::resource('/factory', 'FactoryController');
+    Route::resource('/offer', 'OfferController');
 });

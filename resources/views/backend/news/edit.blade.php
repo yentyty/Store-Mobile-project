@@ -56,7 +56,7 @@
                             @endif
                             <br>
                             {{ Form::file('cover_image', null, ['class' => 'form-control fileimage']) }}
-                            <p>( Please select a picture of the correct size min-height: 250 and min-width:250.... ) </p>
+                            <p>( Please select a picture of the correct size min-width: 250 and min-height:250.... ) </p>
                         </div>
                         @if ($errors->has('cover_image'))
                             @foreach ($errors->get('cover_image') as $error)
@@ -86,7 +86,7 @@
                             @endif
                             <br>
                             {{ Form::file('content_image', null, ['class' => 'form-control fileimage']) }}
-                            <p>( Please select a picture of the correct size min-height: 350 and min-width:350.... ) </p>
+                            <p>( Please select a picture of the correct size min-width: 350 and min-height:350.... ) </p>
                         </div>
                         @if ($errors->has('content_image'))
                             @foreach ($errors->get('content_image') as $error)

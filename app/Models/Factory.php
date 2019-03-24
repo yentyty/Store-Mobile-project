@@ -12,4 +12,9 @@ class Factory extends Model
         'name',
         'slug',
     ];
+
+    public function offers()
+    {
+        return $this->hasMany('App\Models\Offer', 'factory_id', 'id');
+    }
 }
