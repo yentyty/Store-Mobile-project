@@ -38,6 +38,7 @@
                             @endforeach
                         @endif
                     </div>
+                    <div class="clearfix"></div>
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback style-form">
                         {{ Form::email('email','',['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess4', 'placeholder' => 'Import Email', 'style' => 'padding-left:5em']) }}
                         <span class="form-control-feedback left" style="width:4em; color:#73879C;">Email</span>

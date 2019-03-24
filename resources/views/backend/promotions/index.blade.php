@@ -29,17 +29,17 @@
         >
             <thead>
                 <tr role="row">
-                    <th style="width: 3%;">#</th>
-                    <th style="width: 50%;">Percent (%)</th>
+                    <th style="width: 3%;text-align: center;">#</th>
+                    <th style="width: 50%; text-align: center;">Percent (%)</th>
                     <th style="width: 5%;">Status</th>
-                    <th style="width: 15%;">Action</th>
+                    <th style="width: 15%; text-align: center">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($promotions as $key => $promotion)
                 <tr role="row" class="odd">
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $promotion->percent }}</td>
+                    <td style="text-align:center;">{{ $key + 1 }}</td>
+                    <td style="text-align:center;">{{ $promotion->percent }}</td>
                     <td class = "btn-changstatus-{{$promotion->id}}">
                         <button
                             class="btn btn-{{$promotion->status == 1 ? 'success' : 'warning'}}"

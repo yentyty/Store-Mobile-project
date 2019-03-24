@@ -114,6 +114,20 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-list-alt" aria-hidden="true"></i> Factories
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('factory.index') }}">List Factories</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('factory.create') }}">Create Factories</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="">
                         <a href="{{ route('contact.index') }}">
                             <i class="fa fa-envelope"></i> Contacts
