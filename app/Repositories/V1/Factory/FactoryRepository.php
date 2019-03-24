@@ -49,4 +49,11 @@ class FactoryRepository extends BaseRepository implements FactoryRepositoryInter
         $factorie = $this->model->find($id);
         $factorie->delete();
     }
+
+    public function listCreate()
+    {
+        $factories = $this->model::all();
+
+        return $factories;
+    }
 }

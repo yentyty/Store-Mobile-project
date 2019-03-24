@@ -14,7 +14,7 @@
                 {{ Form::open
                     ([
                         'method' => 'POST',
-                        'route' => 'news.store',
+                        'route' => 'offer.store',
                         'files' => true,
                         'class' => 'form-horizontal form-label-left input_mask',
                         'enctype' => 'multipart/form-data'
@@ -31,31 +31,31 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback style-form">
                         {{  Form::select(
-                            'user_id',
-                            $user->pluck('name', 'id'),
+                            'factory_id',
+                            $factory->pluck('name', 'id'),
                             null,
-                            ['class' => 'form-control border-input', 'style' => 'padding-right:5em'],
+                            ['class' => 'form-control border-input', 'style' => 'margin-right:6em'],
                             ['multiple' => true])
                         }}
-                        <span class="form-control-feedback right style-span" style="width: 4.5em; margin-right: 0em; padding-left: 0em;">User *</span>
-                        @if ($errors->has('name'))
-                            @foreach ($errors->get('name') as $error)
+                        <span class="form-control-feedback right style-span" style="width: 5.5em; margin-right: 0em; padding-left: 0em;">Factory *</span>
+                        @if ($errors->has('factory_id'))
+                            @foreach ($errors->get('factory_id') as $error)
                                 <span class="style-span create-user">{{ $error }}</span>
                             @endforeach
                         @endif
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group">
-                        {{ Form::label('cover_image', 'Cover Image *: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) }}
+                        {{ Form::label('image', 'Image *: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) }}
                         <br>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <img src="" width="200" height="200" alt="Image Cover" id="img" style="display: none">
+                            <img src="" width="570" height="230" alt="Image offers" id="img" style="display: none">
                             <br>
-                            {{ Form::file('cover_image', null, ['class' => 'form-control fileimage']) }}
-                            <p>( Please select a picture of the correct size min-width: 250 and min-height:250.... ) </p>
+                            {{ Form::file('image', null, ['class' => 'form-control fileimage']) }}
+                            <p>( Please select a picture of the correct size min-width: 280 and min-height:140.... ) </p>
                         </div>
-                        @if ($errors->has('cover_image'))
-                            @foreach ($errors->get('cover_image') as $error)
+                        @if ($errors->has('image'))
+                            @foreach ($errors->get('image') as $error)
                                 <span class="style-span create-user style-request">{{ $error }}</span>
                             @endforeach
                         @endif
@@ -71,22 +71,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <div class="form-group">
-                        {{ Form::label('content_image', 'Content Image: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) }}
-                        <br>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <img src="" width="350" height="350" alt="Image Cover" id="image_content" style="display: none">
-                            <br>
-                            {{ Form::file('content_image', null, ['class' => 'form-control fileimage']) }}
-                            <p>( Please select a picture of the correct size min-width: 350 and min-height:350.... ) </p>
-                        </div>
-                        @if ($errors->has('content_image'))
-                            @foreach ($errors->get('content_image') as $error)
-                                <span class="style-span create-user style-request">{{ $error }}</span>
-                            @endforeach
-                        @endif
-                    </div>
-                    <h2 class="style_h2_news">Content *</h2>
+                    <h2 class="style_h2_news">Content</h2>
                     <div class="x_content">
                         {{ Form::textarea('content', null, ['class' => 'form-control ckeditor resizable_textarea form-control', 'placeholder' => 'Import description', 'rows' => '4', 'cols' => '50']) }}
                     </div>

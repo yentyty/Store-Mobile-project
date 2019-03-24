@@ -163,7 +163,7 @@
                             @endif
                             <br>
                             {{ Form::file('avatar', null, ['class' => 'form-control fileimage']) }}
-                            <p>( Please select a picture of the correct size 1000 * 1000.... ) </p>
+                            <p>( Please select a picture of the correct size max-width:1000 * max-height:1000.... ) </p>
                         </div>
                         @if ($errors->has('avatar'))
                             @foreach ($errors->get('avatar') as $error)

@@ -128,6 +128,20 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-suitcase" aria-hidden="true"></i> Offers
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('offer.index') }}">List Offer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('offer.create') }}">Create Offers</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="">
                         <a href="{{ route('contact.index') }}">
                             <i class="fa fa-envelope"></i> Contacts

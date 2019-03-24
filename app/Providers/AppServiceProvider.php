@@ -23,6 +23,8 @@ use App\Repositories\V1\Promotion\PromotionRepository;
 use App\Repositories\V1\Promotion\PromotionRepositoryInterface;
 use App\Repositories\V1\Factory\FactoryRepository;
 use App\Repositories\V1\Factory\FactoryRepositoryInterface;
+use App\Repositories\V1\Offer\OfferRepository;
+use App\Repositories\V1\Offer\OfferRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -53,5 +55,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ContactRepositoryInterface::class, ContactRepository::class);
         $this->app->bind(PromotionRepositoryInterface::class, PromotionRepository::class);
         $this->app->bind(FactoryRepositoryInterface::class, FactoryRepository::class);
+        $this->app->bind(OfferRepositoryInterface::class, OfferRepository::class);
     }
 }

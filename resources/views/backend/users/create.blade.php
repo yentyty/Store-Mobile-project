@@ -141,7 +141,7 @@
                             <img src="" width="150" height="150" alt="Image Room" id="img" style="display: none">
                             <br>
                             {{ Form::file('avatar', null, ['class' => 'form-control fileimage']) }}
-                            <p>( Please select a picture of the correct size 1000 * 1000.... ) </p>
+                            <p>( Please select a picture of the correct size max-width:1000 * max-height:1000.... ) </p>
                         </div>
 
                     </div>
