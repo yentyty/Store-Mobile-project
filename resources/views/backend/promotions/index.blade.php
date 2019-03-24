@@ -43,7 +43,7 @@
                     <td class = "btn-changstatus-{{$promotion->id}}">
                         <button
                             class="btn btn-{{$promotion->status == 1 ? 'success' : 'warning'}}"
-                            onclick="changeStatus({{$promotion->id}})"
+                            onclick="changeStatus({{ $promotion->id }})"
                             style="width:100%;"
                         >
                             {{$promotion->status == 1 ? 'ON' : 'OFF '}}
@@ -98,7 +98,7 @@
             },
             type: 'POST',
             dataType: 'json',
-            url: "{{route('promotion.changestatus')}}",
+            url: "{{ route('promotion.changestatus') }}",
             data: {
                 'id': id
             },
@@ -113,7 +113,6 @@
                 $('.btn-changstatus-' + data.id).empty();
                 $('.btn-changstatus-' + data.id).append(button);
                 notification();
-
             },
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Promotions;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class EditPromotionRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class EditPromotionRequest extends FormRequest
     public function rules()
     {
         return [
-            'percent' => 'required|max:2',
+            'percent' => 'required|unique:promotions,percent|max:2',
         ];
     }
 
