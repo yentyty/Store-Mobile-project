@@ -39,7 +39,6 @@ class FactoryRepository extends BaseRepository implements FactoryRepositoryInter
     public function update($id, $data)
     {
         $factorie = $this->model->find($id);
-
         $data['slug'] = str_slug($data['name']);
 
         return $factorie->update($data);

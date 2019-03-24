@@ -77,6 +77,7 @@ class FactoryController extends Controller
     public function edit($id)
     {
         $factory = $this->repoFactory->find($id);
+
         return view('backend.factories.edit', compact('factory'));
     }
 

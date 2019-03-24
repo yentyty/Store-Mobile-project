@@ -24,14 +24,14 @@ class CreateFactoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:50|unique:factories,name'
+            'name' => 'required|min:3|max:50|unique:factories,name',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.unique' => 'Name already exists'
+            'name.unique' => 'Name already exists',
         ];
     }
 }
