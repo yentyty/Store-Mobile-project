@@ -5,12 +5,15 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Tables <small>Show all list contacts</small></h3>
+                <h3>Tables <small>Show all list promotions</small></h3>
+                <a class="btn btn-primary icon-btn" href="{{ route('promotion.create') }}">
+                    <i class="fa fa-plus"></i> Create informations
+                </a>
             </div>
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
-                        @include('backend.layouts.search', ['route' => route('contact.index')])
+                        @include('backend.layouts.search', ['route' => route('promotion.index')])
                     </div>
                 </div>
             </div>
@@ -27,66 +30,93 @@
             <thead>
                 <tr role="row">
                     <th style="width: 3%;">#</th>
-                    <th style="width: 20%;">Name</th>
-                    <th style="width: 27%;">Email</th>
-                    <th style="width: 30%;">Content</th>
+                    <th style="width: 50%;">Percent (%)</th>
                     <th style="width: 5%;">Status</th>
-                    <th style="width: 10%;">Action</th>
+                    <th style="width: 15%;">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($contacts as $key => $contact)
+                @foreach($promotions as $key => $promotion)
                 <tr role="row" class="odd">
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ $contact->name }}</td>
-                    <td>{{ $contact->email }}</td>
-                    <td>{{ str_limit(strip_tags($contact->content),50) }}</td>
-                    <td class = "btn-changstatus-{{ $contact->id }}">
+                    <td>{{ $promotion->percent }}</td>
+                    <td class = "btn-changstatus-{{$promotion->id}}">
                         <button
-                            class="btn btn-{{ $contact->status == 1 ? 'warning' : 'success' }}"
+                            class="btn btn-{{$promotion->status == 1 ? 'success' : 'warning'}}"
+                            onclick="changeStatus({{ $promotion->id }})"
                             style="width:100%;"
                         >
-                            {{$contact->status == 1 ? 'Read' : 'Unread '}}
+                            {{$promotion->status == 1 ? 'ON' : 'OFF '}}
                         </button>
                     </td>
-                    <td>
-                        <a
-                            href="backend/contacts/index/{{ $contact->id }}"
-                            onclick="changeStatus({{ $contact->id }})"
-                            class="btn btn-info"
-                            data-toggle="modal"
-                            data-target="#myModa{{ $contact->id }}"
-                        >
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <td style="text-align:center;">
+                        <a href="{{ route('promotion.edit', ['id'=>$promotion->id]) }}" class="btn btn-warning">
+                            <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                         </a>
                         <a
-                            href="{{route('contact.destroy', ['id'=>$contact->id])}}"
+                            href="{{route('promotion.destroy', ['id'=>$promotion->id])}}"
                             class="btn btn-danger"
-                            onclick="deleteItem({{ $contact->id }}, event)"
+                            onclick="deleteItem({{ $promotion->id }}, event)"
                             >
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                             {!!Form::open([
                                 'method' => 'DELETE',
-                                'route' => ['contact.destroy',$contact->id],
+                                'route' => ['promotion.destroy',$promotion->id],
                                 'onsubmit' => 'return confirmDelete()',
-                                'id' => "form-delete-$contact->id"
+                                'id' => "form-delete-$promotion->id"
                             ])!!}
                             {!! Form::close() !!}
                     </td>
                 </tr>
-                @include('backend.contacts.detail')
                 @endforeach
             </tbody>
         </table>
         <div style="float: right; margin-top: -1.5em; margin-right: 1em;">
-                {{ $contacts->links() }}
+                {{ $promotions->links() }}
         </div>
     </div>
 </div>
 @endsection
 
 @push('script')
+<script type="text/javascript">
+    function notification() {
+        $.notify({
+      		title: "Update Complete : ",
+      		message: "Something cool is just updated!",
+      		icon: 'fa fa-check'
+      	},{
+      		type: "info"
+      	})
+    }
+
+    function changeStatus(id) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            dataType: 'json',
+            url: "{{ route('promotion.changestatus') }}",
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                console.log(data.status)
+                var	button = "";
+                if (data.status) {
+                    button = "<button class='btn btn-success' style='width:100%' onclick='changeStatus("+ data.id +")'> ON </button>";
+                } else {
+                    button = "<button class='btn btn-warning' style='width:100%' onclick='changeStatus("+ data.id +")'> OFF </button>";
+                }
+                $('.btn-changstatus-' + data.id).empty();
+                $('.btn-changstatus-' + data.id).append(button);
+                notification();
+            },
+        });
+    }
+</script>
 <script type="text/javascript">
     function deleteItem(id,e) {
         e.preventDefault();
@@ -102,34 +132,6 @@
         else {
             return false;
         }
-    }
-</script>
-
-<script type="text/javascript">
-    function changeStatus(id) {
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'POST',
-            dataType: 'json',
-            url: "{{route('contact.changestatus')}}",
-            data: {
-                'id': id
-            },
-            success: function(data) {
-                console.log(data.status)
-                var	button = "";
-                if (data.status) {
-                    button = "<button class='btn btn-warning' style='width:100%'> Read </button>";
-                } else {
-                    button = "<button class='btn btn-success' style='width:100%'> Unread </button>";
-                }
-                $('.btn-changstatus-' + data.id).empty();
-                $('.btn-changstatus-' + data.id).append(button);
-
-            },
-        });
     }
 </script>
 @endpush

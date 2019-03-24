@@ -100,6 +100,20 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-gift" aria-hidden="true"></i> Promotions
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('promotion.index') }}">List Promotion</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('promotion.create') }}">Create Promotion</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="">
                         <a href="{{ route('contact.index') }}">
                             <i class="fa fa-envelope"></i> Contacts

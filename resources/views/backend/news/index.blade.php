@@ -7,7 +7,7 @@
             <div class="title_left">
                 <h3>Tables <small>Show all list news</small></h3>
                 <a class="btn btn-primary icon-btn" href="{{ route('news.create') }}">
-                    <i class="fa fa-plus"></i>Create News
+                    <i class="fa fa-plus"></i> Create News
                 </a>
             </div>
             <div class="title_right">

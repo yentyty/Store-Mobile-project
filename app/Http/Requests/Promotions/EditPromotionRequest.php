@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Introduces;
+namespace App\Http\Requests\Promotions;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
-class EditIntroduceRequest extends FormRequest
+class EditPromotionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +25,7 @@ class EditIntroduceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:255',
-            'address' => 'required|min:3|max:255',
-            'email' => 'email',
-            'phone' => 'max:10|min:6',
+            'percent' => 'required|unique:promotions,percent|max:2',
         ];
     }
 

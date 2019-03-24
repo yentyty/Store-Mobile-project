@@ -26,8 +26,7 @@ class CreateIntroduceRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:255',
             'address' => 'required|unique:introduces,address|min:3|max:255',
-            'email' => 'required|email',
-            'phone' => 'required|max:10|min:6',
+            'phone' => 'max:10',
         ];
     }
 
