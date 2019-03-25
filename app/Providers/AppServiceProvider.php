@@ -25,6 +25,8 @@ use App\Repositories\V1\Factory\FactoryRepository;
 use App\Repositories\V1\Factory\FactoryRepositoryInterface;
 use App\Repositories\V1\Offer\OfferRepository;
 use App\Repositories\V1\Offer\OfferRepositoryInterface;
+use App\Repositories\V1\Product\ProductRepository;
+use App\Repositories\V1\Product\ProductRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,5 +58,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PromotionRepositoryInterface::class, PromotionRepository::class);
         $this->app->bind(FactoryRepositoryInterface::class, FactoryRepository::class);
         $this->app->bind(OfferRepositoryInterface::class, OfferRepository::class);
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
     }
 }
