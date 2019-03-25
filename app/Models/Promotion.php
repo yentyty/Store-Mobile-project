@@ -12,4 +12,9 @@ class Promotion extends Model
         'status',
         'slug',
     ];
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product', 'promotion_id', 'id');
+    }
 }
