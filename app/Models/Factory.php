@@ -17,4 +17,9 @@ class Factory extends Model
     {
         return $this->hasMany('App\Models\Offer', 'factory_id', 'id');
     }
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product','factory_id','id');
+    }
 }
