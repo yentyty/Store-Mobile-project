@@ -15,6 +15,6 @@ class Promotion extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product','promotion_id','id');
+        return $this->hasMany('App\Models\Product', 'promotion_id', 'id');
     }
 }
