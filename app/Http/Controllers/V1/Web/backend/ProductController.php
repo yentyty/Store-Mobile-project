@@ -51,7 +51,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-       //
+        $promotion = $this->repoPromotion->listCreate();
+        $factory = $this->repoFactory->listCreate();
+        return view('backend.products.create', compact('promotion', 'factory'));
     }
 
     /**

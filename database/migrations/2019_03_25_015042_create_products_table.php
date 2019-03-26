@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 255)->unique();
             $table->integer('factory_id')->unsigned();
             $table->foreign('factory_id')->references('id')->on('factories')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('promotion_id')->unsigned()->nullable();
+            $table->integer('promotion_id')->unsigned();
             $table->foreign('promotion_id')->references('id')->on('promotions')->onDelete('cascade')->onUpdate('cascade');
             $table->smallInteger('in_stock');
             $table->integer('price');
