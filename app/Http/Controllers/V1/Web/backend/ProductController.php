@@ -73,7 +73,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-       $product = $this->repoProduct->find($id);
+        $product = $this->repoProduct->find($id);
 
         return view('backend.products.detail', compact('product'));
     }
