@@ -142,6 +142,20 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> Products
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('product.index') }}">List Product</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('product.create') }}">Create Product</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="">
                         <a href="{{ route('contact.index') }}">
                             <i class="fa fa-envelope"></i> Contacts

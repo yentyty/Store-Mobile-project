@@ -21,9 +21,9 @@ $factory->define(Product::class, function (Faker $faker) {
         'in_stock' => $faker->randomNumber(2),
         'price' => $faker->randomNumber(8),
         'picture' => json_encode(
-            [ $faker->image('public/uploads/images/products', 180, 180, 'cats', null, false),
-            $faker->image('public/uploads/images/products', 180, 180, 'cats', null, false),
-            $faker->image('public/uploads/images/products', 180, 180, 'cats', null, false)]),
+            [ $faker->image('public/uploads/images/products', 400, 400, 'cats', null, false),
+            $faker->image('public/uploads/images/products', 400, 400, 'cats', null, false),
+            $faker->image('public/uploads/images/products', 400, 400, 'cats', null, false)]),
         'body' => $faker->text,
         'color' => json_encode(['Đen', 'Trắng', 'Đỏ', 'Vàng', 'Xanh']),
         'description' => $faker->text,

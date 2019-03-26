@@ -47,7 +47,7 @@
                             <p>{{ $offer->description }}</p>
                             <p>{!! strip_tags($offer["content"]) !!}</p>
                             <div class="">
-                                    <a
+                                <a
                                     href="{{route('offer.index')}}"
                                     class="btn btn-warning"
                                 >
