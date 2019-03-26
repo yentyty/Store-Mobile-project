@@ -28,17 +28,23 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="col-md-7 col-sm-7 col-xs-12">
-                            <div class="product-image">
-                                @php $someArray = json_decode($product->picture, true); @endphp
-                                <img src="uploads/images/products/{{ $someArray[0] }}" alt="...">
-                            </div>
-                            <div class="product_gallery">
+                        <div class="col-md-7 col-sm-7 col-xs-12" style="padding-left: 6em;">
+                        @php $someArray = json_decode($product->picture, true); @endphp
+                            <div class="image">
+                                <img id="expandedImg" style="margin-top:15px;" >
+                                <div id="imgtext">
+                                    <img src="uploads/images/products/{{ $someArray[0] }}">
+                                </div>
+                              </div>
+                            <div class="product_gallery" style="margin-left: 1em;">
                                 @foreach (json_decode($product->picture) as $item)
-                                <a>
-                                    <img src="uploads/images/products/{{ $item }}" alt="..." width="100%"
-                                        style="margin-top:0;">
-                                </a>
+                                    <a>
+                                        <img
+                                            src="uploads/images/products/{{ $item }}"
+                                            style="margin-top:0;"
+                                            onclick="myFunction(this);"
+                                        >
+                                    </a>
                                 @endforeach
                             </div>
                         </div>
@@ -46,16 +52,19 @@
                             <h3 class="prod_title" style="margin-bottom: 0.75em;"> {{ $product->name }}</h3>
                             <i class="fa fa-calendar" style="padding-bottom: 1em;"></i> {{ date('d-m-Y', strtotime($product->updated_at)) }}
                             <br>
-                            <i class="fa fa-suitcase" style="padding-bottom: 1em;"></i> Factory: <span style="font-size:1.5em;">{{ $product->factory->name }}</span>
+                            <i class="fa fa-suitcase" style="padding-bottom: 1em;"></i> Factory:
+                            <span style="font-size:1.5em;">{{ $product->factory->name }}</span>
                             <br>
-                            <i class="fa fa-gift" style="padding-bottom: 1em;"></i> Promotion: <span style="font-size:1.5em;">{{ $product->promotion->percent }}%</span>
+                            <i class="fa fa-gift" style="padding-bottom: 1em;"></i> Promotion:
+                            <span style="font-size:1.5em;">{{ $product->promotion->percent }}%</span>
                             <br>
-                            <i class="fa fa-calculator" style="padding-bottom: 1em;"></i> Quantity: <span style="font-size:1.5em;">{{ $product->in_stock }}</span>
+                            <i class="fa fa-calculator" style="padding-bottom: 1em;"></i> Quantity:
+                            <span style="font-size:1.5em;">{{ $product->in_stock }}</span>
                             <br>
                             <ul style="list-style-type: none;">
                             @if(isset($product->promotion->percent))
                                 <li>
-                                    <h5 style="font-size: 1.25em;">
+                                    <h5 style="font-size: 1.25em; color: blue;">
                                         {{number_format($product->price - ($product->price * $product->promotion->percent / 100) , 0 ,',','.')}} VND
                                     </h5>
                                 </li>
@@ -71,7 +80,9 @@
                             @endif
                             </ul>
                             <div class="">
-                                <h2><i class="fa fa-asterisk"></i> Color</h2>
+                                <h2>
+                                    <i class="fa fa-asterisk"></i> Color
+                                </h2>
                                 <ul class="list-inline prod_color">
                                         @foreach (json_decode($product->color) as $item)
                                     <li>
@@ -121,23 +132,37 @@
                                     </tr>
                                 </table>
                             </div>
+                            <a
+                                href="{{route('product.index')}}"
+                                class="btn btn-warning"
+                            >
+                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancle
+                            </a>
                         </div>
                         <div class="col-md-12">
                             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#tab_content1" id="home-tab"
-                                            role="tab" data-toggle="tab" aria-expanded="true">Product information</a>
+                                    <li role="presentation" class="active">
+                                        <a
+                                            href="#tab_content1" id="home-tab"
+                                            role="tab" data-toggle="tab"
+                                            aria-expanded="true"
+                                        >
+                                            Product information
+                                        </a>
                                     </li>
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
-                                        aria-labelledby="home-tab">
+                                    <div
+                                        role="tabpanel"
+                                        class="tab-pane fade active in"
+                                        id="tab_content1"
+                                        aria-labelledby="home-tab"
+                                    >
                                         <p>{{ $product->body }}</p>
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -146,3 +171,15 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+<script>
+    function myFunction(imgs) {
+      var expandImg = document.getElementById("expandedImg");
+      var imgText = document.getElementById("imgtext");
+      expandImg.src = imgs.src;
+      imgText.innerHTML = imgs.alt;
+      expandImg.parentElement.style.display = "block";
+    }
+    </script>
+@endpush
