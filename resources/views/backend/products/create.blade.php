@@ -14,7 +14,7 @@
                 {{ Form::open
                     ([
                         'method' => 'POST',
-                        'route' => 'offer.store',
+                        'route' => 'product.store',
                         'files' => true,
                         'class' => 'form-horizontal form-label-left input_mask',
                         'enctype' => 'multipart/form-data'
@@ -46,10 +46,10 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback style-form">
-                            {{ Form::text('quantity', null, ['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess3', 'placeholder' => 'Import quantity', 'style' => 'padding-left:6em']) }}
+                            {{ Form::text('in_stock', null, ['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess3', 'placeholder' => 'Import quantity', 'style' => 'padding-left:6em']) }}
                             <span class="form-control-feedback left" style="width:5em; color:#73879C;">Quantity *</span>
-                            @if ($errors->has('quantity'))
-                                @foreach ($errors->get('quantity') as $error)
+                            @if ($errors->has('in_stock'))
+                                @foreach ($errors->get('in_stock') as $error)
                                     <span class="style-span create-user">{{ $error }}</span>
                                 @endforeach
                             @endif
@@ -87,14 +87,14 @@
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 {{ Form::select(
                                     'color[]',
-                                    ['Đen', 'Trắng', 'Vàng', 'Xanh'],
+                                    ['Trắng'=>'Trắng', 'Đen'=>'Đen', 'Xanh'=>'Xanh', 'Đỏ'=>'Đỏ', 'Vàng'=>'Vàng'],
                                     '',
                                     ['class' => 'form-control js-example-basic-multiple', 'multiple' => 'multiple', 'style' => 'width:48.5em;']
                                     )
                                 }}
                             </div>
-                            @if ($errors->has('price'))
-                                @foreach ($errors->get('price') as $error)
+                            @if ($errors->has('color'))
+                                @foreach ($errors->get('color') as $error)
                                     <span class="style-span create-user style-request">{{ $error }}</span>
                                 @endforeach
                             @endif
@@ -115,9 +115,9 @@
                             {{ Form::label("pic$k", "Picture $k<span class='required'>*</span> :" , ['class' => 'control-label col-sm-2'], false) }}
                             <div class="col-sm-2">
                                 <img src="" width="100" height="100" alt="Image offers" id="img{{ $k }}" style="display: none">
-                                <input type="file" name="pic[]" class="form-control" id="pic{{ $k }}">
-                                @if ($errors->has('pic'))
-                                    @foreach ($errors->get('pic') as $error)
+                                <input type="file" name="picture[]" class="form-control" id="pic{{ $k }}">
+                                @if ($errors->has('picture'))
+                                    @foreach ($errors->get('picture') as $error)
                                         <span class="style-span create-user style-request">{{ $error }}</span>
                                     @endforeach
                                 @endif

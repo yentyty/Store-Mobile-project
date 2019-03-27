@@ -62,9 +62,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateNewsRequest $request)
+    public function store(Request $request)
     {
-       //
+        $this->repoProduct->store($request->all());
+
+        return redirect()->route('product.index')->with('msg', 'Creation successful');
     }
 
     /**
