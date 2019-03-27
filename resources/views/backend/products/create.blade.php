@@ -5,7 +5,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Form <small>Create News</small></h3>
+                <h3>Form <small>Create user</small></h3>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -21,10 +21,10 @@
                     ])
                 }}
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback style-form">
-                        {{ Form::text('name', null, ['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess2', 'placeholder' => 'Import title', 'style' => 'padding-left:4em']) }}
-                        <span class="form-control-feedback left" style="width:3em; color:#73879C;">Title *</span>
+                        {{ Form::text('name', null, ['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess2', 'placeholder' => 'Import Name', 'style' => 'padding-left:5em']) }}
+                        <span class="form-control-feedback left" style="width:4em; color:#73879C;">Name *</span>
                         @if ($errors->has('name'))
-                            @foreach ($errors->get('title') as $error)
+                            @foreach ($errors->get('name') as $error)
                                 <span class="style-span create-user">{{ $error }}</span>
                             @endforeach
                         @endif
@@ -46,7 +46,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback style-form">
-                            {{ Form::text('in_stock', null, ['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess3', 'placeholder' => 'Import quantity', 'style' => 'padding-left:6em']) }}
+                            {{ Form::number('in_stock', null, ['class' => 'form-control has-feedback-left', 'id' => 'inputSuccess3', 'placeholder' => 'Import quantity', 'style' => 'padding-left:6em; padding-right: 0.5em;']) }}
                             <span class="form-control-feedback left" style="width:5em; color:#73879C;">Quantity *</span>
                             @if ($errors->has('in_stock'))
                                 @foreach ($errors->get('in_stock') as $error)
@@ -112,19 +112,18 @@
                     </div>
                     <div class="form-group" style="margin-right:7em; margin-top: 3em;">
                         @for ($k = 1; $k <= 3; $k++)
-                            {{ Form::label("pic$k", "Picture $k<span class='required'>*</span> :" , ['class' => 'control-label col-sm-2'], false) }}
+                            {{ Form::label("pic$", "Picture $k<span class='required'>*</span> :" , ['class' => 'control-label col-sm-2'], false) }}
                             <div class="col-sm-2">
-                                <img src="" width="100" height="100" alt="Image offers" id="img{{ $k }}" style="display: none">
+                                <img src="" width="100"t height="100" alt="Image offers" id="img{{ $k }}" style="display: none">
                                 <input type="file" name="picture[]" class="form-control" id="pic{{ $k }}">
+
                                 @if ($errors->has('picture'))
-                                    @foreach ($errors->get('picture') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
+
+                                    <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('picture') }}</span>
                                 @endif
-                                @if ($errors->has('pic.*'))
-                                    @foreach ($errors->get('pic.*') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
+                                @if ($errors->has('picture.*'))
+
+                                    <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('picture.*') }}</span>
                                 @endif
 
                             </div>
@@ -139,111 +138,107 @@
                             {{ Form::text('screen', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
                             @if ($errors->has('screen'))
                                 @foreach ($errors->get('screen') as $error)
-                                    <span class="style-span create-user style-request">{{ $error }}</span>
+                                    <span class="style-span create-user ">{{ $error }}</span>
                                 @endforeach
                             @endif
                         </div>
                     </div>
-                        <div class="form-group">
-                            {{ Form::label('OS', 'Operating system <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                {{ Form::text('OS', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
-                                @if ($errors->has('OS'))
-                                    @foreach ($errors->get('OS') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    <div class="form-group">
+                        {{ Form::label('OS', 'Operating system <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ Form::text('OS', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
+                            @if ($errors->has('OS'))
+                                @foreach ($errors->get('OS') as $error)
+                                    <span class="style-span create-user ">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
-                        <div class="form-group">
-                            {{ Form::label('camera', 'Camera <span class="required">*</span> :', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                {{ Form::text('camera', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
-                                @if ($errors->has('camera'))
-                                    @foreach ($errors->get('camera') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('camera', 'Camera <span class="required">*</span> :', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ Form::text('camera', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
+                            @if ($errors->has('camera'))
+                                @foreach ($errors->get('camera') as $error)
+                                    <span class="style-span create-user ">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
-                        <div class="form-group">
-                            {{ Form::label('cpu', 'CPU <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                {{ Form::text('cpu', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
-                                @if ($errors->has('cpu'))
-                                    @foreach ($errors->get('cpu') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('cpu', 'CPU <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ Form::text('cpu', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
+                            @if ($errors->has('cpu'))
+                                @foreach ($errors->get('cpu') as $error)
+                                    <span class="style-span create-user ">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
-                        <div class="form-group">
-                            {{ Form::label('ram', 'Ram <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                {{ Form::text('ram', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
-                                @if ($errors->has('ram'))
-                                    @foreach ($errors->get('ram') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('ram', 'Ram <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ Form::number('ram', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
+                            @if ($errors->has('ram'))
+                                @foreach ($errors->get('ram') as $error)
+                                    <span class="style-span create-user">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
-                        <div class="form-group">
-                            {{ Form::label('sim', 'Sim <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                {{ Form::text('sim', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
-                                @if ($errors->has('sim'))
-                                    @foreach ($errors->get('sim') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('sim', 'Sim <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ Form::text('sim', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
+                            @if ($errors->has('sim'))
+                                @foreach ($errors->get('sim') as $error)
+                                    <span class="style-span create-user ">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
-                        <div class="form-group">
-                            {{ Form::label('pin', 'Battery capacity <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                {{ Form::text('pin', old('pin', isset($product) ? $product->description->pin : null), ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
-                                @if ($errors->has('pin'))
-                                    @foreach ($errors->get('pin') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('pin', 'Battery capacity <span class="required">*</span> :' ,['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ Form::text('pin', old('pin', isset($product) ? $product->description->pin : null), ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
+                            @if ($errors->has('pin'))
+                                @foreach ($errors->get('pin') as $error)
+                                    <span class="style-span create-user ">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
-                        <div class="form-group">
-                            {{ Form::label('fingerprint', 'Fingerprint <span class="required">*</span> :', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                {{ Form::text('fingerprint', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
-                                @if ($errors->has('fingerprint'))
-                                    @foreach ($errors->get('fingerprint') as $error)
-                                        <span class="style-span create-user style-request">{{ $error }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('fingerprint', 'Fingerprint <span class="required">*</span> :', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'], false) }}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ Form::text('fingerprint', '', ['class' => 'form-control', 'style' => 'width:45em; border-radius: 0.3em;']) }}
+                            @if ($errors->has('fingerprint'))
+                                @foreach ($errors->get('fingerprint') as $error)
+                                    <span class="style-span create-user ">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
+                    </div>
                     <h2 class="style_h2_news"> Product Introduction</h2>
                     <div class="x_content">
                         {{ Form::textarea('body', null, ['class' => 'form-control ckeditor resizable_textarea form-control', 'placeholder' => 'Import description', 'rows' => '4', 'cols' => '50']) }}
                     </div>
-                    @if ($errors->has('body'))
-                            @foreach ($errors->get('body') as $error)
-                                <span class="style-span create-user">{{ $error }}</span>
-                            @endforeach
-                        @endif
                     <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-md-offset-3" style="margin-top:1em; margin-left: 29em;">
+                        <div class="col-md-12 text-center mt-3" style="margin-top:1em;">
                             {{ Form::button('<i class="fa fa-fw fa-lg fa-check-circle"></i> Create', ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin-right:5em;'] ) }}
                             <a
-                                href="{{route('news.index')}}"
+                                href="{{route('product.index')}}"
                                 class="btn btn-warning"
                             >
-                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancle
+                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
                             </a>
                         </div>
                     </div>
                 {{  Form::close()  }}
             </div>
         </div>
+
     </div>
 </div>
 @endsection
