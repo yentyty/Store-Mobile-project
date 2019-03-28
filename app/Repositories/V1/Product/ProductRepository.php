@@ -71,22 +71,17 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $file = json_encode($data['image']);
         $data['product'] = json_encode($data['image']);
         dd($data['product']);
-        foreach ($file as $key => $files) {
-
-        }
         $product->image = json_decode($product->image);
         $data['image']= array_filter($product->image);
         dd($data['image']);
-
         $nameImageOld = json_encode ($data['image']);
-
         dd($nameImageOld);
         foreach ($nameImageOld as $key => $file) {
             dd($file);
         }
-            if (!empty($offer->image) && File::exists($nameImageOld)) {
-                unlink($nameImageOld);
-            }
+        if (!empty($offer->image) && File::exists($nameImageOld)) {
+            unlink($nameImageOld);
+        }
         $inflightmags = [];
 
         if (isset($data['image'])) {
