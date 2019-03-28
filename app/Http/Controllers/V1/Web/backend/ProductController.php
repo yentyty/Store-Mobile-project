@@ -90,7 +90,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->repoProduct->find($id);
+        $promotion = $this->repoPromotion->listCreate();
+        $factory = $this->repoFactory->listCreate();
+
+        return view('backend.products.edit', compact('product', 'promotion', 'factory'));
     }
 
     /**
@@ -100,9 +104,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditNewsRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $this->repoProduct->update($id, $data);
+
+        return redirect()->route('product.index')->with('msg', 'Edit successful');
     }
 
     /**

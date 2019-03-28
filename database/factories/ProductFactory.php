@@ -20,7 +20,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'promotion_id' => $faker->numberBetween(1, 1),
         'in_stock' => $faker->randomNumber(2),
         'price' => $faker->randomNumber(8),
-        'picture' => json_encode(
+        'image' => json_encode(
             [ $faker->image('public/uploads/images/products', 400, 400, 'cats', null, false),
             $faker->image('public/uploads/images/products', 400, 400, 'cats', null, false),
             $faker->image('public/uploads/images/products', 400, 400, 'cats', null, false)]),

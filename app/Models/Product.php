@@ -13,7 +13,7 @@ class Product extends Model
         'promotion_id',
         'in_stock',
         'price',
-        'picture',
+        'image',
         'body',
         'color',
         'description',
