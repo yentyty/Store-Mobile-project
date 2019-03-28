@@ -120,6 +120,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-       //
+        $this->repoProduct->delete($id);
+
+        return redirect()->route('product.index')->with('msg', 'Delete successful');
     }
 }

@@ -140,6 +140,14 @@
                                 @endif
                             </div>
                         @endfor
+                        @if ($count < 2)
+                        {{ Form::label("pic2", "Image 2<span class='required'>*</span> :" , ['class' => 'control-label col-sm-2'], false) }}
+                        <div class="col-sm-2">
+                            <img src="" width="200" height="200" alt="Image offers" id="img3" style="display: none">
+                            <input type="file" name="image[]" class="form-control" id="pic3"></3>
+                            <p style="width:19em; margin-left:-3em;">( Please select a image of the correct size max-width: 600 and max-height:600.... ) </p>
+                        </div>
+                        @endif
                         @if ($count < 3)
                         {{ Form::label("pic3", "Image 3<span class='required'>*</span> :" , ['class' => 'control-label col-sm-2'], false) }}
                         <div class="col-sm-2">

@@ -99,4 +99,18 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             $data['image'] = $offer->image;
         }
     }
+
+    public function delete($id)
+    {
+        $product = $this->model->find($id);
+        $someArrayPic = json_decode($product->image, true);
+        $count = count($someArrayPic);
+        for ($k = 0; $k < $count; $k++){
+            $nameImageOld = 'uploads/images/products/' . $someArrayPic[$k];
+            if (!empty($nameImageOld) && File::exists($nameImageOld)) {
+                unlink($nameImageOld);
+            }
+        }
+        $product->delete();
+    }
 }
