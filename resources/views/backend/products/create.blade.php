@@ -116,16 +116,13 @@
                             <div class="col-sm-2">
                                 <img src="" width="100"t height="100" alt="Image offers" id="img{{ $k }}" style="display: none">
                                 <input type="file" name="picture[]" class="form-control" id="pic{{ $k }}">
-
+                                <p style="width:19em; margin-left:-3em;">( Please select a picture of the correct size max-width: 600 and max-height:600.... ) </p>
                                 @if ($errors->has('picture'))
-
                                     <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('picture') }}</span>
                                 @endif
                                 @if ($errors->has('picture.*'))
-
                                     <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('picture.*') }}</span>
                                 @endif
-
                             </div>
                         @endfor
                     </div>

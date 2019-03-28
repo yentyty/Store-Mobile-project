@@ -30,7 +30,7 @@ class CreateProductRequest extends FormRequest
             'promotion_id' => 'required',
             'color' => 'required',
             'picture' => 'required',
-            'picture.*' => 'required|image',
+            'picture.*' => 'required|image|dimensions:max_width=600,max_height=600',
             'in_stock' => 'required|numeric',
             'storage' => 'required|max:255',
             'screen' => 'required',
