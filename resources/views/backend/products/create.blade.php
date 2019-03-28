@@ -112,16 +112,16 @@
                     </div>
                     <div class="form-group" style="margin-right:7em; margin-top: 3em;">
                         @for ($k = 1; $k <= 3; $k++)
-                            {{ Form::label("pic$", "Picture $k<span class='required'>*</span> :" , ['class' => 'control-label col-sm-2'], false) }}
+                            {{ Form::label("pic$", "Image $k<span class='required'>*</span> :" , ['class' => 'control-label col-sm-2'], false) }}
                             <div class="col-sm-2">
-                                <img src="" width="100"t height="100" alt="Image offers" id="img{{ $k }}" style="display: none">
-                                <input type="file" name="picture[]" class="form-control" id="pic{{ $k }}">
-                                <p style="width:19em; margin-left:-3em;">( Please select a picture of the correct size max-width: 600 and max-height:600.... ) </p>
-                                @if ($errors->has('picture'))
-                                    <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('picture') }}</span>
+                                <img src="" width="100" height="100" alt="Image offers" id="img{{ $k }}" style="display: none">
+                                <input type="file" name="image[]" class="form-control" id="pic{{ $k }}">
+                                <p style="width:19em; margin-left:-3em;">( Please select a image of the correct size max-width: 600 and max-height:600.... ) </p>
+                                @if ($errors->has('image'))
+                                    <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('image') }}</span>
                                 @endif
-                                @if ($errors->has('picture.*'))
-                                    <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('picture.*') }}</span>
+                                @if ($errors->has('image.*'))
+                                    <span class="style-span create-user style-request" style="margin-left: -3em;">{{ $errors->first('image.*') }}</span>
                                 @endif
                             </div>
                         @endfor
@@ -299,61 +299,47 @@
             // return false;
         });
     });
-        $(document).ready(function() {
-                function readURL(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $('#img1').attr('src', e.target.result).show();
-                        }
-                        reader.readAsDataURL(input.files[0]);
+    $(document).ready(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#img1').attr('src', e.target.result).show();
                     }
+                    reader.readAsDataURL(input.files[0]);
                 }
-                $("#pic1").change(function() {
-                    readURL(this);
-                });
-        });
-        $(document).ready(function() {
-                function readURL(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $('#img1').attr('src', e.target.result).show();
-                        }
-                        reader.readAsDataURL(input.files[0]);
+            }
+            $("#pic1").change(function() {
+                readURL(this);
+            });
+    });
+    $(document).ready(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#img2').attr('src', e.target.result).show();
                     }
+                    reader.readAsDataURL(input.files[0]);
                 }
-                $("#pic1").change(function() {
-                    readURL(this);
-                });
-        });
-        $(document).ready(function() {
-                function readURL(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $('#img2').attr('src', e.target.result).show();
-                        }
-                        reader.readAsDataURL(input.files[0]);
+            }
+            $("#pic2").change(function() {
+                readURL(this);
+            });
+    });
+    $(document).ready(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#img3').attr('src', e.target.result).show();
                     }
+                    reader.readAsDataURL(input.files[0]);
                 }
-                $("#pic2").change(function() {
-                    readURL(this);
-                });
-        });
-        $(document).ready(function() {
-                function readURL(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $('#img3').attr('src', e.target.result).show();
-                        }
-                        reader.readAsDataURL(input.files[0]);
-                    }
-                }
-                $("#pic3").change(function() {
-                    readURL(this);
-                });
-        });
+            }
+            $("#pic3").change(function() {
+                readURL(this);
+            });
+    });
 </script>
 @endpush

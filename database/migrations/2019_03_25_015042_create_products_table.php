@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->foreign('promotion_id')->references('id')->on('promotions')->onDelete('cascade')->onUpdate('cascade');
             $table->smallInteger('in_stock');
             $table->integer('price');
-            $table->text('picture');
+            $table->text('image');
             $table->longText('body')->nullable();
             $table->text('color');
             $table->text('description');

@@ -29,7 +29,7 @@
                     </div>
                     <div class="x_content">
                         <div class="col-md-7 col-sm-7 col-xs-12" style="padding-left: 6em;">
-                        @php $someArray = json_decode($product->picture, true); @endphp
+                        @php $someArray = json_decode($product->image, true); @endphp
                             <div class="image">
                                 <img id="expandedImg" style="margin-top:15px;" >
                                 <div id="imgtext">
@@ -37,7 +37,7 @@
                                 </div>
                               </div>
                             <div class="product_gallery" style="margin-left: 1em;">
-                                @foreach (json_decode($product->picture) as $item)
+                                @foreach (json_decode($product->image) as $item)
                                     <a>
                                         <img
                                             src="uploads/images/products/{{ $item }}"
