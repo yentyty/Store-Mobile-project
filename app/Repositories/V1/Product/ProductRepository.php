@@ -105,7 +105,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $product = $this->model->find($id);
         $someArrayPic = json_decode($product->image, true);
         $count = count($someArrayPic);
-        for ($k = 0; $k < $count; $k++){
+        for ($k = 0; $k < $count; $k++) {
             $nameImageOld = 'uploads/images/products/' . $someArrayPic[$k];
             if (!empty($nameImageOld) && File::exists($nameImageOld)) {
                 unlink($nameImageOld);
