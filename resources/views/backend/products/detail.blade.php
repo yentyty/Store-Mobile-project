@@ -136,7 +136,7 @@
                                 href="{{route('product.index')}}"
                                 class="btn btn-warning"
                             >
-                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancle
+                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
                             </a>
                         </div>
                         <div class="col-md-12">
@@ -159,7 +159,7 @@
                                         id="tab_content1"
                                         aria-labelledby="home-tab"
                                     >
-                                        <p>{{ $product->body }}</p>
+                                        <p>{!! strip_tags($product->body) !!}</p>
                                     </div>
                                 </div>
                             </div>

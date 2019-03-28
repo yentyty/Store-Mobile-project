@@ -37,7 +37,7 @@
                                 href="{{route('promotion.index')}}"
                                 class="btn btn-warning"
                             >
-                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancle
+                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
                             </a>
                         </div>
                     </div>

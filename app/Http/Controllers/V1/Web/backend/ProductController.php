@@ -51,7 +51,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-       //
+        $promotion = $this->repoPromotion->listCreate();
+        $factory = $this->repoFactory->listCreate();
+        return view('backend.products.create', compact('promotion', 'factory'));
     }
 
     /**
@@ -60,9 +62,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateNewsRequest $request)
+    public function store(CreateProductRequest $request)
     {
-       //
+        $this->repoProduct->store($request->all());
+
+        return redirect()->route('product.index')->with('msg', 'Creation successful');
     }
 
     /**

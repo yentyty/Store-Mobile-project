@@ -17,7 +17,7 @@ $factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'factory_id' => $faker->numberBetween(1, 4),
-        'promotion_id' => $faker->numberBetween(1, 4),
+        'promotion_id' => $faker->numberBetween(1, 1),
         'in_stock' => $faker->randomNumber(2),
         'price' => $faker->randomNumber(8),
         'picture' => json_encode(

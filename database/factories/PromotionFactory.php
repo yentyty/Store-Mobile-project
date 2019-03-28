@@ -13,7 +13,7 @@ use App\Models\Promotion;
 */
 $factory->define(Promotion::class, function (Faker $faker) {
     return [
-        'percent' => $faker->numberBetween(10, 99),
+        'percent' => 0,
         'slug' => str_slug($faker->numberBetween(10, 99)),
     ];
 });

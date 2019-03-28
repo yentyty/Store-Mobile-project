@@ -59,4 +59,11 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
         $promotion = $this->model->find($id);
         $promotion->delete();
     }
+
+    public function listCreate()
+    {
+        $promotions = $this->model::all();
+
+        return $promotions;
+    }
 }

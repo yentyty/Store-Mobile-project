@@ -35,6 +35,8 @@
     <!-- Custom Theme Style -->
     <link href="backend/css/custom.min.css" rel="stylesheet">
     <link href="backend/css/style.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
+    <link rel="stylesheet" href="backend/admin-asset/select2/dist/css/select2.min.css">
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -90,8 +92,7 @@
     <script src="backend/admin-asset/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="backend/js/custom.min.js"></script>
-    <script type="text/javascript" language="javascript" src="backend/ckeditor/ckeditor.js"></script>
-
+    <script type="text/javascript" language="javascript" src="backend/admin-asset/select2/dist/js/select2.full.min.js"></script>
     <script>
         $("div.alert-success").delay(4000).slideUp();
 
@@ -137,6 +138,12 @@
             $("#content_image").change(function() {
                 readURL(this);
             });
+        });
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2({
+                tags: true,
+                tokenSeparators: [',', ' ']
+            })
         });
     </script>
     @stack('script')

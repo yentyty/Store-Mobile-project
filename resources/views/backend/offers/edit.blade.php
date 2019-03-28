@@ -86,13 +86,13 @@
                             @endforeach
                         @endif
                     <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-md-offset-3" style="margin-top:1em;">
+                        <div class="col-md-12 text-center mt-3" style="margin-top: 3em;">
                             {{ Form::button('<i class="fa fa-fw fa-lg fa-check-circle"></i> Update', ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin-right:5em;'] ) }}
                             <a
-                                href="{{route('news.index')}}"
+                                href="{{route('offer.index')}}"
                                 class="btn btn-warning"
                             >
-                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancle
+                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
                             </a>
                         </div>
                     </div>
