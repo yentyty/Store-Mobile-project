@@ -74,7 +74,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $product->image = json_decode($product->image);
         $data['image']= array_filter($product->image);
         dd($data['image']);
-        $nameImageOld = json_encode ($data['image']);
+        $nameImageOld = json_encode($data['image']);
         dd($nameImageOld);
         foreach ($nameImageOld as $key => $file) {
             dd($file);
