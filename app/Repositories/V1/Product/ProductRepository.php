@@ -32,14 +32,14 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return $products;
     }
 
-    public function store( $data)
+    public function store($data)
     {
         $data['slug'] = str_slug($data['name']);
         $data['color'] = json_encode($data['color']);
 
         $pictures = [];
         $files =$data['picture'];
-        foreach ($files as $key =>$file){
+        foreach ($files as $key => $file) {
             $extensionFile = $file -> getClientOriginalExtension();
             $filename = $key.'-'.time().'.'.$extensionFile;
             $file->move('uploads/images/products', $filename);
@@ -55,7 +55,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             'ram' => $data['ram'],
             'sim' => $data['sim'],
             'pin' => $data['pin'],
-            'fingerprint' => $data['fingerprint']
+            'fingerprint' => $data['fingerprint'],
         ];
         $data['description'] = json_encode($description);
 
