@@ -34,4 +34,9 @@ class User extends Model
     {
         return $this->hasMany('App\Models\News', 'user_id', 'id');
     }
+
+    public function bills()
+    {
+        return $this->hasMany('App\Models\Bill', 'user_id', 'id');
+    }
 }
