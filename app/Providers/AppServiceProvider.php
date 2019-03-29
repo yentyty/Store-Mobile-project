@@ -27,6 +27,8 @@ use App\Repositories\V1\Offer\OfferRepository;
 use App\Repositories\V1\Offer\OfferRepositoryInterface;
 use App\Repositories\V1\Product\ProductRepository;
 use App\Repositories\V1\Product\ProductRepositoryInterface;
+use App\Repositories\V1\Bill\BillRepository;
+use App\Repositories\V1\Bill\BillRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -59,5 +61,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(FactoryRepositoryInterface::class, FactoryRepository::class);
         $this->app->bind(OfferRepositoryInterface::class, OfferRepository::class);
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
+        $this->app->bind(BillRepositoryInterface::class, BillRepository::class);
     }
 }

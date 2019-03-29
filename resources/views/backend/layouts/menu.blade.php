@@ -157,6 +157,11 @@
                         </ul>
                     </li>
                     <li class="">
+                        <a href="{{ route('bill.index') }}">
+                            <i class="fa fa-shopping-cart"></i> Bills
+                        </a>
+                    </li>
+                    <li class="">
                         <a href="{{ route('contact.index') }}">
                             <i class="fa fa-envelope"></i> Contacts
                         </a>
