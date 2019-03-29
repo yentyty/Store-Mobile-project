@@ -15,7 +15,7 @@ class Bill extends Model
         'email',
         'phone',
         'status',
-        'note'
+        'note',
     ];
 
     public function user()
