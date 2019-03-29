@@ -21,7 +21,7 @@ class CreateBillsTable extends Migration
             $table->string('address', 255);
             $table->string('email', 255);
             $table->string('phone', 11);
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
             $table->integer('total');
             $table->text('note')->nullable();
             $table->timestamps();
