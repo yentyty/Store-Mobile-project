@@ -105,7 +105,9 @@ class BillController extends Controller
      */
     public function destroy($id)
     {
-       //
+        $this->repoBill->delete($id);
+
+        return redirect()->route('bill.index')->with('msg', 'Delete successful');
     }
 
     public function changestatus(Request $request)

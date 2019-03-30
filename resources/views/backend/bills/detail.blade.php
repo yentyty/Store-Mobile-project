@@ -85,7 +85,7 @@
                         </table>
                     </div>
                     <a
-                        href="{{route('product.index')}}"
+                        href="{{route('bill.index')}}"
                         class="btn btn-warning"
                         style="float:right;margin-right:3em;"
                     >
