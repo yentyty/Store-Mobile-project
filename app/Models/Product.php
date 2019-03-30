@@ -31,4 +31,9 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Promotion', 'promotion_id', 'id');
     }
+
+    public function billDetails()
+    {
+        return $this->hasMany('App\Models\BillDetail', 'product_id', 'id');
+    }
 }

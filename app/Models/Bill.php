@@ -22,4 +22,9 @@ class Bill extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
+
+    public function billDetails()
+    {
+        return $this->hasMany('App\Models\BillDetail', 'bill_id', 'id');
+    }
 }
