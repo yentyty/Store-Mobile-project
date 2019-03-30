@@ -16,7 +16,7 @@ class BillDetail extends Model
         'product_name',
         'product_color',
         'product_promotion',
-        'product_storage'
+        'product_storage',
     ];
 
     public function product()
