@@ -27,11 +27,12 @@
             <thead>
                 <tr role="row">
                     <th style="width: 3%;">#</th>
-                    <th style="width: 15%;">Orderer</th>
-                    <th style="width: 15%;">Email</th>
+                    <th style="width: 7%;">code Bill</th>
+                    <th style="width: 10%;">Orderer</th>
                     <th style="width: 7%;">Phone</th>
                     <th style="width: 25%;">Address</th>
                     <th style="width: 10%;">Total</th>
+                    <th style="width: 13%;">Order date</th>
                     <th style="width: 10%;">Status</th>
                     <th style="width: 10%;">Action</th>
                 </tr>
@@ -40,11 +41,12 @@
                 @foreach($bills as $key => $bill)
                 <tr role="row" class="odd">
                     <td>{{ $key + 1 }}</td>
+                    <td>{{ $bill->id }}</td>
                     <td>{{ $bill->username }}</td>
-                    <td>{{ $bill->email }}</td>
                     <td>{{ $bill->phone }}</td>
                     <td>{{ $bill->address }}</td>
                     <td>{{ number_format($bill->total, 0, ',' ,'.') }}</td>
+                    <td>{{ $bill->created_at }}</td>
                     <td class = "btn-changstatus-{{ $bill->id }}">
                             <button
                                 class="btn btn-{{ $bill->status == 1 ? 'success' : 'warning' }}"

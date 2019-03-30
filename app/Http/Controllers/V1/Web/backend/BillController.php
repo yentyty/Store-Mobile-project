@@ -69,7 +69,9 @@ class BillController extends Controller
      */
     public function show($id)
     {
-       //
+        $bill = $this->repoBill->find($id);
+
+        return view('backend.bills.detail', compact('bill'));
     }
 
     /**

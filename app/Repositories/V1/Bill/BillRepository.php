@@ -18,7 +18,7 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
     {
         $limit = is_null($limit) ? config('repository.pagination.limit', 5) : $limit;
 
-        return $this->model->with('user')->orderBy('updated_at', 'Desc')->paginate($limit, $columns);
+        return $this->model->with('user', 'billDetails')->orderBy('updated_at', 'Desc')->paginate($limit, $columns);
     }
 
     public function search($key)
@@ -26,6 +26,7 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
         $bills = Bill::where('username', 'LIKE', '%' . $key . '%')
             ->orwhere('id', 'like', '%' . $key . '%')
             ->orwhere('total', 'like', '%' . $key . '%')
+            ->orwhere('created_at', 'like', '%' . $key . '%')
             ->paginate(10);
         $bills->appends(['key' => $key]);
 
