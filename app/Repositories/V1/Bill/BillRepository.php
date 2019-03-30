@@ -42,4 +42,10 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
 
         return response()->json($bill);
     }
+
+    public function delete($id)
+    {
+        $bill = $this->model->find($id);
+        $bill->delete();
+    }
 }
