@@ -122,8 +122,8 @@ class BillController extends Controller
     {
         $bill = $this->repoBill->find($id);
         $pdf = PDF::loadView('backend.bills.billpdf', ['bill'=>$bill])->setPaper('a4', 'portrait');
-
         $filename = $bill->username;
+
         return $pdf->stream($filename. '.pdf');
     }
 }
