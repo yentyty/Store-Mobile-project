@@ -48,4 +48,16 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
         $bill = $this->model->find($id);
         $bill->delete();
     }
+
+    public function pdfexport($id)
+    {
+        return $this->model->find($id);
+    }
+
+    public function countBill()
+    {
+        $bills = $this->model->count();
+
+        return $bills;
+    }
 }

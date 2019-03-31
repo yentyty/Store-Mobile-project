@@ -10,6 +10,7 @@ use App\Models\Bill;
 use Illuminate\Support\Collection;
 use App\Http\Requests\Bills\CreateBillRequest;
 use App\Http\Requests\Bills\EditBillRequest;
+use PDF;
 
 class BillController extends Controller
 {
@@ -115,5 +116,14 @@ class BillController extends Controller
         $data = $request->all();
 
         return $this->repoBill->changestatus($data);
+    }
+
+    public function pdfexport($id)
+    {
+        $bill = $this->repoBill->find($id);
+        $pdf = PDF::loadView('backend.bills.billpdf', ['bill' => $bill])->setPaper('a4', 'portrait');
+        $filename = $bill->username;
+
+        return $pdf->stream($filename. '.pdf');
     }
 }

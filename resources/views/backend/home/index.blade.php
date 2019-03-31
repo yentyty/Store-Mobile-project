@@ -19,7 +19,7 @@
                     <div class="icon">
                         <i class="fa fa-comments-o"></i>
                     </div>
-                    <div class="count">179</div>
+                    <div class="count">{{ $bills }}</div>
                     <h3>Bills</h3>
                     <p>All customer orders</p>
                 </div>
@@ -29,7 +29,7 @@
                     <div class="icon">
                         <i class="fa fa-sort-amount-desc"></i>
                     </div>
-                    <div class="count">179</div>
+                    <div class="count">{{ $products }}</div>
                     <h3>Products</h3>
                     <p>All products from the store.</p>
                 </div>
@@ -46,26 +46,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Transaction Summary
-                            <small>Weekly progress</small>
-                        </h2>
-                        <div class="filter">
-                            <div
-                                id="reportrange"
-                                class="pull-right"
-                                style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc"
-                            >
-                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                <span>February 11, 2019 - March 12, 2019</span>
-                                <b class="caret"></b>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
+            <div class="x_title">
+                <div class="filter">
+                    <div
+                        id="reportrange"
+                        class="pull-right"
+                        style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc"
+                    >
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        <span>February 11, 2019 - March 12, 2019</span>
+                        <b class="caret"></b>
                     </div>
                 </div>
+                <div class="clearfix"></div>
             </div>
         </div>
         <div class="col-md-4">

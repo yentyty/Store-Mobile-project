@@ -7,4 +7,8 @@ interface BillRepositoryInterface
     public function search($key);
 
     public function changestatus($data);
+
+    public function pdfexport($id);
+
+    public function countBill();
 }
