@@ -113,4 +113,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         }
         $product->delete();
     }
+
+    public function countProduct()
+    {
+        $products = $this->model->count();
+
+        return $products;
+    }
 }

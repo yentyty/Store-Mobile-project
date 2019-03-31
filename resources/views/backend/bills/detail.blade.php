@@ -27,6 +27,13 @@
                         </ul>
                         <div class="clearfix"></div>
                     </div>
+                    <a
+                        href="{{ route('bill.pdfexport',  ['id'=>$bill->id]) }}"
+                        class="btn btn-info"
+                        style="margin-left:29em;"
+                    >
+                        Export PDF
+                    </a>
                     <div class="x_content">
                         <div class="col-lg-6">
                             <h2>Orderer: <span style="color:black; font-size:0.9em;">{{ $bill->username }}</span></h2>
@@ -57,10 +64,11 @@
                             <thead>
                                 <tr role="row">
                                     <th style="width: 3%;">#</th>
-                                    <th style="width: 7%;">Product name</th>
+                                    <th style="width: 17%;">Product name</th>
                                     <th style="width: 10%;">Storage</th>
                                     <th style="width: 7%;">Color</th>
-                                    <th style="width: 25%;">Price</th>
+                                    <th style="width: 20%;">Price</th>
+                                    <th style="width: 20%;">Quantity</th>
                                     <th style="width: 10%;">Promotion</th>
                                     <th style="width: 13%;">Amount</th>
                                 </tr>
@@ -72,14 +80,15 @@
                                     <td>{{ $item->product_name }}</td>
                                     <td>{{ $item->product_storage }}</td>
                                     <td>{{ $item->product_color }}</td>
-                                    <td>{{ $item->price }}</td>
-                                    <td>{{$item->product_promotion}}</td>
-                                    <td>{{$item->amount}}</td>
+                                    <td>{{ number_format($item->price, 0, ',' ,'.') }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{ $item->product_promotion }}</td>
+                                    <td>{{ number_format($item->amount, 0, ',' ,'.') }}</td>
                                 </tr>
                                 @endforeach
                                 <tr>
-                                    <td colspan="6" style="text-align:right; font-weight:bold;font-size:1.2em;">Total</td>
-                                    <td>{{ $bill->total }}</td>
+                                    <td colspan="7" style="text-align:right; font-weight:bold;font-size:1.2em;">Total</td>
+                                    <td>{{ number_format($bill->total, 0, ',' ,'.') }}</td>
                                 </tr>
                             </tbody>
                         </table>
