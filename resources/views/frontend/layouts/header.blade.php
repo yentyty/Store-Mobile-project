@@ -190,7 +190,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item ">
-                                            <a class="a-img" href="lien-he.html">
+                                            <a class="a-img" href="{{ route('fe.contact.index') }}">
                                                 <span>Liên hệ</span>
                                             </a>
                                         </li>

@@ -7,7 +7,7 @@
             <div class="col-xs-12">
                 <ul class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <li class="home">
-                        <a itemprop="url" href="index.html">
+                        <a itemprop="url" href="{{ route('fe.home.index') }}">
                             <span itemprop="title"><i class="fa fa-home"></i></span>
                         </a>
                         <span><i class="fa">/</i></span>
