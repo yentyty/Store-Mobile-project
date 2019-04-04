@@ -140,192 +140,15 @@
                             <div class="block_content">
                                 <div id="verticalmenu" class="verticalmenu" role="navigation">
                                     <ul class="nav navbar-nav nav-verticalmenu">
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="balo-va-tui-xach.html" title="Balo và túi xách">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Balo và túi xách</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="giay-dep.html" title="Giày dép ">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Giày dép </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="hot-deal.html" title="Hot Deal">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Hot Deal</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="parent vermenu-option-11 dropdown">
-                                            <a class="link-lv1" href="kinh-mat-thoi-trang.html"
-                                                title="Kính mắt thời trang">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Kính mắt thời trang</span>
-                                                </span>
-                                                <b class="dropdown-toggle fa fa-angle-right button-verticalmenu"
-                                                    data-toggle="dropdown"></b>
-                                            </a>
-                                            <div class="dropdown-menu level1">
-                                                <div class="dropdown-menu-inner">
-                                                    <div class="row">
-                                                        <div class="mega-col col-sm-12">
-                                                            <div class="mega-col-inner">
-                                                                <ul>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="kinh-mat-nam.html"
-                                                                            title="Kính mắt nam">
-                                                                            <span class="">Kính mắt nam</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="kinh-mat-nu.html"
-                                                                            title="Kính mắt nữ">
-                                                                            <span class="">Kính mắt nữ</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="me-be.html" title="Mẹ &amp; bé">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Mẹ &amp; bé</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="my-pham.html" title="Mỹ phẩm ">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Mỹ phẩm </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="phu-kien-hot.html" title="Phụ kiện hot">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Phụ kiện hot</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="parent vermenu-option-11 dropdown">
-                                            <a class="link-lv1" href="thoi-trang-nam.html" title="Thời trang nam">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Thời trang nam</span>
-                                                </span>
-                                                <b class="dropdown-toggle fa fa-angle-right button-verticalmenu"
-                                                    data-toggle="dropdown"></b>
-                                            </a>
-                                            <div class="dropdown-menu level1">
-                                                <div class="dropdown-menu-inner">
-                                                    <div class="row">
-                                                        <div class="mega-col col-sm-12">
-                                                            <div class="mega-col-inner">
-                                                                <ul>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="ao-nam.html"
-                                                                            title="Áo nam">
-                                                                            <span class="">Áo nam</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="balo-va-tui-nam.html"
-                                                                            title="Balo và túi nam">
-                                                                            <span class="">Balo và túi nam</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="giay-dep-nam.html"
-                                                                            title="Giày dép nam">
-                                                                            <span class="">Giày dép nam</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="phu-kien-nam.html"
-                                                                            title="Phụ kiện nam">
-                                                                            <span class="">Phụ kiện nam</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="quan-nam.html"
-                                                                            title="Quần nam">
-                                                                            <span class="">Quần nam</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="parent vermenu-option-11 dropdown">
-                                            <a class="link-lv1" href="thoi-trang-nu.html" title="Thời trang nữ">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Thời trang nữ</span>
-                                                </span>
-                                                <b class="dropdown-toggle fa fa-angle-right button-verticalmenu"
-                                                    data-toggle="dropdown"></b>
-                                            </a>
-                                            <div class="dropdown-menu level1">
-                                                <div class="dropdown-menu-inner">
-                                                    <div class="row">
-                                                        <div class="mega-col col-sm-12">
-                                                            <div class="mega-col-inner">
-                                                                <ul>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="ao-nu.html"
-                                                                            title="Áo nữ">
-                                                                            <span class="">Áo nữ</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="giay-dep-nu.html"
-                                                                            title="Giày dép nữ">
-                                                                            <span class="">Giày dép nữ</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="phu-kien-nu.html"
-                                                                            title="Phụ kiện nữ">
-                                                                            <span class="">Phụ kiện nữ</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class=" no-parent-lv2">
-                                                                        <a class="nav-lv2" href="quan-nu.html"
-                                                                            title="Quần nữ">
-                                                                            <span class="">Quần nữ</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="do-trang-suc.html" title="Đồ trang sức">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Đồ trang sức</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="vermenu-option-11 ">
-                                            <a class="link-lv1" href="dong-ho.html" title="Đồng hồ">
-                                                <span class="menu-icon">
-                                                    <span class="menu-title">Đồng hồ</span>
-                                                </span>
-                                            </a>
-                                        </li>
+                                        @foreach ($fatories as $factory)
+                                            <li class="vermenu-option-11 ">
+                                                <a class="link-lv1" href="balo-va-tui-xach.html" title="Balo và túi xách">
+                                                    <span class="menu-icon">
+                                                        <span class="menu-title">{{ $factory->name }}</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -342,14 +165,14 @@
                                             </a>
                                         </li>
                                         <li class="nav-item ">
-                                            <a class="a-img" href="san-pham.html">
-                                                <span>Giới thiệu</span>
+                                            <a class="a-img">
+                                                <span>Thông tin</span>
                                                 <i class="fa fa-caret-down"></i>
                                             </a>
                                             <ul class="item_small hidden-md hidden-sm hidden-xs">
                                                 @foreach ($informations as $inf)
                                                 <li>
-                                                    <a href="thoi-trang-nam.html">
+                                                    <a href="{{ route('fe.information.detail', ['slug'=>str_slug($inf->title), 'id'=>$inf->id]) }}">
                                                         <span>{{ $inf->title }}</span>
                                                     </a>
                                                 </li>
@@ -357,30 +180,7 @@
                                             </ul>
                                         </li>
                                         <li class="nav-item ">
-                                            <a class="a-img" href="san-pham.html">
-                                                <span>Sản phẩm</span>
-                                                <i class="fa fa-caret-down"></i>
-                                            </a>
-                                            <ul class="item_small hidden-md hidden-sm hidden-xs">
-                                                <li>
-                                                    <a href="thoi-trang-nam.html">
-                                                        <span>Thời trang nam</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="thoi-trang-nu.html">
-                                                        <span>Thời trang nữ</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="kinh-mat-thoi-trang.html">
-                                                        <span>Kính mắt thời trang</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a class="a-img" href="san-pham.html">
+                                            <a class="a-img" href="{{ asset('/product-new') }}">
                                                 <span>Hàng mới</span>
                                             </a>
                                         </li>

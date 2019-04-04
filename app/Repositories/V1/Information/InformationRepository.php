@@ -48,4 +48,12 @@ class InformationRepository extends BaseRepository implements InformationReposit
         $information = $this->model->find($id);
         $information->delete();
     }
+
+
+    public function detail($id)
+    {
+        $infoDetail = $this->model->find(1);
+
+        return $infoDetail;
+    }
 }

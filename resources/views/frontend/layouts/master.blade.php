@@ -39,7 +39,6 @@
 
 <body class="common-home">
     @include('frontend.layouts.header')
-    @include('frontend.layouts.banner')
     @yield('content')
     @include('frontend.layouts.footer')
     <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/social_login_button.css" />
