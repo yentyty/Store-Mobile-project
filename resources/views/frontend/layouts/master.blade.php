@@ -33,15 +33,14 @@
 
     <script type="text/javascript"
         src="frontend/catalog/view/theme/bigboom/javascript/jquery-3.3.1.mine47b.js?v=1522720225"></script>
-    <script type="text/javascript" src="../code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link href="frontend/catalog/view/theme/bigboom/stylesheet_custom/stylesheete47b.css?v=1522720225" rel="stylesheet" />
 </head>
-
 <body class="common-home">
     @include('frontend.layouts.header')
     @yield('content')
     @include('frontend.layouts.footer')
-    <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/social_login_button.css" />
+    <link rel="stylesheet" href="frontend/catalog/view/theme/default/stylesheet/social_login_button.css" />
     <button id="btn_show_cart" type="button" class="btn btn-primary" data-toggle="modal"
         data-target=".bs-popupcart-modal-lg" style="display: none;"></button>
     <div class="modal fade bs-popupcart-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -109,5 +108,6 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+    @stack('script')
 </body>
 </html>

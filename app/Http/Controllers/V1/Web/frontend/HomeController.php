@@ -24,6 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $fatories = $this->repoFactory->index();
-        return view('frontend.home.index', compact('fatories'));
+        $banners = $this->repoBanner->paginate(5);
+        return view('frontend.home.index', compact('fatories', 'banners'));
     }
 }

@@ -3,36 +3,34 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="section-ss-banner col-md-push-3 col-md-9 col-sm-12 col-xs-12 no-padding">
-            <div class="section-ss col-md-8 col-sm-8 col-xs-12">
+        <div class="section-ss-banner col-md-push-3 col-md-9 col-sm-12 col-xs-12 no-padding" style="margin-top:1.5em;">
+            <div class="section-ss col-md-12 col-sm-12 col-xs-12">
                 <link rel="stylesheet" href="frontend/catalog/view/javascript/bxslider/jquery.bxslider.min.css">
                 <script src="frontend/catalog/view/javascript/bxslider/jquery.bxslider.min.js"></script>
-                <div class="home-slider " id="gallery-0">
-                    <div class="slider0">
-                        <div>
-                            <a href="#"><img src="frontend/image/cache/catalog/slider/slider-1-593x321.png" alt=""
-                                    class="img-responsive" style="width: 100%;" /></a>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @foreach($banners as $bn)
+                            <li data-target="#myCarousel" data-slide-to="0" class="{{ $loop->first ? 'active' : '' }}"></li>
+                        @endforeach
+                    </ol>
+                <div class="carousel-inner">
+                    @foreach($banners as $bn)
+                        <div class="item {{ $loop->first ? 'active' : '' }}">
+                            <img class="d-block img-fluid" src="uploads/images/banners/{{ $bn->image }}" alt="{{ $bn->title }}" style="width:100%; ">
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                <script>
-                    $('.slider0').bxSlider({
-                        /* Tu dong chuyen anh */
-                        auto: true,
-                        /* Hieu ung chuyen anh: 'horizontal', 'vertical', 'fade' */
-                        mode: 'fade',
-                        /* Toc do chuyen giua cac anh: (ms) */
-                        speed: 400,
-                        /* Ho tro hien thi da man hinh */
-                        responsive: true,
-                        /* Thoi gian hien thi 1 anh (ms) */
-                        pause: 5000,
-                        /* Cac cham dai dien anh: o o o */
-                        pager: true,
-                        /* Mui ten next va prev */
-                        controls: true
-                    });
-                </script>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                </div>
                 <div class="col-md-12 no-padding col-sm-12 hidden-xs">
                     <div class="banner-item banner-right col-md-6 col-sm-6 col-xs-12 "
                         id="banner_default-2087737797">
@@ -48,15 +46,6 @@
                                 alt="">
                             <div class="hover_collection"></div>
                         </a></div>
-                </div>
-            </div>
-            <div class="banner-right-one banner-item banner-right col-md-4 col-sm-4 hidden-xs">
-                <div class=" " id="banner_default-1406463089">
-                    <a href="javascript:void(0)" title="">
-                        <img class="img-responsive" src="frontend/image/cache/catalog/banner/ss-banner-img-1-287x485.jpg"
-                            alt="">
-                        <div class="hover_collection"></div>
-                    </a>
                 </div>
             </div>
         </div>
