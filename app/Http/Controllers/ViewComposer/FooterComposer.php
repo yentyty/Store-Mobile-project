@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\ViewComposers;
+
 use Illuminate\View\View;
 use App\Repositories\V1\Introduce\IntroduceRepositoryInterface;
+
 class FooterComposer
 {
     public $repoIntroduce;
