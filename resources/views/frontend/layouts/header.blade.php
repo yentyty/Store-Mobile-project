@@ -185,7 +185,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item ">
-                                            <a class="a-img" href="thoi-trang.html">
+                                            <a class="a-img" href="{{ asset('/news') }}">
                                                 <span>Tin tức</span>
                                             </a>
                                         </li>

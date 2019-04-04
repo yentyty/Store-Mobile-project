@@ -41,4 +41,5 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/information', 'InformationController@index')->name('fe.information.index');
     Route::get('/information/{slug}-{id}', 'InformationController@detail')->name('fe.information.detail');
     Route::get('/product-new', 'ProductController@productNew')->name('fe.product.productnew');
+    Route::get('/news', 'NewsController@index')->name('fe.new.index');
 });
