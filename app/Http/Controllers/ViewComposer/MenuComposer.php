@@ -1,8 +1,11 @@
 <?php
- namespace App\Http\ViewComposers;
- use Illuminate\View\View;
+
+namespace App\Http\ViewComposers;
+
+use Illuminate\View\View;
 use App\Repositories\V1\Information\InformationRepositoryInterface;
- class MenuComposer
+
+class MenuComposer
 {
     public $repoInformation;
     /**
@@ -23,6 +26,7 @@ use App\Repositories\V1\Information\InformationRepositoryInterface;
     public function compose(View $view)
     {
         $informations = $this->repoInformation->index();
+
         $view->with('informations', $informations);
     }
 }
