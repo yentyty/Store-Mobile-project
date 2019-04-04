@@ -32,20 +32,16 @@
                 </a>
                 </div>
                 <div class="col-md-12 no-padding col-sm-12 hidden-xs">
-                    <div class="banner-item banner-right col-md-6 col-sm-6 col-xs-12 "
-                        id="banner_default-2087737797">
-                        <a href="javascript:void(0)" title="">
-                            <img class="img-responsive" src="frontend/image/cache/catalog/banner/ss-banner-img-2-286x145.jpg"
-                                alt="">
-                            <div class="hover_collection"></div>
-                        </a></div>
-                    <div class="banner-item banner-right col-md-6 col-sm-6 col-xs-12 "
-                        id="banner_default-495436788">
-                        <a href="javascript:void(0)" title="">
-                            <img class="img-responsive" src="frontend/image/cache/catalog/banner/ss-banner-img-3-286x145.jpg"
-                                alt="">
-                            <div class="hover_collection"></div>
-                        </a></div>
+                    @foreach ($offers as $offer)
+                        <div class="banner-item banner-right col-md-6 col-sm-6 col-xs-12 "
+                            id="banner_default-2087737797">
+                            <a href="javascript:void(0)" title="">
+                                <img class="img-responsive" src="uploads/images/offers/{{ $offer->image }}"
+                                    alt="">
+                                <div class="hover_collection"></div>
+                            </a>
+                        </div>
+                   @endforeach
                 </div>
             </div>
         </div>

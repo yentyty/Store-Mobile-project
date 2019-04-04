@@ -57,7 +57,6 @@
                             @endif
                             <br>
                             {{ Form::file('image', null, ['class' => 'form-control fileimage']) }}
-                            <p>( Please select a picture of the correct size min-width: 280 and min-height:140.... ) </p>
                         </div>
                         @if ($errors->has('image'))
                             @foreach ($errors->get('image') as $error)
