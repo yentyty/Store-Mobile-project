@@ -9,7 +9,6 @@ use App\Repositories\V1\Factory\FactoryRepositoryInterFace;
 use App\Http\Requests\Contacts\CreateContactRequest;
 use App\Repositories\V1\Introduce\IntroduceRepositoryInterface;
 
-
 class ContactController extends Controller
 {
     protected $repoContact;
@@ -30,7 +29,7 @@ class ContactController extends Controller
     public function index()
     {
         $fatories = $this->repoFactory->index();
-        $introduce = $this->repoIntroduce->paginate(3);;
+        $introduce = $this->repoIntroduce->paginate(3);
 
         return view('frontend.contact.index', compact('fatories', 'introduce'));
     }

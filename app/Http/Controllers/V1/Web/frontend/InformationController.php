@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Repositories\V1\Information\InformationRepositoryInterface;
 use App\Repositories\V1\Factory\FactoryRepositoryInterFace;
 
-
 class InformationController extends Controller
 {
     protected $repoInformation;

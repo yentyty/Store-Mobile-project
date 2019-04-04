@@ -1,8 +1,8 @@
 <?php
- namespace App\Http\ViewComposers;
- use Illuminate\View\View;
+namespace App\Http\ViewComposers;
+use Illuminate\View\View;
 use App\Repositories\V1\Introduce\IntroduceRepositoryInterface;
- class FooterComposer
+class FooterComposer
 {
     public $repoIntroduce;
     /**
