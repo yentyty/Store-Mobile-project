@@ -27,7 +27,7 @@ class EditOfferRequest extends FormRequest
             'title' => 'required|min:3|max:255',
             'factory_id' => 'required',
             'description' => 'max:255',
-            'image' => 'image|dimensions:min_width=280,min_height=140',
+            'image' => 'image',
         ];
     }
 

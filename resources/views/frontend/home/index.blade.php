@@ -3,6 +3,52 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="section-ss-banner col-md-push-3 col-md-9 col-sm-12 col-xs-12 no-padding" style="margin-top:1.5em;">
+            <div class="section-ss col-md-12 col-sm-12 col-xs-12">
+                <link rel="stylesheet" href="frontend/catalog/view/javascript/bxslider/jquery.bxslider.min.css">
+                <script src="frontend/catalog/view/javascript/bxslider/jquery.bxslider.min.js"></script>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @foreach($banners as $bn)
+                            <li data-target="#myCarousel" data-slide-to="0" class="{{ $loop->first ? 'active' : '' }}"></li>
+                        @endforeach
+                    </ol>
+                <div class="carousel-inner">
+                    @foreach($banners as $bn)
+                        <div class="item {{ $loop->first ? 'active' : '' }}">
+                            <img class="d-block img-fluid" src="uploads/images/banners/{{ $bn->image }}" alt="{{ $bn->title }}" style="width:100%; ">
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                </div>
+                <div class="col-md-12 no-padding col-sm-12 hidden-xs">
+                    @foreach ($offers as $offer)
+                        <div class="banner-item banner-right col-md-6 col-sm-6 col-xs-12 "
+                            id="banner_default-2087737797">
+                            <a href="javascript:void(0)" title="">
+                                <img class="img-responsive" src="uploads/images/offers/{{ $offer->image }}"
+                                    alt="">
+                                <div class="hover_collection"></div>
+                            </a>
+                        </div>
+                   @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
         <div id="content" class="col-sm-12 col-xs-12 col-md-12">
             <div class="row">
                 <section class="awe-section-3 " id="category_custom-1">
