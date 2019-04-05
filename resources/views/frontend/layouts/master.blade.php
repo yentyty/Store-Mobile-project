@@ -37,6 +37,12 @@
     <link href="frontend/catalog/view/theme/bigboom/stylesheet_custom/stylesheete47b.css?v=1522720225" rel="stylesheet" />
 </head>
 <body class="common-home">
+    @if(session('msg'))
+    <div class="alert alert-success alert-dismissible messag " style="width: 17em; margin-left: 78em;margin-top: 3em;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{session('msg')}}
+    </div>
+    @endif
     @include('frontend.layouts.header')
     @yield('content')
     @include('frontend.layouts.footer')
@@ -51,8 +57,10 @@
                         <span aria-hidden="true">&times;
                         </span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ
-                        hàng </h4>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        Giỏ hàng
+                    </h4>
                 </div>
                 <div class="modal-body" id="load_info_cart"></div>
                 <div class="modal-footer">
@@ -98,6 +106,9 @@
     <!-- Facebook script -->
     <div id="fb-root"></div>
     <script type="text/javascript">
+
+        $("div.alert-success").delay(4000).slideUp();
+
         (function (d, s, id) {
             var js,
                 fjs = d.getElementsByTagName(s)[0];

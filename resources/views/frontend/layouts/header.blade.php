@@ -6,24 +6,51 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                     </div>
+                    @if(Auth::user())
                     <div class="col-md-6 col-sm-6 d-list col-xs-12 a-right topbar_right">
                         <div class="list-inline a-center f-right">
                             <ul>
                                 <li>
                                     <i class="fa fa-user"></i>
-                                    <a href="index5502.html?route=account/register" title="Đăng ký" class="account_a">
+                                    <a  title="Đăng ký" class="account_a">
+                                        <span>Xin chào: {{ Auth::user()->name }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <a href="{{ route('fe.register.editregister') }}" title="Đăng ký" class="account_a">
+                                        <span>Sửa TT Cá Nhân</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                    <a href="{{ route('fe.postLogout') }}" title="Đăng xuất" class="account_a">
+                                        <span>Đăng Xuất</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    @else
+                    <div class="col-md-6 col-sm-6 d-list col-xs-12 a-right topbar_right">
+                        <div class="list-inline a-center f-right">
+                            <ul>
+                                <li>
+                                    <i class="fa fa-user"></i>
+                                    <a href="{{ route('fe.register.getregister') }}" title="Đăng ký" class="account_a">
                                         <span>Đăng ký</span>
                                     </a>
                                 </li>
                                 <li>
                                     <i class="fa fa-lock"></i>
-                                    <a href="indexe223.html?route=account/login" title="Đăng nhập" class="account_a">
+                                    <a href="{{ route('fe.login') }}" title="Đăng nhập" class="account_a">
                                         <span>Đăng nhập</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

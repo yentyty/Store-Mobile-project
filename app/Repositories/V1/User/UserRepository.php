@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
 use File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
@@ -95,5 +97,29 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $users = $this->model->count();
 
         return $users;
+    }
+
+    public function login($request)
+    {
+        $user = $this->model->where('email', $request->email)->first();
+        if (! $user) {
+            return 'email';
+        }
+        if (! Hash::check($request->password, $user['password'])) {
+            return 'password';
+        }
+        $data = [
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ];
+        if (Auth::attempt($data)) {
+            return 1;
+        }
+        return 'success';
+    }
+
+    public function logout()
+    {
+        return Auth::logout();
     }
 }

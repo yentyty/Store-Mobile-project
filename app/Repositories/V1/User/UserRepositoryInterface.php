@@ -9,4 +9,8 @@ interface UserRepositoryInterface
     public function listCreate();
 
     public function countUser();
+
+    public function login($request);
+
+    public function logout();
 }
