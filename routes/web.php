@@ -44,4 +44,9 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/news', 'NewsController@index')->name('fe.new.index');
     Route::get('/contact', 'ContactController@index')->name('fe.contact.index');
     Route::post('/contact', 'ContactController@store')->name('fe.contact.store');
+    Route::get('/register', 'HomeController@getRegister')->name('fe.register.getregister');
+    Route::post('/register', 'HomeController@postRegister')->name('fe.register.postregister');
+    Route::get('/login', 'HomeController@getLogin')->name('fe.login');
+    Route::post('/login', 'HomeController@postLogin')->name('fe.postLogin');
 });
+
