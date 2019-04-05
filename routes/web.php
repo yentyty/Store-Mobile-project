@@ -52,4 +52,3 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::post('/login', 'HomeController@postLogin')->name('fe.postLogin');
     Route::get('/logout', 'HomeController@postLogout')->name('fe.postLogout');
 });
-

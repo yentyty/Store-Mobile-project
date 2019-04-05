@@ -88,7 +88,6 @@ class HomeController extends Controller
 
     public function postLogin(LoginRequest $request)
     {
-
         $rs = $this->repoUser->login($request);
 
         if ($rs == 'email') {
