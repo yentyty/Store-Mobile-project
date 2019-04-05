@@ -38,7 +38,7 @@
 </head>
 <body class="common-home">
     @if(session('msg'))
-    <div class="alert alert-success alert-dismissible messag " style="width: 17em; margin-left: 80em;margin-top: 3em;">
+    <div class="alert alert-success alert-dismissible messag " style="width: 17em; margin-left: 78em;margin-top: 3em;">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         {{session('msg')}}
     </div>

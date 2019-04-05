@@ -12,6 +12,7 @@ use App\Repositories\V1\User\UserRepositoryInterFace;
 use App\Repositories\V1\UserRole\UserRoleRepositoryInterface;
 use App\Models\User;
 use App\Http\Requests\Register\CreateRegisterRequest;
+use App\Http\Requests\Register\EditRegisterRequest;
 use App\Http\Requests\Register\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,9 +64,25 @@ class HomeController extends Controller
         }
     }
 
+    public function getEditRegister()
+    {
+        $fatories = $this->repoFactory->index();
+
+        return view('frontend.register.edit', compact('fatories'));
+    }
+
+    public function postEditRegister(EditRegisterRequest $request, $id)
+    {
+        $this->repoUser->update($id, $request->except('role'));
+        $this->repoUserRole->updateUserRole($id, $request->only('role'));
+
+        return redirect()->route('fe.home.index')->with('msg', 'Edit Successful');
+    }
+
     public function getLogin()
     {
         $fatories = $this->repoFactory->index();
+
         return view('frontend.register.login', compact('fatories'));
     }
 
