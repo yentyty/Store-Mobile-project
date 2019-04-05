@@ -66,43 +66,35 @@
                                         <span class="hidden-md hidden-lg title_check_tabs"></span>
                                         <div class="clearfix">
                                             <ul class="ul_link link_tab_check_click">
+                                                @foreach ($fatories as $ft)
                                                 <li class="li_tab">
-                                                    <a href="#content-tabb10" class="head-tabs head-tab10"
-                                                        data-src=".head-tab10">Kính mắt thời trang</a>
+                                                    <a href="#content-tabb{{ $ft->id }}" class="head-tabs head-tab10"
+                                                        data-src=".head-tab10">{{ $ft->name }}</a>
                                                 </li>
-                                                <li class="li_tab">
-                                                    <a href="#content-tabb11" class="head-tabs head-tab11"
-                                                        data-src=".head-tab11">Thời trang nam</a>
-                                                </li>
-                                                <li class="li_tab">
-                                                    <a href="#content-tabb12" class="head-tabs head-tab12"
-                                                        data-src=".head-tab12">Thời trang nữ</a>
-                                                </li>
-                                                <li class="li_tab">
-                                                    <a href="#content-tabb13" class="head-tabs head-tab13"
-                                                        data-src=".head-tab13">Đồ trang sức</a>
-                                                </li>
-                                                <li class="li_tab">
-                                                    <a href="#content-tabb14" class="head-tabs head-tab14"
-                                                        data-src=".head-tab14">Đồng hồ</a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
                                     <div
                                         class="tabs-content tabs-content-featured col-md-12 col-sm-12 col-xs-12 no-padding">
-                                        <div id="content-tabb10" class="content-tab content-tab-proindex"
+                                        @foreach ($fatories as $ft)
+                                        <div id="content-tabb{{ $ft->id }}" class="content-tab content-tab-proindex"
                                             style="display:none">
                                             <div class="row">
+                                                @foreach ($ft->products as $pr)
                                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-20 custom-mobile">
                                                     <div class="wrp_item_small product-col">
                                                         <div class="product-box">
                                                             <div class="product-thumbnail">
+                                                                @if($pr->promotion->id != 1)
+                                                                <span class="sale-off">{{ $pr->promotion->percent }}%</span>
+                                                                @endif
+                                                                @php $someArray = json_decode($pr->image, true); @endphp
                                                                 <a class="image_link display_flex"
                                                                     href="kinh-mat-nam-nba-1150-a01.html"
                                                                     title="Kính Mát Nam NBA 1150 A01">
-                                                                    <img src="frontend/image/cache/catalog/san-pham/a01-228x228.jpg"
-                                                                        data-lazyload="frontend/image/cache/catalog/san-pham/a01-228x228.jpg"
+                                                                    <img src="uploads/images/products/{{ $someArray[0] }}"
+                                                                        data-lazyload="uploads/images/products/{{ $someArray[0] }}"
                                                                         alt="Kính Mát Nam NBA 1150 A01" />
                                                                 </a>
                                                                 <div class="product-action-grid clearfix">
@@ -129,30 +121,15 @@
                                                                 <div class="info_hhh">
                                                                     <h3 class="product-name ">
                                                                         <a href="kinh-mat-nam-nba-1150-a01.html"
-                                                                            title="Kính Mát Nam NBA 1150 A01">Kính
-                                                                            Mát Nam NBA 1150 A01</a>
+                                                                            title="Kính Mát Nam NBA 1150 A01">{{ $pr->name }}</a>
                                                                     </h3>
-                                                                    <div class="reviews-product-grid">
-                                                                        <div class="zozoweb-product-reviews-badge">
-                                                                            <div class="zozoweb-product-reviews-star"
-                                                                                data-score="5" data-number="5"
-                                                                                style="color: rgb(255, 190, 0);">
-                                                                                <i data-alt="1"
-                                                                                    class="star-on-png"></i>&nbsp;
-                                                                                <i data-alt="2"
-                                                                                    class="star-on-png"></i>&nbsp;
-                                                                                <i data-alt="3"
-                                                                                    class="star-on-png"></i>&nbsp;
-                                                                                <i data-alt="4"
-                                                                                    class="star-on-png"></i>&nbsp;
-                                                                                <i data-alt="5"
-                                                                                    class="star-on-png"></i>&nbsp;
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                     <div class="price-box clearfix">
+                                                                        @if($pr->promotion->id != 1)
+                                                                            <strike>{{ number_format($pr->price, 0, ',','.') }} đ</strike>
+                                                                        @endif
+                                                                        <br>
                                                                         <span
-                                                                            class="price product-price">1,170,000đ</span>
+                                                                            class="price product-price">{{ number_format($pr->price -($pr->price *($pr->promotion->percent /100)), 0, ',','.')}} đ</span>
                                                                         <span class="price product-price-old"
                                                                             style="text-decoration: none">&nbsp;</span>
                                                                     </div>
@@ -161,344 +138,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endforeach
                                                 <div class="clearfix hidden-xs hidden-sm hidden-md"></div>
                                                 <div class="clearfix hidden-sm hidden-md hidden-lg"></div>
                                             </div>
                                         </div>
-                                        <div id="content-tabb11" class="content-tab content-tab-proindex"
-                                            style="display:none">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-20 custom-mobile">
-                                                    <div class="wrp_item_small product-col">
-                                                        <div class="product-box">
-                                                            <div class="product-thumbnail">
-                                                                <span class="sale-off">-50%</span>
-                                                                <a class="image_link display_flex"
-                                                                    href="quan-jean-nam-mot-tre-phong-cach-sid23131.html"
-                                                                    title="Quần jean nam Mốt Trẻ phong cách SID23131">
-                                                                    <img src="frontend/image/cache/catalog/san-pham/sid23131-228x228.jpg"
-                                                                        data-lazyload="frontend/image/cache/catalog/san-pham/sid23131-228x228.jpg"
-                                                                        alt="Quần jean nam Mốt Trẻ phong cách SID23131" />
-                                                                </a>
-                                                                <div class="product-action-grid clearfix">
-                                                                    <form class="variants form-nut-grid">
-                                                                        <div>
-                                                                            <button
-                                                                                class="btn-cart button_wh_40 left-to"
-                                                                                title="Mua ngay" type="button"
-                                                                                onclick="window.location.href='indexf1a8.html?route=checkout/cart/add&amp;product_id=207&amp;redirect=true'">Mua
-                                                                                ngay</button>
-                                                                            <!--onclick="cart.add(, 1)"></button>-->
-                                                                            <a title="Xem"
-                                                                                href="quan-jean-nam-mot-tre-phong-cach-sid23131.html"
-                                                                                class="button_wh_40 btn_view right-to quick-view">
-                                                                                <i class="fa fa-eye"></i>
-                                                                                <span
-                                                                                    class="style-tooltip">Xem</span>
-                                                                            </a>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-info effect a-left">
-                                                                <div class="info_hhh">
-                                                                    <h3 class="product-name ">
-                                                                        <a href="quan-jean-nam-mot-tre-phong-cach-sid23131.html"
-                                                                            title="Quần jean nam Mốt Trẻ phong cách SID23131">Quần
-                                                                            jean nam Mốt Trẻ phong cách SID23131</a>
-                                                                    </h3>
-                                                                    <div class="reviews-product-grid">
-                                                                        <div class="zozoweb-product-reviews-badge">
-                                                                            <div class="zozoweb-product-reviews-star"
-                                                                                data-score="0" data-number="5"
-                                                                                style="color: rgb(255, 190, 0);">
-                                                                                <i data-alt="1"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="2"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="3"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="4"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="5"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="price-box clearfix">
-                                                                        <span
-                                                                            class="price product-price">299,000đ</span>
-                                                                        <span
-                                                                            class="price product-price-old">599,000đ</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix hidden-xs hidden-sm hidden-md"></div>
-                                                <div class="clearfix hidden-sm hidden-md hidden-lg"></div>
-                                            </div>
-                                        </div>
-                                        <div id="content-tabb12" class="content-tab content-tab-proindex"
-                                            style="display:none">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-20 custom-mobile">
-                                                    <div class="wrp_item_small product-col">
-                                                        <div class="product-box">
-                                                            <div class="product-thumbnail">
-                                                                <span class="sale-off">-18%</span>
-                                                                <a class="image_link display_flex"
-                                                                    href="do-boi-nu-lien-manh-co-yem-khoet-nguc-sid64726.html"
-                                                                    title="Đồ bơi nữ liền mãnh cổ yếm khoét ngực SID64726">
-                                                                    <img src="frontend/image/cache/catalog/san-pham/sid64726-228x228.jpg"
-                                                                        data-lazyload="frontend/image/cache/catalog/san-pham/sid64726-228x228.jpg"
-                                                                        alt="Đồ bơi nữ liền mãnh cổ yếm khoét ngực SID64726" />
-                                                                </a>
-                                                                <div class="product-action-grid clearfix">
-                                                                    <form class="variants form-nut-grid">
-                                                                        <div>
-                                                                            <button
-                                                                                class="btn-cart button_wh_40 left-to"
-                                                                                title="Mua ngay" type="button"
-                                                                                onclick="window.location.href='indexf1a8.html?route=checkout/cart/add&amp;product_id=212&amp;redirect=true'">Mua
-                                                                                ngay</button>
-                                                                            <!--onclick="cart.add(, 1)"></button>-->
-                                                                            <a title="Xem"
-                                                                                href="do-boi-nu-lien-manh-co-yem-khoet-nguc-sid64726.html"
-                                                                                class="button_wh_40 btn_view right-to quick-view">
-                                                                                <i class="fa fa-eye"></i>
-                                                                                <span
-                                                                                    class="style-tooltip">Xem</span>
-                                                                            </a>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-info effect a-left">
-                                                                <div class="info_hhh">
-                                                                    <h3 class="product-name ">
-                                                                        <a href="do-boi-nu-lien-manh-co-yem-khoet-nguc-sid64726.html"
-                                                                            title="Đồ bơi nữ liền mãnh cổ yếm khoét ngực SID64726">Đồ
-                                                                            bơi nữ liền mãnh cổ yếm khoét ngực
-                                                                            SID64726</a>
-                                                                    </h3>
-                                                                    <div class="reviews-product-grid">
-                                                                        <div class="zozoweb-product-reviews-badge">
-                                                                            <div class="zozoweb-product-reviews-star"
-                                                                                data-score="0" data-number="5"
-                                                                                style="color: rgb(255, 190, 0);">
-                                                                                <i data-alt="1"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="2"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="3"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="4"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="5"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="price-box clearfix">
-                                                                        <span
-                                                                            class="price product-price">299,000đ</span>
-                                                                        <span
-                                                                            class="price product-price-old">365,000đ</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix hidden-xs hidden-sm hidden-md"></div>
-                                                <div class="clearfix hidden-sm hidden-md hidden-lg"></div>
-                                            </div>
-                                        </div>
-                                        <div id="content-tabb13" class="content-tab content-tab-proindex"
-                                            style="display:none">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-20 custom-mobile">
-                                                    <div class="wrp_item_small product-col">
-                                                        <div class="product-box">
-                                                            <div class="product-thumbnail">
-                                                                <a class="image_link display_flex"
-                                                                    href="giay-nu-top-fit-krypton-8009002-sid66157.html"
-                                                                    title="Giày nữ Top Fit KRYPTON 8009002 SID66157">
-                                                                    <img src="frontend/image/cache/catalog/san-pham/sid66157-228x228.jpg"
-                                                                        data-lazyload="frontend/image/cache/catalog/san-pham/sid66157-228x228.jpg"
-                                                                        alt="Giày nữ Top Fit KRYPTON 8009002 SID66157" />
-                                                                </a>
-                                                                <div class="product-action-grid clearfix">
-                                                                    <form class="variants form-nut-grid">
-                                                                        <div>
-                                                                            <button
-                                                                                class="btn-cart button_wh_40 left-to"
-                                                                                title="Mua ngay" type="button"
-                                                                                onclick="window.location.href='indexf1a8.html?route=checkout/cart/add&amp;product_id=214&amp;redirect=true'">Mua
-                                                                                ngay</button>
-                                                                            <!--onclick="cart.add(, 1)"></button>-->
-                                                                            <a title="Xem"
-                                                                                href="giay-nu-top-fit-krypton-8009002-sid66157.html"
-                                                                                class="button_wh_40 btn_view right-to quick-view">
-                                                                                <i class="fa fa-eye"></i>
-                                                                                <span
-                                                                                    class="style-tooltip">Xem</span>
-                                                                            </a>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-info effect a-left">
-                                                                <div class="info_hhh">
-                                                                    <h3 class="product-name ">
-                                                                        <a href="giay-nu-top-fit-krypton-8009002-sid66157.html"
-                                                                            title="Giày nữ Top Fit KRYPTON 8009002 SID66157">Giày
-                                                                            nữ Top Fit KRYPTON 8009002 SID66157</a>
-                                                                    </h3>
-                                                                    <div class="reviews-product-grid">
-                                                                        <div class="zozoweb-product-reviews-badge">
-                                                                            <div class="zozoweb-product-reviews-star"
-                                                                                data-score="0" data-number="5"
-                                                                                style="color: rgb(255, 190, 0);">
-                                                                                <i data-alt="1"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="2"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="3"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="4"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="5"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="price-box clearfix">
-                                                                        <span
-                                                                            class="price product-price">469,000đ</span>
-                                                                        <span class="price product-price-old"
-                                                                            style="text-decoration: none">&nbsp;</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix hidden-xs hidden-lg"></div>
-                                            </div>
-                                        </div>
-                                        <div id="content-tabb14" class="content-tab content-tab-proindex"
-                                            style="display:none">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-20 custom-mobile">
-                                                    <div class="wrp_item_small product-col">
-                                                        <div class="product-box">
-                                                            <div class="product-thumbnail">
-                                                                <a class="image_link display_flex"
-                                                                    href="dong-ho-diamond-d-dm38025ig.html"
-                                                                    title="Đồng hồ diamond-d-DM38025IG">
-                                                                    <img src="frontend/image/cache/catalog/san-pham/dong-ho-diamond-d-dm38025ig-228x228.jpg"
-                                                                        data-lazyload="frontend/image/cache/catalog/san-pham/dong-ho-diamond-d-dm38025ig-228x228.jpg"
-                                                                        alt="Đồng hồ diamond-d-DM38025IG" />
-                                                                </a>
-                                                                <div class="product-action-grid clearfix">
-                                                                    <form class="variants form-nut-grid">
-                                                                        <div>
-                                                                            <button
-                                                                                class="btn-cart button_wh_40 left-to"
-                                                                                title="Mua ngay" type="button"
-                                                                                onclick="window.location.href='indexf1a8.html?route=checkout/cart/add&amp;product_id=216&amp;redirect=true'">Mua
-                                                                                ngay</button>
-                                                                            <!--onclick="cart.add(, 1)"></button>-->
-                                                                            <a title="Xem"
-                                                                                href="dong-ho-diamond-d-dm38025ig.html"
-                                                                                class="button_wh_40 btn_view right-to quick-view">
-                                                                                <i class="fa fa-eye"></i>
-                                                                                <span
-                                                                                    class="style-tooltip">Xem</span>
-                                                                            </a>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-info effect a-left">
-                                                                <div class="info_hhh">
-                                                                    <h3 class="product-name ">
-                                                                        <a href="dong-ho-diamond-d-dm38025ig.html"
-                                                                            title="Đồng hồ diamond-d-DM38025IG">Đồng
-                                                                            hồ diamond-d-DM38025IG</a>
-                                                                    </h3>
-                                                                    <div class="reviews-product-grid">
-                                                                        <div class="zozoweb-product-reviews-badge">
-                                                                            <div class="zozoweb-product-reviews-star"
-                                                                                data-score="0" data-number="5"
-                                                                                style="color: rgb(255, 190, 0);">
-                                                                                <i data-alt="1"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="2"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="3"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="4"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                                <i data-alt="5"
-                                                                                    class="star-off-png"></i>&nbsp;
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="price-box clearfix">
-                                                                        <span
-                                                                            class="price product-price">13,750,000đ</span>
-                                                                        <span class="price product-price-old"
-                                                                            style="text-decoration: none">&nbsp;</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix hidden-sm hidden-md hidden-lg"></div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                </section>
-                <section class="awe-section-2">
-                    <div class="sec_banner hidden-sm hidden-xs">
-                        <div class="container">
-                            <div class="row vc_row-flex">
-                                <div class="vc_column_container col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="vc_column-inner">
-                                        <div class="wpb_wrapper">
-                                            <div class="row vc_row-flex">
-                                                <div class="banner-item banner-right col-md-6 col-sm-6 col-xs-12 "
-                                                    id="banner_default-1792296879">
-                                                    <a href="javascript:void(0)" title="">
-                                                        <img class="img-responsive"
-                                                            src="frontend/image/cache/catalog/banner/bg-top1-570x230.jpg"
-                                                            alt="">
-                                                        <div class="hover_collection"></div>
-                                                    </a></div>
-                                                <div class="banner-item banner-right col-md-6 col-sm-6 col-xs-12 "
-                                                    id="banner_default-1358953868">
-                                                    <a href="javascript:void(0)" title="">
-                                                        <img class="img-responsive"
-                                                            src="frontend/image/cache/catalog/banner/bg-top2-570x230.jpg"
-                                                            alt="">
-                                                        <div class="hover_collection"></div>
-                                                    </a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </section>
             </div>
         </div>
@@ -521,49 +171,51 @@
                             <div class="content-blog-index col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="wrap_owl_blog" data-height="true" data-dot="false" data-nav="true"
                                     data-lg-items="4" data-md-items="3" data-sm-items="2" data-xs-items="1">
-                                    <div class="blog_items col-md-3 col-sm-6 col-xs-12">
-                                        <div class="myblog"
-                                            onclick="window.location.href='mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html';">
-                                            <div class="image-blog-left">
-                                                <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html">
-                                                    <picture>
-                                                        <source media="(max-width: 375px)"
-                                                            srcset="frontend/image/cache/catalog/tin-tuc/tintuc4-480x480.jpg">
-                                                        <source media="(min-width: 376px) and (max-width: 767px)"
-                                                            srcset="frontend/image/cache/catalog/tin-tuc/tintuc4-480x480.jpg">
-                                                        <source media="(min-width: 768px) and (max-width: 1023px)"
-                                                            srcset="frontend/image/cache/catalog/tin-tuc/tintuc4-480x480.jpg">
-                                                        <source media="(min-width: 1024px) and (max-width: 1199px)"
-                                                            srcset="frontend/image/cache/catalog/tin-tuc/tintuc4-480x480.jpg">
-                                                        <source media="(min-width: 1200px)"
-                                                            srcset="frontend/image/cache/catalog/tin-tuc/tintuc4-480x480.jpg">
-                                                        <img src="frontend/image/cache/catalog/tin-tuc/tintuc4-480x480.jpg"
-                                                            title="Màu sắc nào sẽ thống trị làng mốt trong năm 2018?"
-                                                            alt="Màu sắc nào sẽ thống trị làng mốt trong năm 2018?" />
-                                                    </picture>
-                                                    <div class="hover_collection"></div>
-                                                </a>
-                                            </div>
-                                            <div class="content-right-blog">
-                                                <div class="content_day_blog">
-                                                    <span class="fix_left_blog">
-                                                        <i class="fa fa-calendar"></i>
-                                                        <span class="news_home_content_short_time">15/06/2018</span>
-                                                    </span>
+                                    @foreach ($news as $new)
+                                        <div class="blog_items col-md-3 col-sm-6 col-xs-12">
+                                            <div class="myblog"
+                                                onclick="window.location.href='mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html';">
+                                                <div class="image-blog-left">
+                                                    <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html">
+                                                        <picture>
+                                                            <source media="(max-width: 375px)"
+                                                                srcset="uploads/images/news/{{ $new->cover_image }}">
+                                                            <source media="(min-width: 376px) and (max-width: 767px)"
+                                                                srcset="uploads/images/news/{{ $new->cover_image }}">
+                                                            <source media="(min-width: 768px) and (max-width: 1023px)"
+                                                                srcset="uploads/images/news/{{ $new->cover_image }}">
+                                                            <source media="(min-width: 1024px) and (max-width: 1199px)"
+                                                                srcset="uploads/images/news/{{ $new->cover_image }}">
+                                                            <source media="(min-width: 1200px)"
+                                                                srcset="uploads/images/news/{{ $new->cover_image }}">
+                                                            <img src="uploads/images/news/{{ $new->cover_image }}"
+                                                                title="{{ $new->title }}"
+                                                                alt="{{ $new->title }}" />
+                                                        </picture>
+                                                        <div class="hover_collection"></div>
+                                                    </a>
                                                 </div>
-                                                <div class="title_blog_home">
-                                                    <h3>
-                                                        <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html"
-                                                            title="">Màu sắc nào sẽ thống trị làng mốt trong năm
-                                                            2018?</a>
-                                                    </h3>
+                                                <div class="content-right-blog">
+                                                    <div class="content_day_blog">
+                                                        <span class="fix_left_blog">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span class="news_home_content_short_time">{{ date('d-m-Y', strtotime($new->updated_at)) }}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="title_blog_home">
+                                                        <h3>
+                                                            <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html" title="">
+                                                                {{ str_limit($new->title,50) }}
+                                                            </a>
+                                                        </h3>
+                                                    </div>
+                                                    <p class=" text2line blog-item-summary">
+                                                        {{ strip_tags(str_limit($new->description, 80)) }}
+                                                    </p>
                                                 </div>
-                                                <p class=" text2line blog-item-summary">
-                                                    Nhóm làm việc tại Học viện Sắc màu thế giới Pantone đã công bố
-                                                    những gam màu sẽ lên ngôi trong mùa mốt năm 2018. </p>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                     <div class="clearfix hidden-sm"></div>
                                     <div class="clearfix visible-sm"></div>
                                 </div>

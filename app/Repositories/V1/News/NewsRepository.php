@@ -46,7 +46,7 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
             $data['slug'] = str_slug($data['title']);
             $forder = 'uploads/images/news';
             $extensionFile = $file -> getClientOriginalExtension();
-            $fileName = $data['slug'] . '-' . time() . '.' . $extensionFile;
+            $fileName = time() . '.' . $extensionFile;
             $file->move($forder, $fileName);
             $data['content_image'] = $fileName;
         }
@@ -83,7 +83,7 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
             }
             $forder = ('uploads/images/news');
             $extensionFile = $file -> getClientOriginalExtension();
-            $fileName = str_slug($data['title']) . '-' . time() . '.' . $extensionFile;
+            $fileName = time() . '.' . $extensionFile;
             $file->move($forder, $fileName);
             $data['content_image'] = $fileName;
         } else {
