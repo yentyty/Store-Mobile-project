@@ -50,5 +50,6 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::post('/register/edit/{id}', 'HomeController@postEditRegister')->name('fe.register.posteditregister');
     Route::get('/login', 'HomeController@getLogin')->name('fe.login');
     Route::post('/login', 'HomeController@postLogin')->name('fe.postLogin');
+    Route::get('/logout', 'HomeController@postLogout')->name('fe.postLogout');
 });
 

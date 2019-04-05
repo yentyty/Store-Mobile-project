@@ -11,4 +11,6 @@ interface UserRepositoryInterface
     public function countUser();
 
     public function login($request);
+
+    public function logout();
 }

@@ -24,7 +24,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                                    <a href="" title="Đăng nhập" class="account_a">
+                                    <a href="{{ route('fe.postLogout') }}" title="Đăng xuất" class="account_a">
                                         <span>Đăng Xuất</span>
                                     </a>
                                 </li>

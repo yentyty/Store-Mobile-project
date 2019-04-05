@@ -99,4 +99,11 @@ class HomeController extends Controller
 
         return redirect()->route('fe.home.index')->with('msg', 'Đăng nhập thành công !');
     }
+
+    public function postLogout()
+    {
+        $this->repoUser->logout();
+
+        return redirect()->back();
+    }
 }
