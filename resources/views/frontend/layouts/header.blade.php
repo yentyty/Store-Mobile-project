@@ -199,7 +199,7 @@
                                             <ul class="item_small hidden-md hidden-sm hidden-xs">
                                                 @foreach ($informations as $inf)
                                                 <li>
-                                                    <a href="{{ route('fe.information.detail', ['slug'=>str_slug($inf->title), 'id'=>$inf->id]) }}">
+                                                    <a href="{{ route('fe.information.detail', ['slug'=>$inf->slug, 'id'=>$inf->id]) }}">
                                                         <span>{{ $inf->title }}</span>
                                                     </a>
                                                 </li>

@@ -120,4 +120,19 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
         return $products;
     }
+
+    public function detail($id)
+    {
+        $productDetail = $this->model->find($id);
+
+        return $productDetail;
+    }
+
+    public function anotherProduct($id)
+    {
+        $product = $this->model->find($id);
+        $product = Product::where('factory_id', '=', $product->factory_id)->where('id', '!=', $product->id)->orderBy('updated_at', 'Desc')->take(6)->get();
+
+        return $product;
+    }
 }

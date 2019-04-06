@@ -91,11 +91,11 @@
                                                                 @endif
                                                                 @php $someArray = json_decode($pr->image, true); @endphp
                                                                 <a class="image_link display_flex"
-                                                                    href="kinh-mat-nam-nba-1150-a01.html"
-                                                                    title="Kính Mát Nam NBA 1150 A01">
+                                                                    href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}"
+                                                                    title="{{ $pr->name }}">
                                                                     <img src="uploads/images/products/{{ $someArray[0] }}"
                                                                         data-lazyload="uploads/images/products/{{ $someArray[0] }}"
-                                                                        alt="Kính Mát Nam NBA 1150 A01" />
+                                                                        alt="{{ $pr->name }}" />
                                                                 </a>
                                                                 <div class="product-action-grid clearfix">
                                                                     <form class="variants form-nut-grid">
@@ -107,7 +107,7 @@
                                                                                 ngay</button>
                                                                             <!--onclick="cart.add(, 1)"></button>-->
                                                                             <a title="Xem"
-                                                                                href="kinh-mat-nam-nba-1150-a01.html"
+                                                                                href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}l"
                                                                                 class="button_wh_40 btn_view right-to quick-view">
                                                                                 <i class="fa fa-eye"></i>
                                                                                 <span
@@ -120,8 +120,8 @@
                                                             <div class="product-info effect a-left">
                                                                 <div class="info_hhh">
                                                                     <h3 class="product-name ">
-                                                                        <a href="kinh-mat-nam-nba-1150-a01.html"
-                                                                            title="Kính Mát Nam NBA 1150 A01">{{ $pr->name }}</a>
+                                                                        <a href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}"
+                                                                            title="{{ $pr->name }}">{{ $pr->name }}</a>
                                                                     </h3>
                                                                     <div class="price-box clearfix">
                                                                         @if($pr->promotion->id != 1)

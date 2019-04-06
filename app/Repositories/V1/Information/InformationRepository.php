@@ -52,7 +52,7 @@ class InformationRepository extends BaseRepository implements InformationReposit
 
     public function detail($id)
     {
-        $infoDetail = $this->model->find(1);
+        $infoDetail = $this->model->find($id);
 
         return $infoDetail;
     }
