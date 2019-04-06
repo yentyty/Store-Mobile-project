@@ -31,9 +31,9 @@
                         <div class="col-md-7 col-sm-7 col-xs-12" style="padding-left: 6em;">
                         @php $someArray = json_decode($product->image, true); @endphp
                             <div class="image">
-                                <img id="expandedImg" style="margin-top:15px;" >
+                                <img id="expandedImg" style="margin-top:15px; width:70%">
                                 <div id="imgtext">
-                                    <img src="uploads/images/products/{{ $someArray[0] }}">
+                                    <img src="uploads/images/products/{{ $someArray[0] }}" style="width:70%">
                                 </div>
                               </div>
                             <div class="product_gallery" style="margin-left: 1em;">

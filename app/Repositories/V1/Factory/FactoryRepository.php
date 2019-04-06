@@ -17,7 +17,7 @@ class FactoryRepository extends BaseRepository implements FactoryRepositoryInter
     {
         $limit = is_null($limit) ? config('repository.pagination.limit', 5) : $limit;
 
-        return $this->model->orderBy('created_at', 'Desc')->paginate($limit, $columns);
+        return $this->model->with('products', 'offers')->orderBy('created_at', 'Desc')->paginate($limit, $columns);
     }
 
     public function search($key)

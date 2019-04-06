@@ -80,12 +80,12 @@
                                                                 <h3>
                                                                     <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html"
                                                                         title="Màu sắc nào sẽ thống trị làng mốt trong năm 2018?">
-                                                                        {{ str_limit(strip_tags($new->title,15)) }}
+                                                                        {{ str_limit($new->title, 50) }}
                                                                     </a>
                                                                 </h3>
                                                             </div>
                                                             <p class=" text2line blog-item-summary">
-                                                                {{ str_limit(strip_tags($new->description,15)) }}
+                                                                {{ strip_tags(str_limit($new->description, 80)) }}
                                                             </p>
                                                         </div>
                                                     </div>

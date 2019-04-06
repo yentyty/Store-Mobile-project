@@ -10,6 +10,7 @@ use App\Repositories\V1\Offer\OfferRepositoryInterFace;
 use App\Models\Banner;
 use App\Repositories\V1\User\UserRepositoryInterFace;
 use App\Repositories\V1\UserRole\UserRoleRepositoryInterface;
+use App\Repositories\V1\News\NewsRepositoryInterface;
 use App\Models\User;
 use App\Http\Requests\Register\CreateRegisterRequest;
 use App\Http\Requests\Register\EditRegisterRequest;
@@ -23,27 +24,32 @@ class HomeController extends Controller
     protected $repoOffer;
     protected $repoUser;
     protected $repoUserRole;
+    protected $repoNews;
 
     public function __construct(
         BannerRepositoryInterFace $repoBanner,
         FactoryRepositoryInterFace $repoFactory,
         OfferRepositoryInterFace $repoOffer,
         UserRepositoryInterFace $repositoryUser,
-        UserRoleRepositoryInterFace $repositoryUserRole
+        UserRoleRepositoryInterFace $repositoryUserRole,
+        NewsRepositoryInterFace $repoNews
     ) {
         $this->repoBanner = $repoBanner;
         $this->repoFactory = $repoFactory;
         $this->repoOffer = $repoOffer;
         $this->repoUser = $repositoryUser;
         $this->repoUserRole = $repositoryUserRole;
+        $this->repoNews = $repoNews;
     }
 
     public function index()
     {
         $fatories = $this->repoFactory->index();
+        $fat = $this->repoFactory->paginate(12);
         $banners = $this->repoBanner->paginate(5);
         $offers = $this->repoOffer->paginate(2);
-        return view('frontend.home.index', compact('fatories', 'banners', 'offers'));
+        $news = $this->repoNews->paginate(4);
+        return view('frontend.home.index', compact('fatories', 'banners', 'offers', 'fat', 'news'));
     }
 
     public function getRegister()
