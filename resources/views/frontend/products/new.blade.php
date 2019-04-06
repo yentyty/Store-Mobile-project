@@ -27,7 +27,7 @@
                         <div class="product-box">
                             <div class="product-thumbnail">
                                 @php $someArray = json_decode($product->image, true); @endphp
-                                <a class="image_link display_flex" href="kinh-mat-nam-goldsun-gs217003-s1.html"
+                                <a class="image_link display_flex" href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}"
                                     title="{{ $product->name }}">
                                     <img src="uploads/images/products/{{ $someArray[0] }}"
 
@@ -41,7 +41,7 @@
                                                 onclick="window.location.href='indexf1a8.html?route=checkout/cart/add&amp;product_id=219&amp;redirect=true'">Mua
                                                 ngay</button>
                                             <!--onclick="cart.add(, 1)"></button>-->
-                                            <a title="Xem" href="kinh-mat-nam-goldsun-gs217003-s1.html"
+                                            <a title="Xem" href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}"
                                                 class="button_wh_40 btn_view right-to quick-view">
                                                 <i class="fa fa-eye"></i>
                                                 <span class="style-tooltip">Xem</span>
@@ -54,7 +54,7 @@
                             <div class="product-info effect a-left">
                                 <div class="info_hhh">
                                     <h3 class="product-name ">
-                                        <a href="kinh-mat-nam-goldsun-gs217003-s1.html" title="Kính Mát Nam GOLDSUN GS217003 S1 ">
+                                        <a href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}" title="{{ $product->name }}">
                                             {{ $product->name }}
                                         </a>
                                         <br>
@@ -69,7 +69,7 @@
                             <div class="product-info effect a-left">
                                 <div class="info_hhh">
                                     <h3 class="product-name ">
-                                        <a href="kinh-mat-nam-goldsun-gs217003-s1.html" title="Kính Mát Nam GOLDSUN GS217003 S1 ">
+                                        <a href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}" title="{{ $product->name }} ">
                                             {{ $product->name }}
                                         </a>
                                         <br>

@@ -21,15 +21,20 @@ class ProductController extends Controller
         $this->repoFactory = $repoFactory;
     }
 
-    public function detail($slug, $id)
-    {
-        $infoDetail = $this->repoInformation->detail($id);
-    }
-
     public function productNew()
     {
         $fatories = $this->repoFactory->index();
         $products = $this->repoProduct->paginate(12);
+
         return view('frontend.products.new', compact('products', 'fatories'));
+    }
+
+    public function detail($id, $slug)
+    {
+        $productdetail = $this->repoProduct->detail($id);
+        $fatories = $this->repoFactory->index();
+        $anotherproduct = $this->repoProduct->anotherProduct($id);
+
+        return view('frontend.products.detail', compact('productdetail', 'fatories', 'anotherproduct'));
     }
 }

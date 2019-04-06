@@ -25,7 +25,7 @@
                 <h1 class="title-section-page">{{ $infoDetail->title }}</h1>
                 <p
                     style="margin-bottom: 10px; padding: 0px; color: rgb(82, 82, 82); font-family: Arial, Helvetica, sans-serif;">
-                    {{ $infoDetail->content }}
+                    {!! strip_tags($infoDetail->content) !!}
                 </p>
             </div>
         </div>

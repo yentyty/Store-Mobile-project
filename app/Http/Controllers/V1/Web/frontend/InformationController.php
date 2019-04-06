@@ -21,7 +21,7 @@ class InformationController extends Controller
         $this->repoFactory = $repoFactory;
     }
 
-    public function detail($slug, $id)
+    public function detail($id, $slug)
     {
         $infoDetail = $this->repoInformation->detail($id);
         $fatories = $this->repoFactory->index();

@@ -86,7 +86,7 @@
                                 <ul class="list-menu list-menu22">
                                     @foreach ($informations as $inf)
                                         <li class="li_menu">
-                                            <a href="{{ route('fe.information.detail', ['slug'=>str_slug($inf->title), 'id'=>$inf->id]) }}">{{ $inf->title }}</a>
+                                            <a href="{{ route('fe.information.detail', ['id'=>$inf->id, 'slug'=>str_slug($inf->title)]) }}">{{ $inf->title }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

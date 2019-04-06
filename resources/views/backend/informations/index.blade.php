@@ -40,7 +40,7 @@
                 <tr role="row" class="odd">
                     <td>{{ $key + 1 }}</td>
                     <td>{{ str_limit($information->title,40) }}</td>
-                    <td>{{ str_limit(strip_tags($information->content,50)) }}</td>
+                    <td>{{ strip_tags(str_limit($information->content,100)) }}</td>
                     <td>
                         <a
                             href="{{ route('information.show', ['id'=>$information->id]) }}"
@@ -58,20 +58,19 @@
                             >
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
-                            {!!Form::open([
+                            {{ Form::open([
                                 'method' => 'DELETE',
                                 'route' => ['information.destroy',$information->id],
                                 'onsubmit' => 'return confirmDelete()',
                                 'id' => "form-delete-$information->id"
-                            ])!!}
-                            {!! Form::close() !!}
+                            ]) }}
+                            {{ Form::close() }}
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
         <div style="float: right; margin-top: -1.5em; margin-right: 1em;">
-                {{ $informations->links() }}
         </div>
     </div>
 </div>

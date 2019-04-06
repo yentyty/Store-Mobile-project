@@ -43,7 +43,7 @@
                     <td>{{ $key + 1 }}</td>
                     <td>{{ str_limit($offer->title,30)}}</td>
                     <td>{{ $offer->factory->name }}</td>
-                    <td>{{ str_limit(strip_tags($offer->description,50))}}</td>
+                    <td>{{ strip_tags(str_limit($offer->description,50))}}</td>
                     <td>
                         @if (!empty($offer->image))
                             <img width="100%" src="uploads/images/offers/{{ $offer->image }}">

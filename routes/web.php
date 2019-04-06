@@ -39,7 +39,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function (
 Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/', 'HomeController@index')->name('fe.home.index');
     Route::get('/information', 'InformationController@index')->name('fe.information.index');
-    Route::get('/information/{slug}-{id}', 'InformationController@detail')->name('fe.information.detail');
+    Route::get('/information/{id}-{slug}', 'InformationController@detail')->name('fe.information.detail');
     Route::get('/product-new', 'ProductController@productNew')->name('fe.product.productnew');
     Route::get('/news', 'NewsController@index')->name('fe.new.index');
     Route::get('/contact', 'ContactController@index')->name('fe.contact.index');
@@ -51,4 +51,5 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/login', 'HomeController@getLogin')->name('fe.login');
     Route::post('/login', 'HomeController@postLogin')->name('fe.postLogin');
     Route::get('/logout', 'HomeController@postLogout')->name('fe.postLogout');
+    Route::get('/product/{id}-{slug}', 'ProductController@detail')->name('fe.product.detail');
 });
