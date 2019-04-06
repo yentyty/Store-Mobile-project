@@ -52,4 +52,5 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::post('/login', 'HomeController@postLogin')->name('fe.postLogin');
     Route::get('/logout', 'HomeController@postLogout')->name('fe.postLogout');
     Route::get('/product/{id}-{slug}', 'ProductController@detail')->name('fe.product.detail');
+    Route::get('/factory/{id}-{slug}', 'FactoryController@postFactory')->name('fe.factory.postfactory');
 });

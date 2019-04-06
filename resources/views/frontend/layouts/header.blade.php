@@ -75,19 +75,9 @@
                                 <div class="header-left">
                                     <div class="header_search header_searchs">
                                         <form class="input-group search-bar" role="search" id="search">
-                                            <div class="collection-selector">
-                                                <select name="category_id" class="search_text">
-                                                    <option class="item-cate search_item" value="0">Tất cả</option>
-                                                    @foreach ($fatories as $factory)
-                                                    <option class="item-cate search_item" value="171">
-                                                        {{ $factory->name }}&nbsp;&nbsp;
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
                                             <input type="search" name="search" value="" placeholder="Tìm kiếm"
                                                 class="input-group-field st-default-search-input search-text"
-                                                autocomplete="off">
+                                                autocomplete="off" style="padding-left: 1em;">
                                             <span class="input-group-btn">
                                                 <button class="btn icon-fallback-text">
                                                     <span class="fa fa-search"></span>
@@ -103,7 +93,9 @@
                                         <div class="wishlist_header hidden-xs hidden-sm">
                                             <div class="img_hotline"><i class="fa fa-phone"></i></div>
                                             <span class="text_hotline">Điện thoại</span>
-                                            <a class="phone-order" href="tel:0123456789">0123456789</a>
+                                            @foreach ($introducesAll as $intro)
+                                            <a class="phone-order" href="tel:0123456789">{{ $intro->phone }}</a>
+                                            @endforeach
                                         </div>
                                         <div class="top-cart-contain f-right hidden-xs hidden-sm visible-md visible-lg">
                                             <div class="mini-cart text-xs-center" id="cart">
@@ -169,7 +161,7 @@
                                     <ul class="nav navbar-nav nav-verticalmenu">
                                         @foreach ($fatories as $factory)
                                             <li class="vermenu-option-11 ">
-                                                <a class="link-lv1" href="balo-va-tui-xach.html" title="Balo và túi xách">
+                                                <a class="link-lv1" href="{{ route('fe.factory.postfactory', ['id'=>$factory->id, 'slug'=>$factory->slug]) }}" title="Balo và túi xách">
                                                     <span class="menu-icon">
                                                         <span class="menu-title">{{ $factory->name }}</span>
                                                     </span>

@@ -4,6 +4,7 @@ namespace App\Repositories\V1\Factory;
 
 use App\Repositories\BaseRepository;
 use App\Models\Factory;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
 class FactoryRepository extends BaseRepository implements FactoryRepositoryInterface
@@ -55,5 +56,15 @@ class FactoryRepository extends BaseRepository implements FactoryRepositoryInter
         $factories = $this->model::all();
 
         return $factories;
+    }
+
+    public function postFactory($id)
+    {
+        $infoDetail = $this->model->find($id);
+        $infoDetail = Product::where('factory_id', '=', $infoDetail->id)
+            ->orderBy('updated_at', 'Desc')
+            ->paginate(8);
+
+        return $infoDetail;
     }
 }
