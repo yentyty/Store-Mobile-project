@@ -21,16 +21,20 @@ class NewsController extends Controller
         $this->repoFactory = $repoFactory;
     }
 
-    public function detail($slug, $id)
-    {
-        $infoDetail = $this->repoInformation->detail($id);
-    }
-
     public function index()
     {
         $fatories = $this->repoFactory->index();
-        $news = $this->repoNews->paginate(9);
+        $news = $this->repoNews->paginate(12);
 
         return view('frontend.news.news', compact('news', 'fatories'));
+    }
+
+    public function detail($id, $slug)
+    {
+        $newdetail = $this->repoNews->detail($id);
+        $fatories = $this->repoFactory->index();
+        $newanother = $this->repoNews->newAnother($id);
+
+        return view('frontend.news.detail', compact('newdetail', 'fatories', 'newanother'));
     }
 }

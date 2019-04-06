@@ -42,6 +42,7 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/information/{id}-{slug}', 'InformationController@detail')->name('fe.information.detail');
     Route::get('/product-new', 'ProductController@productNew')->name('fe.product.productnew');
     Route::get('/news', 'NewsController@index')->name('fe.new.index');
+    Route::get('/news/{id}-{slug}', 'NewsController@detail')->name('fe.news.detail');
     Route::get('/contact', 'ContactController@index')->name('fe.contact.index');
     Route::post('/contact', 'ContactController@store')->name('fe.contact.store');
     Route::get('/register', 'HomeController@getRegister')->name('fe.register.getregister');

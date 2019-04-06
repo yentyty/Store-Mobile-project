@@ -176,7 +176,7 @@
                                             <div class="myblog"
                                                 onclick="window.location.href='mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html';">
                                                 <div class="image-blog-left">
-                                                    <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html">
+                                                    <a href="{{ route('fe.news.detail', ['id'=>$new->id, 'slug'=>$new->slug]) }}">
                                                         <picture>
                                                             <source media="(max-width: 375px)"
                                                                 srcset="uploads/images/news/{{ $new->cover_image }}">
@@ -204,7 +204,7 @@
                                                     </div>
                                                     <div class="title_blog_home">
                                                         <h3>
-                                                            <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html" title="">
+                                                            <a href="{{ route('fe.news.detail', ['id'=>$new->id, 'slug'=>$new->slug]) }}" title="">
                                                                 {{ str_limit($new->title,50) }}
                                                             </a>
                                                         </h3>

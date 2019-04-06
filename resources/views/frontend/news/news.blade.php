@@ -40,7 +40,7 @@
                                                     <div class="myblog"
                                                         onclick="window.location.href='mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html';">
                                                         <div class="image-blog-left">
-                                                            <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html">
+                                                            <a href="{{ route('fe.news.detail', ['id'=>$new->id, 'slug'=>$new->slug]) }}">
                                                                 <picture>
                                                                     <source media="(max-width: 375px)"
                                                                         srcset="uploads/images/news/{{ $new->cover_image }}">
@@ -56,8 +56,8 @@
                                                                     <source media="(min-width: 1200px)"
                                                                         srcset="uploads/images/news/{{ $new->cover_image }}">
                                                                     <img src="uploads/images/news/{{ $new->cover_image }}"
-                                                                        title="Màu sắc nào sẽ thống trị làng mốt trong năm 2018?"
-                                                                        alt="Màu sắc nào sẽ thống trị làng mốt trong năm 2018?" style="width:100%;">
+                                                                        title="{{ str_limit($new->title, 15) }}"
+                                                                        alt="{{ str_limit($new->title, 15) }}" style="width:100%;">
                                                                 </picture>
                                                                 <div class="hover_collection"></div>
                                                             </a>
@@ -78,8 +78,8 @@
                                                             </div>
                                                             <div class="title_blog_home">
                                                                 <h3>
-                                                                    <a href="mau-sac-nao-se-thong-tri-lang-mot-trong-nam-2018.html"
-                                                                        title="Màu sắc nào sẽ thống trị làng mốt trong năm 2018?">
+                                                                    <a href="{{ route('fe.news.detail', ['id'=>$new->id, 'slug'=>$new->slug]) }}"
+                                                                        title="{{ str_limit($new->title, 15) }}"
                                                                         {{ str_limit($new->title, 50) }}
                                                                     </a>
                                                                 </h3>
@@ -109,6 +109,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

@@ -114,4 +114,21 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
 
         return $news;
     }
+
+    public function detail($id)
+    {
+        $newDetail = $this->model->find($id);
+
+        return $newDetail;
+    }
+
+    public function  newAnother($id)
+    {
+        $new = $this->model->find($id);
+        $new = News::where('id', '!=', $new->id)
+            ->orderBy('updated_at', 'Desc')
+            ->paginate(5);
+
+        return $new;
+    }
 }

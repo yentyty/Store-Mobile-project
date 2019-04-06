@@ -7,4 +7,6 @@ interface NewsRepositoryInterface
     public function search($key);
 
     public function countNew();
+
+    public function detail($id);
 }
