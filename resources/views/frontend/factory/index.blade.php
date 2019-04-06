@@ -12,7 +12,7 @@
                         </a>
                         <span><i class="fa">/</i></span>
                     </li>
-                    <li><strong itemprop="title">Sản phẩm Mới</strong></li>
+                    <li><strong itemprop="title">Sản phẩm Cùng Loại</strong></li>
                 </ul>
             </div>
         </div>
@@ -21,7 +21,7 @@
 <div class="container">
     <div class="row">
         <div id="content" class="col-sm-12 col-xs-12 col-md-12">
-            @foreach($products as $product)
+            @foreach($listfactory as $product)
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 padding-small">
                     <div class="product-col">
                         <div class="product-box">
@@ -91,7 +91,7 @@
             @endforeach
         </div>
         <div class="text-right">
-           {{ $products->links() }}
+           {{ $listfactory->links() }}
         </div>
     </div>
 </div>
