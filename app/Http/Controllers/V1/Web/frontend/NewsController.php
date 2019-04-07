@@ -24,7 +24,7 @@ class NewsController extends Controller
     public function index()
     {
         $fatories = $this->repoFactory->index();
-        $news = $this->repoNews->paginate(12);
+        $news = $this->repoNews->paginate(6);
 
         return view('frontend.news.news', compact('news', 'fatories'));
     }
