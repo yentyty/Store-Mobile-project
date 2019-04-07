@@ -122,7 +122,7 @@ class NewsRepository extends BaseRepository implements NewsRepositoryInterface
         return $newDetail;
     }
 
-    public function  newAnother($id)
+    public function newAnother($id)
     {
         $new = $this->model->find($id);
         $new = News::where('id', '!=', $new->id)
