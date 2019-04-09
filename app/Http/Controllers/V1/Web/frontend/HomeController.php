@@ -16,6 +16,9 @@ use App\Http\Requests\Register\CreateRegisterRequest;
 use App\Http\Requests\Register\EditRegisterRequest;
 use App\Http\Requests\Register\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Cart;
+use Illuminate\Support\Facades\Input;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -110,5 +113,54 @@ class HomeController extends Controller
         $this->repoUser->logout();
 
         return redirect()->back();
+    }
+
+    public function checkout()
+    {
+        $fatories = $this->repoFactory->index();
+        $cart = Cart::getContent();
+        $subtotal = Cart::getSubTotal();
+
+        return view('frontend.carts.checkout', compact('fatories', 'cart', 'subtotal'));
+    }
+
+    public function addCart($id, Request $request)
+    {
+        $pro = Product::find($id);
+        Cart::add([
+            'id' => $pro->id,
+            'name' => $pro->name,
+            'quantity' => 1,
+            'price' => $pro->price -($pro->price *($pro->promotion->percent /100)),
+            'attributes' => ['promotion' => $pro->promotion->percent, 'storage' => $pro->storage, 'color' => $request->color]
+        ]);
+        $cart = Cart::getContent();
+
+        return redirect()->back();
+    }
+
+    public function updateCart(Request $request)
+    {
+        Cart::update($request['rowId'], array(
+            'quantity' => array(
+                'relative' => false,
+                'value' => $request->quantity
+            ), ));
+
+        return redirect()->back();
+    }
+
+    public function deleteCart(Request $request)
+    {
+        Cart::remove($request['rowId']);
+
+        return back();
+    }
+
+    public function pay()
+    {
+        $fatories = $this->repoFactory->index();
+
+        return view('frontend.carts.pay', compact('fatories'));
     }
 }

@@ -98,14 +98,8 @@
                                                                         alt="{{ $pr->name }}" />
                                                                 </a>
                                                                 <div class="product-action-grid clearfix">
-                                                                    <form class="variants form-nut-grid">
+                                                                    <form class="variants form-nut-grid" action="{{ route('fe.cart.checkout') }}">
                                                                         <div>
-                                                                            <button
-                                                                                class="btn-cart button_wh_40 left-to"
-                                                                                title="Mua ngay" type="button"
-                                                                                onclick="window.location.href='indexf1a8.html?route=checkout/cart/add&amp;product_id=220&amp;redirect=true'">Mua
-                                                                                ngay</button>
-                                                                            <!--onclick="cart.add(, 1)"></button>-->
                                                                             <a title="Xem"
                                                                                 href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}l"
                                                                                 class="button_wh_40 btn_view right-to quick-view">

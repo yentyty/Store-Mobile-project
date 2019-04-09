@@ -87,6 +87,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {!! Form::open(['url' => 'addCart/'. $productdetail->id]) !!}
                             <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7 details-pro">
                                 <h1 class="title-product">{{ $productdetail->name }}</h1>
                                 <div class="group-status">
@@ -112,26 +113,24 @@
                                         <br>
                                         <span style="margin-right:1em;">Chọn màu :</span>
                                         @foreach(json_decode($productdetail->color) as $color)
-                                            {!! Form::radio('color', $color, true) !!} <span style="margin-right:1em;">{{$color}}</span>
+                                            {{ Form::radio('color', $color, true) }}<span style="margin-right:1em;">{{ $color }}</span>
                                         @endforeach
                                     </span>
                                 </div>
                                 <br>
-                                 <br>
+                                <br>
                                 <div id="product" class="form-product col-sm-12">
                                     <div class="form-group form_button_details">
                                         <div class="form_hai ">
                                             <div class="button_actions">
                                                 <input type="hidden" name="product_id" value="194">
-                                                <button type="button" id="button-cart" data-loading-text="Đang tải..."
-                                                    class="btn btn-lg btn-block btn-cart button_cart_buy_enable add_to_cart btn_buy">
-                                                    <span class="btn-content">Thêm vào giỏ</span>
-                                                </button>
+                                                {!! Form::button('Thêm vào giỏ hàng',['type' => 'submit', 'class' => 'btn btn-lg btn-block btn-cart button_cart_buy_enable add_to_cart btn_buy', 'id' => 'button-cart']) !!}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{ Form::close() }}
                         </div>
                         <div id="block-tab-infor" class="col-xs-12 col-lg-12 col-sm-12 col-md-12">
                             <div class="row margin-top-50 xs-margin-top-15">
