@@ -25,6 +25,20 @@
 <div class="container">
     <div class="row">
         <div id="content" class="col-sm-12 col-xs-12 col-md-12">
+            @php $count = Cart::getContent()->count() @endphp
+            @if ( $count <= 0)
+            <div class="page-information margin-bottom-50">
+                <h1>Bạn Chưa Chọn Sản Phẩm Nào !!!</h1>
+                <div class="col-sm-6 col-xs-6 col_button_checkout" style="margin-bottom:3em;">
+                    <a
+                        href="{{ route('fe.home.index') }}"
+                        class="btn btn-primary button_checkout"
+                    >
+                        Tiếp tục mua hàng
+                    </a>
+                </div>
+            </div>
+            @else
             <div class="page-information margin-bottom-50">
                 <h1 class="title-section-page">Giỏ hàng</h1>
                 <div class="table-responsive table-cart-content">
@@ -116,8 +130,11 @@
                     <div class="clearfix"></div>
                     <div class="col-sm-12">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6 col_button_shopping"> <a href="{{ route('fe.home.index') }}"
-                                    class="btn btn-default pull-left button_shopping">Tiếp tục mua hàng</a> </div>
+                            <div class="col-sm-6 col-xs-6 col_button_shopping">
+                                <a href="{{ route('fe.home.index') }}" class="btn btn-default pull-left button_shopping">
+                                    Tiếp tục mua hàng
+                                </a>
+                            </div>
                             <div class="col-sm-6 col-xs-6 col_button_checkout">
                                 <a
                                     href="{{ route('fe.cart.pay') }}"
@@ -130,6 +147,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

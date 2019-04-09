@@ -61,4 +61,8 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::delete('deleteCart/{rowId}', ['uses' => 'HomeController@deleteCart','as' => 'deleteCart']);
     //thanh toán
     Route::get('/cart/pay', 'HomeController@pay')->name('fe.cart.pay');
+    Route::post('success', [
+        'uses' => 'HomeController@store',
+        'as' => 'makeOrder'
+    ]);
 });

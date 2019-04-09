@@ -113,16 +113,20 @@
                                                         </span>
                                                     </a>
                                                 </div>
-                                                <div class="top-cart-content" style="width:45em;">
+                                                @php $count = Cart::getContent()->count() @endphp
+                                                @if ( $count <= 0)
+                                                <div class="top-cart-content">
                                                     <ul id="cart-sidebar" class="mini-products-list count_li">
-                                                        @php $count = Cart::getContent()->count() @endphp
-                                                        @if ( $count <= 0)
-                                                            <li>
-                                                                <div class="no-item">
-                                                                    <p>Giỏ hàng của bạn trống!</p>
-                                                                </div>
-                                                            </li>
-                                                        @else
+                                                        <li>
+                                                            <div class="no-item">
+                                                                <p>Giỏ hàng của bạn trống !!!</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                @else
+                                                    <div class="top-cart-content" style="width:45em;">
+                                                        <ul id="cart-sidebar" class="mini-products-list count_li">
                                                             <li>
                                                                 <div class="pd right_ct">
                                                                     <span class="price" style="color:#F34111;">Giỏ hàng</span>
@@ -156,9 +160,9 @@
                                                                     </a>
                                                                 </div>
                                                             </li>
-                                                        @endif
-                                                    </ul>
-                                                </div>
+                                                        </ul>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="top-cart-contain f-right hidden-lg hidden-md visible-xs visible-sm">
