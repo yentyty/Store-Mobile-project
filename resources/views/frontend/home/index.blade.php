@@ -98,24 +98,27 @@
                                                                         alt="{{ $pr->name }}" />
                                                                 </a>
                                                                 <div class="product-action-grid clearfix">
-                                                                    <form class="variants form-nut-grid" action="{{ route('fe.cart.checkout') }}">
+                                                                    {!! Form::open(['url' => 'addCart/'. $pr->id, 'class' => 'variants form-nut-grid']) !!}
                                                                         <div>
-                                                                            <a title="Xem"
-                                                                                href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}l"
+                                                                            {{ Form::hidden('color', 'Trắng') }}
+                                                                            {{  Form::button('<i class="fa fa-refresh"></i> Mua ngay', ['type' => 'submit', 'class' => 'btn-cart button_wh_40 left-to', 'title' => 'Mua ngay']) }}
+                                                                            <a
+                                                                                title="Xem"
+                                                                                href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}"
                                                                                 class="button_wh_40 btn_view right-to quick-view">
                                                                                 <i class="fa fa-eye"></i>
-                                                                                <span
-                                                                                    class="style-tooltip">Xem</span>
+                                                                                <span class="style-tooltip">Xem</span>
                                                                             </a>
                                                                         </div>
-                                                                    </form>
+                                                                    {{  Form::close() }}
                                                                 </div>
                                                             </div>
                                                             <div class="product-info effect a-left">
                                                                 <div class="info_hhh">
                                                                     <h3 class="product-name ">
                                                                         <a href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}"
-                                                                            title="{{ $pr->name }}">{{ $pr->name }}</a>
+                                                                            title="{{ $pr->name }}">{{ $pr->name }}
+                                                                        </a>
                                                                     </h3>
                                                                     <div class="price-box clearfix">
                                                                         @if($pr->promotion->id != 1)

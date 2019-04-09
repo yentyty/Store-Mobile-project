@@ -141,20 +141,22 @@ class HomeController extends Controller
 
     public function updateCart(Request $request)
     {
+
         Cart::update($request['rowId'], array(
             'quantity' => array(
                 'relative' => false,
                 'value' => $request->quantity
-            ), ));
+            ),
+        ));
 
-        return redirect()->back();
+        return redirect()->back()->with('msg', 'Bạn đã chỉnh sửa giỏ hàng thành công!!');
     }
 
     public function deleteCart(Request $request)
     {
         Cart::remove($request['rowId']);
 
-        return back();
+        return back()->with('msg', 'Bạn đã xóa giỏ hàng thành công!!');
     }
 
     public function pay()

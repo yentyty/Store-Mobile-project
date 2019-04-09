@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html" class="logo-wrapper ">
+                                    <a href="{{ route('fe.home.index') }}" class="logo-wrapper ">
                                         <img src="frontend/image/catalog/logo/logo.png" alt="Bigboom">
                                     </a>
                                 </div>
@@ -94,7 +94,7 @@
                                             <div class="img_hotline"><i class="fa fa-phone"></i></div>
                                             <span class="text_hotline">Điện thoại</span>
                                             @foreach ($introducesAll as $intro)
-                                            <a class="phone-order" href="tel:0123456789">{{ $intro->phone }}</a>
+                                            <a class="phone-order">{{ $intro->phone }}</a>
                                             @endforeach
                                         </div>
                                         <div class="top-cart-contain f-right hidden-xs hidden-sm visible-md visible-lg">
@@ -102,7 +102,7 @@
                                                 <div class="heading-cart">
                                                     <a class="bg_cart" href="{{ route('fe.cart.checkout') }}"
                                                         title="Giỏ hàng">
-                                                        <span class="absolute count_item count_item_pr">{{Cart::getContent()->count()}}</span>
+                                                        <span class="absolute count_item count_item_pr">{{ Cart::getContent()->count() }}</span>
                                                         <i class="fa fa-shopping-bag"></i>
                                                         <span class="block-small-cart">
                                                             <span class="text-giohang hidden-xs">Giỏ hàng</span>
@@ -164,10 +164,11 @@
                                         <div class="top-cart-contain f-right hidden-lg hidden-md visible-xs visible-sm">
                                             <div class="mini-cart text-xs-center">
                                                 <div class="heading-cart">
-                                                    <a class="bg_cart" href="index630e.html?route=checkout/cart"
+                                                    <a class="bg_cart" href="{{ route('fe.cart.checkout') }}"
                                                         title="Giỏ hàng">
-                                                        <span class="absolute count_item count_item_pr">0</span>
-                                                        <img alt="Giỏ hàng"
+                                                        <span class="absolute count_item count_item_pr">{{ Cart::getContent()->count() }}</span>
+                                                        <img
+                                                            alt="Giỏ hàng"
                                                             src="frontend/catalog/view/theme/bigboom/image/icon-bag.png" />
                                                     </a>
                                                 </div>

@@ -23,8 +23,6 @@
     </div>
 </section>
 <div class="container">
-    <div class="alert alert-success"><i class="fa fa-check-circle"></i> Thành công: Bạn đã sửa giỏ hàng! <button
-            type="button" class="close" data-dismiss="alert">×</button> </div>
     <div class="row">
         <div id="content" class="col-sm-12 col-xs-12 col-md-12">
             <div class="page-information margin-bottom-50">
@@ -76,7 +74,6 @@
                                             id="qtyItem{{ $item->id }}"
                                             class="form-control input-text text-center number-sidebar input_pop input_pop"
                                             style="padding: 0; min-width: 90px"
-                                            disabled
                                         >
                                         <span class="input-group-btn">
                                             <button
@@ -111,7 +108,7 @@
                             <tbody>
                                 <tr>
                                     <td class="text-right">Thành tiền:</td>
-                                    <td class="text-right"><strong>{{ number_format($subtotal,0 ,',', '.') }}</strong></td>
+                                    <td class="text-right"><strong>{{ number_format($subtotal,0 ,',', '.') }}đ</strong></td>
                                 </tr>
                             </tbody>
                         </table>

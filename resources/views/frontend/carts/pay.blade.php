@@ -102,122 +102,48 @@
                                 <div class="panel-body">
                                     <table class="adr-oms table table_order_items">
                                         <tbody id="orderItem">
-                                                @foreach ($cart as $item)
-                                            <tr class="group-type-1 item-child-0">
-                                                <td>
-                                                    <div class="table_order_items-cell-detail">
-                                                        <div class="table_order_items-cell-title">
-                                                            <div class="table_order_items_product_name">
-                                                                <a target="_blank" rel="noopener"
-                                                                    href="kinh-mat-nam-nba-1150-a01.html"
-                                                                    title="Kính Mát Nam NBA 1150 A01">
-                                                                    <span class="title">
-                                                                        {{ $item->name }}
-                                                                    </span>
-                                                                    <span class="title">
-
-                                                                    </span>
-                                                                </a>
+                                            @foreach ($cart as $item)
+                                                <tr class="group-type-1 item-child-0">
+                                                    <td>
+                                                        <div class="table_order_items-cell-detail">
+                                                            <div class="table_order_items-cell-title">
+                                                                <div class="table_order_items_product_name">
+                                                                    <a target="_blank" rel="noopener"
+                                                                        href="kinh-mat-nam-nba-1150-a01.html"
+                                                                        title="Kính Mát Nam NBA 1150 A01">
+                                                                        <span class="title">
+                                                                            {{ $item->name }}
+                                                                        </span>
+                                                                        <span class="title">
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="table_order_items-cell-price">
-                                                        <div class="tt-price">1,170,000đ</div>
-                                                        <div class="quantity">x1</div>
-                                                        <div class="tt-price">1,170,000đ</div>
-                                                    </div>
-                                                    <div class="table_order_items-cell-price">
+                                                        <div class="table_order_items-cell-price">
+                                                            <div class="tt-price">{{ number_format($item->price,0 ,',', '.') }}đ</div>
+                                                            <div class="quantity">x{{ $item->quantity }}</div>
+                                                            <div class="tt-price">{{ number_format($item->price*$item->quantity,0 ,',', '.') }}</div>
+                                                        </div>
+                                                        <div class="table_order_items-cell-price"  style="padding-right:3em;">
                                                             {{ $item->attributes->color }}
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <i class="fa fa-truck" aria-hidden="true"></i>
-                                        Vận chuyển
-                                    </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <span id="ajax-load-shipping-method">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-tag" aria-hidden="true"></i> Sử dụng mã giảm
-                                        giá</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <span id="show_notice_coupon"></span>
-                                            <div class="input-group">
-                                                <input type="text" name="coupon" value="" placeholder="Nhập mã giảm giá"
-                                                    id="input-coupon" class="form-control">
-                                                <span class="input-group-btn">
-                                                    <input class="btn btn-primary" type="button" value="Áp dụng"
-                                                        id="button-coupon" data-loading-text="Đang áp dụng">
-                                                </span>
-                                            </div>
-                                            <span id="load-input-hidden"></span>
-                                        </div>
-                                    </div>
-                                    <script type="text/javascript">
-                                        $('#button-coupon').on('click', function () {
-                                            var coupon_submit = '<input type="hidden" name="submit_coupon" value="1">';
-                                            $('#load-input-hidden').html(coupon_submit);
-
-                                            $.ajax({
-                                                url: 'index.php?route=extension/total/coupon/coupon',
-                                                type: 'post',
-                                                data: 'coupon=' + encodeURIComponent($('input[name=\'coupon\']').val()),
-                                                dataType: 'json',
-                                                beforeSend: function () {
-                                                    $('#button-coupon').button('loading');
-                                                },
-                                                complete: function () {
-                                                    $('#button-coupon').button('reset');
-                                                },
-                                                success: function (json) {
-                                                    $('.alert').remove();
-
-                                                    if (json['error']) {
-                                                        $('#show_notice_coupon').html('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                                                    } else {
-                                                        $("form#checkout_form").submit();
-                                                    }
-                                                }
-                                            });
-                                        });
-                                    </script>
-                                </div>
-                            </div>
                             <div class="panel panel-default" id="ajax-load-total">
                                 <div class="panel-body">
                                     <table class="adr-oms table">
                                         <tbody class="orderSummary">
                                             <tr class="row-total-amount">
-                                                <td class="text-left">Thành tiền</td>
+                                                <td class="text-left" style="font-weight:bold;">Tổng tiền</td>
                                                 <td class="text-right">
-                                                    <strong class="">1,170,000đ</strong>
-                                                </td>
-                                            </tr>
-                                            <tr class="row-total-amount">
-                                                <td class="text-left">Tổng số</td>
-                                                <td class="text-right">
-                                                    <strong class="text-danger">1,170,000đ</strong>
+                                                    <strong class="">{{ number_format($subtotal,0 ,',', '.') }}đ</strong>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -225,12 +151,16 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a class="pull-left" href="index630e.html?route=checkout/cart"
+                                <a class="pull-left" href="{{ route('fe.cart.checkout') }}"
                                     title="Quay lại giỏ hàng">
                                     <i class="fa fa-mail-reply-all" aria-hidden="true"></i> Quay lại giỏ hàng </a>
-                                <button class="btn btn-primary pull-right" type="button" id="submit_form_button"
-                                    onclick="$('form#checkout_form').submit();">Đặt hàng <i
-                                        class="fa fa-angle-right"></i></button>
+                                <button
+                                    class="btn btn-primary pull-right"
+                                    type="button"
+                                    id="submit_form_button"
+                                    onclick="$('form#checkout_form').submit();">Đặt hàng
+                                     <i class="fa fa-angle-right"></i>
+                                </button>
                             </div>
                         </div>
                     {{ Form::close() }}
