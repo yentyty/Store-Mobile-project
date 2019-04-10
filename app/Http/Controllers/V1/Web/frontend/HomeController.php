@@ -137,7 +137,11 @@ class HomeController extends Controller
             'name' => $pro->name,
             'quantity' => 1,
             'price' => $pro->price -($pro->price *($pro->promotion->percent /100)),
-            'attributes' => ['promotion' => $pro->promotion->percent, 'storage' => $pro->storage, 'color' => $request->color]
+            'attributes' => [
+                'promotion' => $pro->promotion->percent,
+                'storage' => $pro->storage,
+                'color' => $request->color,
+            ],
         ]);
         $cart = Cart::getContent();
 
@@ -149,7 +153,7 @@ class HomeController extends Controller
         Cart::update($request['rowId'], array(
             'quantity' => array(
                 'relative' => false,
-                'value' => $request->quantity
+                'value' => $request->quantity,
             ),
         ));
 
