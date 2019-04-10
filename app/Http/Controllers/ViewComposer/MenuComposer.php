@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
 use App\Repositories\V1\Information\InformationRepositoryInterface;
+use Cart;
 
 class MenuComposer
 {
@@ -25,8 +26,12 @@ class MenuComposer
     */
     public function compose(View $view)
     {
+        $cart = Cart::getContent();
+        $subtotal = Cart::getSubTotal();
         $informations = $this->repoInformation->index();
 
-        $view->with('informations', $informations);
+        $view->with('informations', $informations)
+            ->with('cart', $cart)
+            ->with('subtotal', $subtotal);
     }
 }

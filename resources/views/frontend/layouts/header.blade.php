@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html" class="logo-wrapper ">
+                                    <a href="{{ route('fe.home.index') }}" class="logo-wrapper ">
                                         <img src="frontend/image/catalog/logo/logo.png" alt="Bigboom">
                                     </a>
                                 </div>
@@ -94,43 +94,85 @@
                                             <div class="img_hotline"><i class="fa fa-phone"></i></div>
                                             <span class="text_hotline">Điện thoại</span>
                                             @foreach ($introducesAll as $intro)
-                                            <a class="phone-order" href="tel:0123456789">{{ $intro->phone }}</a>
+                                            <a class="phone-order">{{ $intro->phone }}</a>
                                             @endforeach
                                         </div>
                                         <div class="top-cart-contain f-right hidden-xs hidden-sm visible-md visible-lg">
                                             <div class="mini-cart text-xs-center" id="cart">
                                                 <div class="heading-cart">
-                                                    <a class="bg_cart" href="index630e.html?route=checkout/cart"
+                                                    <a class="bg_cart" href="{{ route('fe.cart.checkout') }}"
                                                         title="Giỏ hàng">
-                                                        <span class="absolute count_item count_item_pr">0</span>
+                                                        <span class="absolute count_item count_item_pr">{{ Cart::getContent()->count() }}</span>
                                                         <i class="fa fa-shopping-bag"></i>
                                                         <span class="block-small-cart">
                                                             <span class="text-giohang hidden-xs">Giỏ hàng</span>
                                                             <span class="block-count-pr">
                                                                 <span
-                                                                    class="count_item count_item_pr price_cart">0đ</span>
+                                                                    class="count_item count_item_pr price_cart">{{ number_format(Cart::getSubTotal(),0 ,',', '.') }}đ</span>
                                                             </span>
                                                         </span>
                                                     </a>
                                                 </div>
+                                                @php $count = Cart::getContent()->count() @endphp
+                                                @if ( $count <= 0)
                                                 <div class="top-cart-content">
                                                     <ul id="cart-sidebar" class="mini-products-list count_li">
                                                         <li>
                                                             <div class="no-item">
-                                                                <p>Giỏ hàng của bạn trống!</p>
+                                                                <p>Giỏ hàng của bạn trống !!!</p>
                                                             </div>
                                                         </li>
                                                     </ul>
                                                 </div>
+                                                @else
+                                                    <div class="top-cart-content" style="width:45em;">
+                                                        <ul id="cart-sidebar" class="mini-products-list count_li">
+                                                            <li>
+                                                                <div class="pd right_ct">
+                                                                    <span class="price" style="color:#F34111;">Giỏ hàng</span>
+                                                                </div>
+                                                            </li>
+                                                            @foreach ($cart as $item)
+                                                                <li>
+                                                                    <div class="no-item">
+                                                                        <div class="top-subtotal">{{ $item->name }}
+                                                                            <span class="price" style="color:black!important;">{{ number_format($item->price*$item->quantity,0 ,',', '.') }}đ</span>
+                                                                            <span class="price" style="color:black!important; font-weight:normal!important; padding-right:3em;">{{ number_format($item->price, 0,',', '.') }}đ x {{ $item->quantity }}</span>
+                                                                            <span class="price" style="color:black!important; font-weight:normal!important; padding-right:3em; text-transform:lowercase;">{{ $item->attributes->color }}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach
+                                                            <li>
+                                                                <div class="pd">
+                                                                    <div class="top-subtotal" style="font-weight:bold; color:#F34111;">Tổng tiền:
+                                                                        <span class="price">{{ number_format($subtotal,0 ,',', '.') }}đ</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pd right_ct">
+                                                                    <a href="{{ route('fe.cart.checkout') }}" class="btn btn-primary">
+                                                                        <span>Giỏ hàng</span>
+                                                                    </a>
+                                                                    <a href="{{ route('fe.cart.pay') }}" class="btn btn-white">
+                                                                        <span>Thanh toán</span>
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="top-cart-contain f-right hidden-lg hidden-md visible-xs visible-sm">
                                             <div class="mini-cart text-xs-center">
                                                 <div class="heading-cart">
-                                                    <a class="bg_cart" href="index630e.html?route=checkout/cart"
+                                                    <a class="bg_cart" href="{{ route('fe.cart.checkout') }}"
                                                         title="Giỏ hàng">
-                                                        <span class="absolute count_item count_item_pr">0</span>
-                                                        <img alt="Giỏ hàng"
+                                                        <span class="absolute count_item count_item_pr">{{ Cart::getContent()->count() }}</span>
+                                                        <img
+                                                            alt="Giỏ hàng"
                                                             src="frontend/catalog/view/theme/bigboom/image/icon-bag.png" />
                                                     </a>
                                                 </div>
