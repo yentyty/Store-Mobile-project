@@ -58,11 +58,8 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/cart/checkout', 'HomeController@checkout')->name('fe.cart.checkout');
     Route::post('addCart/{product}', ['uses' => 'HomeController@addCart', 'as' => 'addCart']);
     Route::post('updateCart/{rowId}', ['uses' => 'HomeController@updateCart', 'as' => 'updateCart']);
-    Route::delete('deleteCart/{rowId}', ['uses' => 'HomeController@deleteCart','as' => 'deleteCart']);
+    Route::delete('deleteCart/{rowId}', ['uses' => 'HomeController@deleteCart', 'as' => 'deleteCart']);
     //thanh toán
     Route::get('/cart/pay', 'HomeController@pay')->name('fe.cart.pay');
-    Route::post('success', [
-        'uses' => 'HomeController@store',
-        'as' => 'makeOrder'
-    ]);
+    Route::post('success', ['uses' => 'HomeController@store', 'as' => 'makeOrder']);
 });

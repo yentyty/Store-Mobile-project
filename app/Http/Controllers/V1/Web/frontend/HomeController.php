@@ -173,8 +173,7 @@ class HomeController extends Controller
     public function store(BillRequest $request)
     {
         date_default_timezone_set("Asia/Ho_Chi_Minh");
-        if(Cart::getContent()->count() == 0)
-        {
+        if (Cart::getContent()->count() == 0) {
             return back()->withErrors('Bạn chưa chọn sản phẩm nào');
         }
         //lấy dữ liệu để tạo order
@@ -188,21 +187,17 @@ class HomeController extends Controller
         $data['address'] = $request->address;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
-
         if ($request->user_id != '') {
             $data['user_id'] = $request->user_id;
         }
         if ($request->note != '') {
             $data['note'] = $request->note;
         }
-        else {
-            $data['note'] = $request->note;
-        }
         Bill::create($data);
         //lấy dữ liệu để tạo order_detail
         $bill_id = Bill::orderBy('id', 'desc')->first()->id;
         $detail = [];
-        foreach ($cart as $item) {
+        foreach ($cart as $item){
             $detail['bill_id'] = $bill_id;
             $detail['product_id'] = $item->id;
             $detail['amount'] = $item->price * $item->quantity;
