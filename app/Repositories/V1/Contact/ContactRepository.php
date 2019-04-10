@@ -4,9 +4,10 @@ namespace App\Repositories\V1\Contact;
 
 use App\Repositories\BaseRepository;
 use App\Models\Contact;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\FeedbackMail;
+use Illuminate\Support\Facades\DB;
+
 
 class ContactRepository extends BaseRepository implements ContactRepositoryInterface
 {
@@ -30,6 +31,12 @@ class ContactRepository extends BaseRepository implements ContactRepositoryInter
         return $contacts;
     }
 
+    public function store($data)
+    {
+        Mail::to($data['email'])->send(new FeedbackMail($data));
+
+        return $this->model->create($data);
+    }
     public function changestatus($data)
     {
         $id = $data['id'];
