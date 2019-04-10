@@ -201,7 +201,7 @@ class HomeController extends Controller
         //lấy dữ liệu để tạo order_detail
         $bill_id = Bill::orderBy('id', 'desc')->first()->id;
         $detail = [];
-        foreach ($cart as $item){
+        foreach ($cart as $item) {
             $detail['bill_id'] = $bill_id;
             $detail['product_id'] = $item->id;
             $detail['amount'] = $item->price * $item->quantity;
