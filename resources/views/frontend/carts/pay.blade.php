@@ -38,6 +38,15 @@
                                         {{ Form::label('ht', 'Tên Đầy Đủ <span style="color:red;">*</span>', ['class' => 'control-label col-md-2', 'for' => 'input-firstname'], false) }}
                                         <div class="col-sm-10">
                                             {{ Form::text('username', isset(Auth::user()->id) ? Auth::user()->username : null, ['class' => 'form-control', 'id' => 'input-firstname', 'placeholder' => 'Ví dụ: Nguyễn Văn A']) }}
+                                            @if ($errors->has('username'))
+                                                <div>
+                                                    <ul>
+                                                        @foreach ($errors->get('username') as $error)
+                                                        <li style="color:red;">{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="row">
@@ -46,6 +55,15 @@
                                                 {{ Form::label('em', 'Email <span style="color:red;">*</span>', ['class' => 'control-label col-sm-4', 'for' => 'input-email'], false) }}
                                                 <div class="col-sm-8">
                                                     {{ Form::email('email', isset(Auth::user()->id) ? Auth::user()->email : null,['class' => 'form-control', 'id' => 'input-email', 'placeholder' => 'contact@yourdomain.com']) }}
+                                                    @if ($errors->has('email'))
+                                                        <div>
+                                                            <ul>
+                                                                @foreach ($errors->get('email') as $error)
+                                                                <li style="color:red;">{{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -54,6 +72,15 @@
                                                 {{ Form::label('ph', 'Điện Thoại <span style="color:red;">*</span>', ['class' => 'control-label col-sm-4', 'for' => 'input-telephone'], false) }}
                                                 <div class="col-sm-8">
                                                     {{ Form::number('phone', isset(Auth::user()->id) ? Auth::user()->phone : null,['class' => 'form-control', 'id' => 'input-telephone', 'placeholder' => 'Ví dụ: 01234567890']) }}
+                                                    @if ($errors->has('phone'))
+                                                        <div>
+                                                            <ul>
+                                                                @foreach ($errors->get('phone') as $error)
+                                                                <li style="color:red;">{{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -62,6 +89,15 @@
                                         {{ Form::label('ad', 'Địa Chỉ <span style="color:red;">*</span>', ['class' => 'control-label col-md-2', 'for' => 'input-address'], false) }}
                                         <div class="col-sm-10">
                                             {{ Form::text('address', isset(Auth::user()->id) ? Auth::user()->address : null, ['class' => 'form-control', 'id' => 'input-address', 'placeholder' => 'Ví dụ: Số 102, Hùng Vương, tp.Tam Kỳ']) }}
+                                            @if ($errors->has('address'))
+                                                <div>
+                                                    <ul>
+                                                        @foreach ($errors->get('address') as $error)
+                                                        <li style="color:red;">{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -69,7 +105,16 @@
                                         <div class="col-sm-10">
                                             {{ Form::textarea('note', '', ['class' => 'form-control', 'id' => 'input-comment', 'rows' => '3', 'placeholder' => 'Ví dụ: Chuyển hàng ngoài giờ hành chính']) }}
                                             {{ Form::hidden('user_id', isset(Auth::user()->id) ? Auth::user()->id : null, ['class' => 'form-control', 'id' => 'input-address', 'placeholder' => 'Ví dụ: Số 102, Hùng Vương, tp.Tam Kỳ']) }}                                        </div>
-                                    </div>
+                                            @if ($errors->has('note'))
+                                                <div>
+                                                    <ul>
+                                                        @foreach ($errors->get('note') as $error)
+                                                        <li style="color:red;">{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                        </div>
                                     <hr>
                                     <div class="form-group">
                                         <div class="col-sm-12">

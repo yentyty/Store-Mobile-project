@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Input;
 use App\Models\Product;
 use App\Models\Bill;
 use App\Models\BillDetail;
+use App\Http\Requests\Bills\BillRequest;
 
 class HomeController extends Controller
 {
@@ -54,12 +55,14 @@ class HomeController extends Controller
         $banners = $this->repoBanner->paginate(5);
         $offers = $this->repoOffer->paginate(2);
         $news = $this->repoNews->paginate(4);
+
         return view('frontend.home.index', compact('fatories', 'banners', 'offers', 'fat', 'news'));
     }
 
     public function getRegister()
     {
         $fatories = $this->repoFactory->index();
+
         return view('frontend.register.index', compact('fatories'));
     }
 
@@ -143,7 +146,6 @@ class HomeController extends Controller
 
     public function updateCart(Request $request)
     {
-
         Cart::update($request['rowId'], array(
             'quantity' => array(
                 'relative' => false,
@@ -168,7 +170,7 @@ class HomeController extends Controller
         return view('frontend.carts.pay', compact('fatories'));
     }
 
-    public function store(Request $request)
+    public function store(BillRequest $request)
     {
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         if(Cart::getContent()->count() == 0)
@@ -193,6 +195,9 @@ class HomeController extends Controller
         if ($request->note != '') {
             $data['note'] = $request->note;
         }
+        else {
+            $data['note'] = $request->note;
+        }
         Bill::create($data);
         //lấy dữ liệu để tạo order_detail
         $bill_id = Bill::orderBy('id', 'desc')->first()->id;
@@ -201,7 +206,6 @@ class HomeController extends Controller
             $detail['bill_id'] = $bill_id;
             $detail['product_id'] = $item->id;
             $detail['amount'] = $item->price * $item->quantity;
-
             //lấy lại giá gốc
             $item->price = ($item->price * 100) / (100 - $item->attributes['promotion']);
             $detail['price'] = $item->price;
