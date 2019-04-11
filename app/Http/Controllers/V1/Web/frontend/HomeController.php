@@ -22,6 +22,7 @@ use App\Models\Product;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Http\Requests\Bills\BillRequest;
+use App\Repositories\V1\Product\ProductRepositoryInterface;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,7 @@ class HomeController extends Controller
     protected $repoUser;
     protected $repoUserRole;
     protected $repoNews;
+    protected $repoProduct;
 
     public function __construct(
         BannerRepositoryInterFace $repoBanner,
@@ -38,7 +40,8 @@ class HomeController extends Controller
         OfferRepositoryInterFace $repoOffer,
         UserRepositoryInterFace $repositoryUser,
         UserRoleRepositoryInterFace $repositoryUserRole,
-        NewsRepositoryInterFace $repoNews
+        NewsRepositoryInterFace $repoNews,
+        ProductRepositoryInterface $repoProduct
     ) {
         $this->repoBanner = $repoBanner;
         $this->repoFactory = $repoFactory;
@@ -46,6 +49,7 @@ class HomeController extends Controller
         $this->repoUser = $repositoryUser;
         $this->repoUserRole = $repositoryUserRole;
         $this->repoNews = $repoNews;
+        $this->repoProduct = $repoProduct;
     }
 
     public function index()
@@ -221,5 +225,15 @@ class HomeController extends Controller
         $fatories = $this->repoFactory->index();
 
         return view('frontend.carts.success', compact('fatories'));
+    }
+
+    public function getSearch(Request $request)
+    {
+        if ($request['key']) {
+            $products = $this->repoProduct->search($request['key']);
+        }
+        $fatories = $this->repoFactory->index();
+
+        return view('frontend.search', compact('products', 'fatories'));
     }
 }

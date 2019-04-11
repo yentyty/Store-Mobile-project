@@ -74,16 +74,7 @@
                             <div class="col-lg-6 col-md-6 no-padding col-sm-12 col-xs-12">
                                 <div class="header-left">
                                     <div class="header_search header_searchs">
-                                        <form class="input-group search-bar" role="search" id="search">
-                                            <input type="search" name="search" value="" placeholder="Tìm kiếm"
-                                                class="input-group-field st-default-search-input search-text"
-                                                autocomplete="off" style="padding-left: 1em;">
-                                            <span class="input-group-btn">
-                                                <button class="btn icon-fallback-text">
-                                                    <span class="fa fa-search"></span>
-                                                </button>
-                                            </span>
-                                        </form>
+                                        @include('frontend.layouts.search', ['route' => 'fe.search'])
                                     </div>
                                 </div>
                             </div>
