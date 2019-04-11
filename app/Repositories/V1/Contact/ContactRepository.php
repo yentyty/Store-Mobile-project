@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\FeedbackMail;
 use Illuminate\Support\Facades\DB;
 
-
 class ContactRepository extends BaseRepository implements ContactRepositoryInterface
 {
     public function getModel()
