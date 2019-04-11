@@ -38,6 +38,8 @@ class ContactController extends Controller
     {
         $this->repoContact->store($request->all());
 
-        return redirect()->route('fe.contact.index')->with('msg', 'Bạn đã gửi liên hệ thành công !!! Hệ thống sẽ gửi mail xác nhận');
+        return redirect()
+        ->route('fe.contact.index')
+        ->with('msg', 'Bạn đã gửi liên hệ thành công !!! Hệ thống sẽ gửi mail xác nhận');
     }
 }
