@@ -33,6 +33,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function (
     Route::resource('/bill', 'BillController');
     Route::post('/bill/changestatus', 'BillController@changestatus')->name('bill.changestatus');
     Route::get('/bill/pdfexport/{id}', 'BillController@pdfexport')->name('bill.pdfexport');
+    Route::resource('/service', 'ServiceController');
 });
 
 //Front End
