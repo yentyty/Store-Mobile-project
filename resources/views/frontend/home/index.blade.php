@@ -226,42 +226,20 @@
             <section class="section_service_end">
                 <div class="container">
                     <div class="row row-noGutter-2">
+                        @foreach ($services as $sv)
                         <div class="col-item-srv col-md-4 col-sm-12 col-xs-12">
                             <div class="service_item_ed">
                                 <span class="iconx">
-                                    <img src="frontend/image/cache/catalog/services/srv-1-0x0.png" alt="Giao hàng toàn quốc"
+                                    <img src="uploads/images/services/{{ $sv->icon }}" alt="{{ $sv->name }}"
                                         class="fa" />
                                 </span>
                                 <div class="content_srv">
-                                    <span class="title_service">Giao hàng toàn quốc</span>
-                                    <span class="content_service">Miễn phí với đơn hàng trị giá trên 800.000đ</span>
+                                    <span class="title_service">{{ $sv->name }}</span>
+                                    <span class="content_service">{{ strip_tags(str_limit($sv->description, 40)) }}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-item-srv col-md-4 col-sm-12 col-xs-12">
-                            <div class="service_item_ed">
-                                <span class="iconx">
-                                    <img src="frontend/image/cache/catalog/services/srv-2-0x0.png" alt="Hoàn tiền 100%"
-                                        class="fa" />
-                                </span>
-                                <div class="content_srv">
-                                    <span class="title_service">Hoàn tiền 100%</span>
-                                    <span class="content_service">Hoàn tiền 100% đối với sản phẩm bị lỗi</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item-srv col-md-4 col-sm-12 col-xs-12">
-                            <div class="service_item_ed">
-                                <span class="iconx">
-                                    <img src="frontend/image/cache/catalog/services/srv-3-0x0.png"
-                                        alt="Sản phẩm chính hãng 100%" class="fa" />
-                                </span>
-                                <div class="content_srv">
-                                    <span class="title_service">Sản phẩm chính hãng 100%</span>
-                                    <span class="content_service">Sản phẩm được nhập khẩu chính hãng</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </section>

@@ -166,6 +166,20 @@
                             <i class="fa fa-envelope"></i> Contacts
                         </a>
                     </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-list-alt" aria-hidden="true"></i> Services
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('service.index') }}">List Service</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('service.create') }}">Create Service</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

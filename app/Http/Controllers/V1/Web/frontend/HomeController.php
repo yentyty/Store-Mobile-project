@@ -23,6 +23,7 @@ use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Http\Requests\Bills\BillRequest;
 use App\Repositories\V1\Product\ProductRepositoryInterface;
+use App\Repositories\V1\Service\ServiceRepositoryInterface;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,7 @@ class HomeController extends Controller
     protected $repoUserRole;
     protected $repoNews;
     protected $repoProduct;
+    protected $repoService;
 
     public function __construct(
         BannerRepositoryInterFace $repoBanner,
@@ -41,7 +43,8 @@ class HomeController extends Controller
         UserRepositoryInterFace $repositoryUser,
         UserRoleRepositoryInterFace $repositoryUserRole,
         NewsRepositoryInterFace $repoNews,
-        ProductRepositoryInterface $repoProduct
+        ProductRepositoryInterface $repoProduct,
+        ServiceRepositoryInterface $repoService
     ) {
         $this->repoBanner = $repoBanner;
         $this->repoFactory = $repoFactory;
@@ -50,6 +53,7 @@ class HomeController extends Controller
         $this->repoUserRole = $repositoryUserRole;
         $this->repoNews = $repoNews;
         $this->repoProduct = $repoProduct;
+        $this->repoService = $repoService;
     }
 
     public function index()
@@ -59,8 +63,9 @@ class HomeController extends Controller
         $banners = $this->repoBanner->paginate(5);
         $offers = $this->repoOffer->paginate(2);
         $news = $this->repoNews->paginate(4);
+        $services = $this->repoService->paginate(3);
 
-        return view('frontend.home.index', compact('fatories', 'banners', 'offers', 'fat', 'news'));
+        return view('frontend.home.index', compact('fatories', 'banners', 'offers', 'fat', 'news', 'services'));
     }
 
     public function getRegister()
