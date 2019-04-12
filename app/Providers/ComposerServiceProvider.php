@@ -24,5 +24,6 @@ class ComposerServiceProvider extends ServiceProvider
     {
         view()->composer('*', 'App\Http\ViewComposers\MenuComposer');
         view()->composer('*', 'App\Http\ViewComposers\FooterComposer');
+        view()->composer('*', 'App\Http\ViewComposers\LogoComposer');
     }
 }
