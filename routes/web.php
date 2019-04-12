@@ -34,6 +34,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function (
     Route::post('/bill/changestatus', 'BillController@changestatus')->name('bill.changestatus');
     Route::get('/bill/pdfexport/{id}', 'BillController@pdfexport')->name('bill.pdfexport');
     Route::resource('/service', 'ServiceController');
+    Route::resource('/logo', 'LogoController');
 });
 
 //Front End

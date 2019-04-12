@@ -67,7 +67,9 @@
                             <div class="col-lg-3 col-md-3">
                                 <div class="logo">
                                     <a href="{{ route('fe.home.index') }}" class="logo-wrapper ">
-                                        <img src="frontend/image/catalog/logo/logo.png" alt="Bigboom">
+                                        @foreach ($logos as $logo)
+                                            <img src="uploads/images/logos/{{ $logo->image }}" alt="Bigboom">
+                                        @endforeach
                                     </a>
                                 </div>
                             </div>
@@ -169,7 +171,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
