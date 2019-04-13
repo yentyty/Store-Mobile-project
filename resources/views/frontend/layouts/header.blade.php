@@ -67,7 +67,7 @@
                             <div class="col-lg-3 col-md-3">
                                 <div class="logo">
                                     <a href="{{ route('fe.home.index') }}" class="logo-wrapper ">
-                                        @foreach ($logos as $logo)
+                                        @foreach ($logosAll as $logo)
                                             <img src="uploads/images/logos/{{ $logo->image }}" alt="Bigboom">
                                         @endforeach
                                     </a>

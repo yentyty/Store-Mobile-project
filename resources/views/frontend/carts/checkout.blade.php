@@ -49,6 +49,7 @@
                                 <td class="text-center"><strong>Sản phẩm</strong></td>
                                 <td class="text-center"><strong>Màu</strong></td>
                                 <td class="text-center"><strong>Đơn giá</strong></td>
+                                <td class="text-center"><strong>Khuyến mãi</strong></td>
                                 <td class="text-center"><strong>Số lượng</strong></td>
                                 <td class="text-center"><strong>Tổng</strong></td>
                                 <td class="text-center"><strong>Cập nhật</strong></td>
@@ -69,7 +70,8 @@
                                 <td class="text-center">
                                     {{ $item->attributes->color }}
                                 </td>
-                                <td class="text-right"> {{ number_format($item->price,0 ,',', '.') }}đ </td>
+                                <td class="text-right"> {{ number_format(($item->price * 100) / (100 - $item->attributes['promotion']),0 ,',', '.') }}đ </td>
+                                <td class="text-right" style="text-align:center;"> {{ $item->attributes->promotion }}% </td>
                                 <td class="text-left">
                                     <div class="input-group btn-block">
                                         <span class="input-group-btn">
@@ -88,6 +90,7 @@
                                             id="qtyItem{{ $item->id }}"
                                             class="form-control input-text text-center number-sidebar input_pop input_pop"
                                             style="padding: 0; min-width: 90px"
+                                            readonly="readonly"
                                         >
                                         <span class="input-group-btn">
                                             <button
@@ -121,7 +124,7 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <td class="text-right">Thành tiền:</td>
+                                    <td class="text-right" style="font-weight:bold;">Thành tiền:</td>
                                     <td class="text-right"><strong>{{ number_format($subtotal,0 ,',', '.') }}đ</strong></td>
                                 </tr>
                             </tbody>
