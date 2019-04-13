@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 // backend routes
-Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function () {
+Route::get('admin/login', 'V1\Web\backend\AdminController@getlogin')->name('be.login');
+Route::post('admin/login', 'V1\Web\Backend\AdminController@postLogin')->name('be.postLogin');
+Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::resource('/user', 'UserController');
     Route::resource('/news', 'NewsController');
@@ -35,6 +37,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend'], function (
     Route::get('/bill/pdfexport/{id}', 'BillController@pdfexport')->name('bill.pdfexport');
     Route::resource('/service', 'ServiceController');
     Route::resource('/logo', 'LogoController');
+    Route::get('/logout', 'AdminController@logout');
 });
 
 //Front End

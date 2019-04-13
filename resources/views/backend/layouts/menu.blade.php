@@ -7,23 +7,10 @@
             </a>
         </div>
         <div class="clearfix"></div>
-        <div class="profile clearfix">
-            <div class="profile_pic">
-                <img
-                    src="backend/images/img.jpg"
-                    alt="..."
-                    class="img-circle profile_img"
-                >
-            </div>
-            <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
-            </div>
-        </div>
         <br>
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section active">
-                <h3>General</h3>
+                <h3>Menu</h3>
                 <ul class="nav side-menu">
                     <li class="">
                         <a href="{{ route('home.index') }}">
