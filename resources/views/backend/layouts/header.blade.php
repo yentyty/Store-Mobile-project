@@ -12,7 +12,7 @@
                         data-toggle="dropdown"
                         aria-expanded="false"
                     >
-                        <img src="backend/images/img.jpg" alt="">John Doe
+                        <img src="uploads/images/users/@if(Auth::user()){{Auth::user()->avatar}}@endif" alt="">{{Auth::user()->name}}
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -29,7 +29,7 @@
                             <a href="javascript:;">Help</a>
                         </li>
                         <li>
-                            <a href="login.html">
+                            <a href="{{ asset('admin/logout') }}">
                                 <i class="fa fa-sign-out pull-right"></i> Log Out
                             </a>
                         </li>
