@@ -26,6 +26,6 @@ class LogoComposer
     public function compose(View $view)
     {
         $logos = $this->repoLogo->paginate(1);
-        $view->with('logos', $logos);
+        $view->with('logosAll', $logos);
     }
 }

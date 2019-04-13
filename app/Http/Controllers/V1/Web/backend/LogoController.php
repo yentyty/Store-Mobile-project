@@ -26,7 +26,8 @@ class LogoController extends Controller
 
     public function index(Request $request)
     {
-        $logos = $this->repoLogo->paginate();
+        $logos = $this->repoLogo->paginate(5);
+
         if ($request['key']) {
             $logos = $this->repoLogo->search($request['key']);
         }
