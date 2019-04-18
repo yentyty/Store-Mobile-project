@@ -38,6 +38,8 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware
     Route::resource('/service', 'ServiceController');
     Route::resource('/logo', 'LogoController');
     Route::get('/logout', 'AdminController@logout');
+    Route::get('/statistics/product', ['uses' => 'StatisticController@getProductBill', 'as' => 'statistic.getproductbill']);
+    Route::get('/statistics/bill', ['uses' => 'StatisticController@getBill', 'as' => 'statistic.getbill']);
 });
 
 //Front End

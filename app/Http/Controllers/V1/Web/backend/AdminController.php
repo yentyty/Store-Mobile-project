@@ -18,7 +18,6 @@ class AdminController extends Controller
 
     public function getLogin()
     {
-
         if (!Auth::user()) {
             return view('backend.login');
         }
@@ -43,6 +42,6 @@ class AdminController extends Controller
     {
         $this->repository->logout();
 
-        return redirect()->back()->with('msg', 'Logout in successfully !');;
+        return redirect()->back()->with('msg', 'Logout in successfully !');
     }
 }

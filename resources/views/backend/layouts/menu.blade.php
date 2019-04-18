@@ -155,6 +155,20 @@
                     </li>
                     <li>
                         <a>
+                            <i class="fa fa-building-o" aria-hidden="true"></i> Statistics
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ route('statistic.getproductbill') }}">Statistics Products</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('statistic.getbill') }}">Statistics Bills</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
                             <i class="fa fa-list-alt" aria-hidden="true"></i> Services
                             <span class="fa fa-chevron-down"></span>
                         </a>

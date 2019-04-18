@@ -60,4 +60,31 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
 
         return $bills;
     }
+
+    public function staticProduct($month, $year)
+    {
+        $products = DB::table("bill_details")
+        ->select(DB::raw(" *, SUM(bill_details.quantity) as qty"))
+        ->join("bills", "bills.id", "=", "bill_details.bill_id")
+        ->where("status", "!=" ,0)
+        ->whereMonth("bills.created_at", $month)
+        ->whereYear("bills.created_at", $year)
+        ->groupBy("bill_details.product_id")
+        ->take(10)
+        ->get();
+
+        return $products;
+    }
+
+    public function staticBill($month, $year)
+    {
+        $bills = DB::table("bills")
+        ->where("status", "!=", 0)
+        ->whereMonth("bills.created_at", $month)
+        ->whereYear("bills.created_at", $year)
+        ->take(10)
+        ->get();
+
+        return $bills;
+    }
 }
