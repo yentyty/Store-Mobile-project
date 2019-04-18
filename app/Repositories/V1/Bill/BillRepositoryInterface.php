@@ -11,4 +11,8 @@ interface BillRepositoryInterface
     public function pdfexport($id);
 
     public function countBill();
+
+    public function staticProduct($month, $year);
+
+    public function staticBill($month, $year);
 }
