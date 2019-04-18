@@ -27,27 +27,27 @@ class StatisticController extends Controller
 
     public function getProductBill(Request $request)
     {
-        if(empty($request->month)){
+        if (empty($request->month)) {
             $request->month = date('m');
         }
-        if(empty($request->year)){
+        if (empty($request->year)) {
             $request->year = date('Y');
         }
         $products = $this->repoBill->staticProduct($request['month'], $request['year']);
 
-        return view('backend.statistics.staticproduct', ['products'=>$products]);
+        return view('backend.statistics.staticproduct', ['products' => $products]);
     }
 
     public function getBill(Request $request)
     {
-        if(empty($request->month)){
+        if (empty($request->month)) {
             $request->month = date('m');
         }
-        if(empty($request->year)){
+        if (empty($request->year)) {
             $request->year = date('Y');
         }
         $bills = $this->repoBill->staticBill($request['month'], $request['year']);
 
-        return view('backend.statistics.staticbill', ['bills'=>$bills]);
+        return view('backend.statistics.staticbill', ['bills' => $bills]);
     }
 }
