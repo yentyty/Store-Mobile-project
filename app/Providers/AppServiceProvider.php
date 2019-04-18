@@ -33,6 +33,8 @@ use App\Repositories\V1\Service\ServiceRepository;
 use App\Repositories\V1\Service\ServiceRepositoryInterface;
 use App\Repositories\V1\Logo\LogoRepository;
 use App\Repositories\V1\Logo\LogoRepositoryInterface;
+use App\Repositories\V1\Comment\CommentRepository;
+use App\Repositories\V1\Comment\CommentRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -68,5 +70,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BillRepositoryInterface::class, BillRepository::class);
         $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
         $this->app->bind(LogoRepositoryInterface::class, LogoRepository::class);
+        $this->app->bind(CommentRepositoryInterface::class, CommentRepository::class);
     }
 }

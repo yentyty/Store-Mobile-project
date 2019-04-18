@@ -153,6 +153,11 @@
                             <i class="fa fa-envelope"></i> Contacts
                         </a>
                     </li>
+                    <li class="">
+                            <a href="{{ route('comment.index') }}">
+                                <i class="fa fa-envelope"></i> Comment
+                            </a>
+                        </li>
                     <li>
                         <a>
                             <i class="fa fa-building-o" aria-hidden="true"></i> Statistics
