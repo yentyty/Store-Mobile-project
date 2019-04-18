@@ -36,6 +36,7 @@ class ContactRepository extends BaseRepository implements ContactRepositoryInter
 
         return $this->model->create($data);
     }
+
     public function changestatus($data)
     {
         $id = $data['id'];

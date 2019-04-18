@@ -39,4 +39,9 @@ class User extends Model
     {
         return $this->hasMany('App\Models\Bill', 'user_id', 'id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'user_id', 'id');
+    }
 }
