@@ -42,7 +42,9 @@
                                     </header>
                                     <table class="table table-striped table-advance table-hover">
                                         <tbody>
-                                            <tr><p style="font-weight:bold;">Statistics are {{count($bills)}} results</p></tr>
+                                        <tr>
+                                            <p style="font-weight:bold;">Statistics are {{count($bills)}} results</p>
+                                        </tr>
                                         <tr>
                                             <th>#</th>
                                             <th><i class="icon_info_alt"></i> Product Name</th>
