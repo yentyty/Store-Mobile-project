@@ -41,7 +41,8 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware
     Route::get('/statistics/product', ['uses' => 'StatisticController@getProductBill', 'as' => 'statistic.getproductbill']);
     Route::get('/statistics/bill', ['uses' => 'StatisticController@getBill', 'as' => 'statistic.getbill']);
     Route::resource('/comment', 'CommentController');
-    Route::post('/comment/changestatus', 'CommentController@changestatus')->name('comment.changestatus');
+    Route::post('/comment/changestatus', 'CommentController@changestatus')
+    ->name('comment.changestatus');
 });
 
 //Front End
