@@ -35,6 +35,7 @@
         src="frontend/catalog/view/theme/bigboom/javascript/jquery-3.3.1.mine47b.js?v=1522720225"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link href="frontend/catalog/view/theme/bigboom/stylesheet_custom/stylesheete47b.css?v=1522720225" rel="stylesheet" />
+    <link rel="stylesheet" href="frontend/style.css">
 </head>
 <body class="common-home">
     @if(session('msg'))

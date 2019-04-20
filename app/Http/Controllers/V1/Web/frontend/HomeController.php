@@ -24,6 +24,7 @@ use App\Models\BillDetail;
 use App\Http\Requests\Bills\BillRequest;
 use App\Repositories\V1\Product\ProductRepositoryInterface;
 use App\Repositories\V1\Service\ServiceRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -222,7 +223,16 @@ class HomeController extends Controller
             $detail['product_color'] = $item->attributes['color'];
             $detail['product_promotion'] = $item->attributes['promotion'];
             $detail['product_storage'] = $item->attributes['storage'];
-
+            // trừ số lượng sau khi đặt hàng thành công
+            $l_prod = $item->quantity;
+            $product = Product::find( $detail['product_id'])->get();
+            foreach ($product as $pr){
+                $qt = $pr->in_stock;
+                $qt_update = ($qt - $l_prod);
+                $update = Product::where('id', $item->id)->update(['in_stock' => $qt_update]);
+                break;
+            }
+            //Lưu đơn hàng
             BillDetail::create($detail);
             $detail = [];
         }
