@@ -94,7 +94,7 @@
                                         >
                                         <span class="input-group-btn">
                                             <button
-                                                onclick="var result = document.getElementById('qtyItem{{ $item->id }}'); var qtyItem = result.value; if(!isNaN(qtyItem) &amp;&amp; qtyItem < 10) result.value++; return false;"
+                                                onclick="var result = document.getElementById('qtyItem{{ $item->id }}'); var qtyItem = result.value; if(!isNaN(qtyItem) &amp;&amp; qtyItem < {{$item->attributes['in_stock']}}) result.value++; return false;"
                                                 class="btn items-count btn-plus"
                                                 type="button"
                                             >

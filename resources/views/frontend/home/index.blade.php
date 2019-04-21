@@ -101,7 +101,9 @@
                                                                     @if ($pr->in_stock > 0)
                                                                         {!! Form::open(['url' => 'addCart/'. $pr->id, 'class' => 'variants form-nut-grid']) !!}
                                                                             <div>
+
                                                                                 {{ Form::hidden('color', 'Trắng') }}
+                                                                                {{ Form::hidden('in_stock', $pr->in_stock) }}
                                                                                 {{  Form::button('<i class="fa fa-refresh"></i> Mua ngay', ['type' => 'submit', 'class' => 'btn-cart button_wh_40 left-to', 'title' => 'Mua ngay']) }}
                                                                                 <a
                                                                                     title="Xem"
