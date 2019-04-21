@@ -87,4 +87,13 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
 
         return $bills;
     }
+
+    public function getbill($id)
+    {
+        $bills = DB::table('bills')
+        ->where('user_id', '=', $id)
+        ->get();
+
+        return $bills;
+    }
 }

@@ -25,6 +25,7 @@ use App\Http\Requests\Bills\BillRequest;
 use App\Repositories\V1\Product\ProductRepositoryInterface;
 use App\Repositories\V1\Service\ServiceRepositoryInterface;
 use Illuminate\Support\Facades\DB;
+use App\Repositories\V1\Bill\BillRepositoryInterface;
 
 class HomeController extends Controller
 {
@@ -36,6 +37,7 @@ class HomeController extends Controller
     protected $repoNews;
     protected $repoProduct;
     protected $repoService;
+    protected $repoBill;
 
     public function __construct(
         BannerRepositoryInterFace $repoBanner,
@@ -45,7 +47,8 @@ class HomeController extends Controller
         UserRoleRepositoryInterFace $repositoryUserRole,
         NewsRepositoryInterFace $repoNews,
         ProductRepositoryInterface $repoProduct,
-        ServiceRepositoryInterface $repoService
+        ServiceRepositoryInterface $repoService,
+        BillRepositoryInterface $repoBill
     ) {
         $this->repoBanner = $repoBanner;
         $this->repoFactory = $repoFactory;
@@ -55,6 +58,7 @@ class HomeController extends Controller
         $this->repoNews = $repoNews;
         $this->repoProduct = $repoProduct;
         $this->repoService = $repoService;
+        $this->repoBill = $repoBill;
     }
 
     public function index()
@@ -248,5 +252,17 @@ class HomeController extends Controller
         $fatories = $this->repoFactory->index();
 
         return view('frontend.search', compact('products', 'fatories'));
+    }
+
+    public function getHistoryBill($id)
+    {
+        $fatories = $this->repoFactory->index();
+        $bills = $this->repoBill->getbill($id);
+        foreach ($bills as $item){
+            $bi_detail = Bill::where('id', $item->id)->get();
+            $bill_detail = BillDetail::where('bill_id', $item->id)->get();
+        }
+
+        return view('frontend.register.history', compact('fatories', 'bills', 'bill_detail'));
     }
 }

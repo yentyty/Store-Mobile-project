@@ -7,7 +7,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                     </div>
                     @if(Auth::user())
-                    <div class="col-md-6 col-sm-6 d-list col-xs-12 a-right topbar_right">
+                    <div class="col-md-6 col-sm-6 d-list col-xs-12 a-right topbar_right" style="width: 82em;float:right;">
                         <div class="list-inline a-center f-right">
                             <ul>
                                 <li>
@@ -17,9 +17,15 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <a  href="{{ route('fe.bill.history', ['id'=>Auth::user()->id]) }}" title="Lịch sử đặt hàng" class="account_a">
+                                        <span>Lịch Sử Đặt Hàng</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <a href="{{ route('fe.register.editregister') }}" title="Đăng ký" class="account_a">
-                                        <span>Sửa TT Cá Nhân</span>
+                                    <a href="{{ route('fe.register.editregister') }}" title="Sửa thông tin cá nhân" class="account_a">
+                                        <span>Sửa Thông Tin Cá Nhân</span>
                                     </a>
                                 </li>
                                 <li>

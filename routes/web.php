@@ -73,4 +73,6 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     //thanh toán
     Route::get('/cart/pay', 'HomeController@pay')->name('fe.cart.pay');
     Route::post('success', ['uses' => 'HomeController@store', 'as' => 'makeOrder']);
+    //lịch sử
+    Route::get('/bill/history/{id}', 'HomeController@getHistoryBill')->name('fe.bill.history');
 });
