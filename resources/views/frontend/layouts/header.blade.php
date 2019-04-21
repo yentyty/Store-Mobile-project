@@ -148,7 +148,7 @@
                                                                     <a href="{{ route('fe.cart.checkout') }}" class="btn btn-primary">
                                                                         <span>Giỏ hàng</span>
                                                                     </a>
-                                                                    <a href="{{ route('fe.cart.pay') }}" class="btn btn-white">
+                                                                    <a href="{{ route('fe.cart.pay') }}" class="btn btn-success">
                                                                         <span>Thanh toán</span>
                                                                     </a>
                                                                 </div>

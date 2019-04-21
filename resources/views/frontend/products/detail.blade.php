@@ -123,8 +123,12 @@
                                     <div class="form-group form_button_details">
                                         <div class="form_hai ">
                                             <div class="button_actions">
-                                                <input type="hidden" name="product_id" value="194">
+                                                @if( $productdetail->in_stock  > 0)
+                                                {{ Form::hidden('in_stock', $productdetail->in_stock) }}
                                                 {!! Form::button('Thêm vào giỏ hàng',['type' => 'submit', 'class' => 'btn btn-lg btn-block btn-cart button_cart_buy_enable add_to_cart btn_buy', 'id' => 'button-cart']) !!}
+                                                @else
+                                                {!! Form::button('Thêm vào giỏ hàng',['type' => 'submit', 'class' => 'btn btn-lg btn-block btn-cart button_cart_buy_enable add_to_cart btn_buy', 'id' => 'button-cart',  'disabled' => 'disabled']) !!}
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
