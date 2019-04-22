@@ -48,14 +48,18 @@
                     <td>{{ number_format($bill->total, 0, ',' ,'.') }}</td>
                     <td>{{ $bill->created_at }}</td>
                     <td class = "btn-changstatus-{{ $bill->id }}">
-                            <button
-                                class="btn btn-{{ $bill->status == 1 ? 'success' : 'warning' }}"
-                                onclick="changeStatus({{ $bill->id }})"
-                                style="width:100%;"
-                            >
-                                {{ $bill->status == 1 ? 'Đã thanh toán' : 'Chưa thanh toán ' }}
-                            </button>
-                        </td>
+                        @if($bill->status == 2)
+                        <button class="btn btn-danger">Đơn hàng đã hủy</button>
+                        @else
+                        <button
+                            class="btn btn-{{ $bill->status == 1 ? 'success' : 'warning' }}"
+                            onclick="changeStatus({{ $bill->id }})"
+                            style="width:100%;"
+                        >
+                            {{ $bill->status == 1 ? 'Đã thanh toán' : 'Chưa thanh toán ' }}
+                        </button>
+                        @endif
+                    </td>
                     <td>
                         <a
                             href="{{ route('bill.show', ['id'=>$bill->id]) }}"

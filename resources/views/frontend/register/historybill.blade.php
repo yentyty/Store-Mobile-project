@@ -30,14 +30,12 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <td>#</td>
-                                    <td class="text-center"><strong>Sản phẩm</strong></td>
-                                    <td class="text-center"><strong>Đơn giá</strong></td>
-                                    <td class="text-center"><strong>Khuyến mãi</strong></td>
-                                    <td class="text-center"><strong>Số lượng</strong></td>
+                                    <td class="text-center"><strong>Hóa đơn</strong></td>
+                                    <td class="text-center"><strong>Địa chỉ nhận hàng</strong></td>
                                     <td class="text-center"><strong>Tổng tiền</strong></td>
+                                    <td class="text-center"><strong>Ngày đặt</strong></td>
+                                    <td class="text-center"><strong>Chi tiết</strong></td>
                                     <td class="text-center"><strong>Trạng thái</strong></td>
-                                    <td class="text-center">Ngày đặt</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,48 +44,32 @@
                                 <tr>
                                     <td>{{ $i ++ }}</td>
                                     <td>
-                                        <ul>
-                                            @foreach ($bill_detail as $it)
-                                                <li>{{ $it->product_name }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            @foreach ($bill_detail as $it)
-                                                <li>{{ number_format($it->price, 0, ',','.') }} đ</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            @foreach ($bill_detail as $it)
-                                                <li>{{ $it->product_promotion }} %</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            @foreach ($bill_detail as $it)
-                                                <li>{{ $it->quantity }}</li>
-                                            @endforeach
-                                        </ul>
+                                        {{ $item->address }}
                                     </td>
                                     <td>{{ number_format($item->total, 0, ',','.') }} đ</td>
                                     <td>
-                                        @if ($item->status >0)
-                                        Đã thanh toán
-                                        @else
-                                        Chưa thanh toán
-                                        @endif
+                                        {{ $item->created_at }}
                                     </td>
                                     <td>
-                                        {{ $item->created_at }}
+                                        <a href="{{route('fe.bill_detail', $item->id)}}" style="color:blue;">Xem Chi tiết</a>
+                                    </td>
+                                    <td>
+                                        @if ($item->status == 0)
+                                        Chưa thanh toán
+                                        <a
+                                        href="javascript:void(0)"
+                                        onclick="if(confirm('Bạn muốn huỷ đơn hàng này?')){location.href='{{route('fe.bill.cancel', $item->id)}}'}"
+                                        class="btn btn-danger" style="margin-left:1em; border: 1px solid red; border-radius:5%;">Huỷ đơn hàng</a>
+                                        @elseif ($item->status == 1)
+                                        <p style="color:green; font-weight: bold;">Đã thanh toán</p>
+                                        @elseif ($item->status == 2)
+                                        <p style="color:red; font-weight: bold;">Đơn hàng đã hủy</p>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                            </table>
+                        </table>
                     </fieldset>
                 </div>
             </div>

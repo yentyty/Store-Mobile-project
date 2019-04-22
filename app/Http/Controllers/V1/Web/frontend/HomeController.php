@@ -270,6 +270,22 @@ class HomeController extends Controller
         // ->get();
         // }
 
-        return view('frontend.register.history', compact('fatories', 'bills', 'bill_detail'));
+        return view('frontend.register.historybill', compact('fatories', 'bills', 'bill_detail'));
+    }
+
+    public function bill_detail($id)
+    {
+        $bill_detail = $this->repoBill->find($id);
+        $fatories = $this->repoFactory->index();
+
+        return view('frontend.register.historybilldetail', compact('bill_detail', 'fatories'));
+    }
+
+    public function cancelBill($id)
+    {
+        $bill = $this->repoBill->find($id);
+        $bill->status = 2;
+        $bill->update();
+        return back();
     }
 }
