@@ -259,17 +259,13 @@ class HomeController extends Controller
 
         $fatories = $this->repoFactory->index();
         $bills = $this->repoBill->getbill($id);
-
         foreach ($bills as $item){
-
             $bill_detail = BillDetail::where('bill_id', $item->id)->orderBy('created_at', 'desc')->get();
         }
         // foreach ($bills as $item){
-
         // $bill_detail = DB::table('bill_details')
         // ->select(DB::raw('*'))
         // ->join('bills', 'bills.id', '=', 'bill_details.bill_id')
-
         // ->groupBy("bill_id")
         // ->get();
         // }
