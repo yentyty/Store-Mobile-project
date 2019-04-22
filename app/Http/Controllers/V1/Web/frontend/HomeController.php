@@ -256,12 +256,23 @@ class HomeController extends Controller
 
     public function getHistoryBill($id)
     {
+
         $fatories = $this->repoFactory->index();
         $bills = $this->repoBill->getbill($id);
+
         foreach ($bills as $item){
-            $bi_detail = Bill::where('id', $item->id)->get();
-            $bill_detail = BillDetail::where('bill_id', $item->id)->get();
+
+            $bill_detail = BillDetail::where('bill_id', $item->id)->orderBy('created_at', 'desc')->get();
         }
+        // foreach ($bills as $item){
+
+        // $bill_detail = DB::table('bill_details')
+        // ->select(DB::raw('*'))
+        // ->join('bills', 'bills.id', '=', 'bill_details.bill_id')
+
+        // ->groupBy("bill_id")
+        // ->get();
+        // }
 
         return view('frontend.register.history', compact('fatories', 'bills', 'bill_detail'));
     }
