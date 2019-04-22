@@ -69,7 +69,7 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
         ->where('status', '!=', 0)
         ->whereMonth('bills.created_at', $month)
         ->whereYear('bills.created_at', $year)
-        ->groupBy("bill_details.product_id")
+        ->groupBy('bill_details.product_id')
         ->take(10)
         ->get();
 
@@ -83,6 +83,15 @@ class BillRepository extends BaseRepository implements BillRepositoryInterface
         ->whereMonth('bills.created_at', $month)
         ->whereYear('bills.created_at', $year)
         ->take(10)
+        ->get();
+
+        return $bills;
+    }
+
+    public function getbill($id)
+    {
+        $bills = DB::table('bills')
+        ->where('user_id', '=', $id)
         ->get();
 
         return $bills;

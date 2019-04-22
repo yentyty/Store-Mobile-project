@@ -15,4 +15,6 @@ interface BillRepositoryInterface
     public function staticProduct($month, $year);
 
     public function staticBill($month, $year);
+
+    public function getbill($id);
 }

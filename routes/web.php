@@ -38,8 +38,14 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware
     Route::resource('/service', 'ServiceController');
     Route::resource('/logo', 'LogoController');
     Route::get('/logout', 'AdminController@logout');
-    Route::get('/statistics/product', ['uses' => 'StatisticController@getProductBill', 'as' => 'statistic.getproductbill']);
-    Route::get('/statistics/bill', ['uses' => 'StatisticController@getBill', 'as' => 'statistic.getbill']);
+    Route::get('/statistics/product', [
+        'uses' => 'StatisticController@getProductBill',
+        'as' => 'statistic.getproductbill'
+    ]);
+    Route::get('/statistics/bill',[
+        'uses' => 'StatisticController@getBill',
+        'as' => 'statistic.getbill'
+    ]);
     Route::resource('/comment', 'CommentController');
     Route::post('/comment/changestatus', 'CommentController@changestatus')
     ->name('comment.changestatus');
@@ -73,4 +79,6 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     //thanh toán
     Route::get('/cart/pay', 'HomeController@pay')->name('fe.cart.pay');
     Route::post('success', ['uses' => 'HomeController@store', 'as' => 'makeOrder']);
+    //lịch sử đơn hàng đã đặt
+    Route::get('/bill/history/{id}', 'HomeController@getHistoryBill')->name('fe.bill.history');
 });
