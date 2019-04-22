@@ -40,11 +40,11 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware
     Route::get('/logout', 'AdminController@logout');
     Route::get('/statistics/product', [
         'uses' => 'StatisticController@getProductBill',
-        'as' => 'statistic.getproductbill'
+        'as' => 'statistic.getproductbill',
     ]);
     Route::get('/statistics/bill',[
         'uses' => 'StatisticController@getBill',
-        'as' => 'statistic.getbill'
+        'as' => 'statistic.getbill',
     ]);
     Route::resource('/comment', 'CommentController');
     Route::post('/comment/changestatus', 'CommentController@changestatus')
@@ -83,11 +83,11 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/bill/history/{id}', 'HomeController@getHistoryBill')->name('fe.bill.history');
     Route::get('/bill/detail/{id}', [
         'uses' => 'HomeController@bill_detail',
-        'as' => 'fe.bill_detail'
+        'as' => 'fe.bill_detail',
     ]);
     Route::get('cancelBill/{id}', [
         'uses' => 'HomeController@cancelBill',
-        'as' => 'fe.bill.cancel'
+        'as' => 'fe.bill.cancel',
     ]);
 
 });
