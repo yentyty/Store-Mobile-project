@@ -42,11 +42,10 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware
         'uses' => 'StatisticController@getProductBill',
         'as' => 'statistic.getproductbill',
     ]);
-    Route::get('/statistics/bill',[
+    Route::get('/statistics/bill', [
         'uses' => 'StatisticController@getBill',
         'as' => 'statistic.getbill',
     ]);
-
     Route::resource('/comment', 'CommentController');
     Route::post('/comment/changestatus', 'CommentController@changestatus')
     ->name('comment.changestatus');
@@ -90,5 +89,4 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
         'uses' => 'HomeController@cancelBill',
         'as' => 'fe.bill.cancel',
     ]);
-
 });
