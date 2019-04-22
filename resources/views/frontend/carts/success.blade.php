@@ -27,6 +27,7 @@
         <div id="content" class="col-sm-12 col-xs-12 col-md-12">
             <div class="page-information margin-bottom-50">
                 <h1>Bạn Đã đặt hàng thành công !!!</h1>
+                <h3>Chúng tôi sẽ liên hệ với bạn - Nếu có thắc mắc gì hãy liên hệ vs chúng tôi.</h3>
                 <div class="col-sm-6 col-xs-6 col_button_checkout" style="margin-bottom:3em;">
                     <a href="http://store-mobile-project.test" class="btn btn-primary button_checkout">
                         Tiếp tục mua hàng
