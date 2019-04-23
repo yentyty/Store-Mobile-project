@@ -89,4 +89,9 @@ Route::group(['namespace' => 'V1\Web\frontend'], function () {
         'uses' => 'HomeController@cancelBill',
         'as' => 'fe.bill.cancel',
     ]);
+    //Bình luận
+    // Route::post('/comment', [
+    //     'uses' => 'CommentController@store',
+    //     'as' => 'fe.comment'
+    // ]);
 });

@@ -43,4 +43,15 @@ class CommentRepository extends BaseRepository implements CommentRepositoryInter
         $comments = $this->model->find($id);
         $comments->delete();
     }
+
+    public function commment($id)
+    {
+        $comments = Comment::where('id', $id)
+        ->where('status', 1)
+        ->orderBy('parent_id', 'asc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return $comments;
+    }
 }
