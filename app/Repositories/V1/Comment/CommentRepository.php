@@ -48,6 +48,18 @@ class CommentRepository extends BaseRepository implements CommentRepositoryInter
     {
         $comments = Comment::where('product_id', $id)
         ->where('status', 1)
+        ->where('parent_id', '=', NULL)
+        ->orderBy('parent_id', 'asc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return $comments;
+    }
+
+    public function commentReply($id)
+    {
+        $comments = Comment::where('parent_id', $id)
+        ->where('status', 1)
         ->orderBy('parent_id', 'asc')
         ->orderBy('created_at', 'desc')
         ->get();

@@ -9,4 +9,6 @@ interface CommentRepositoryInterface
     public function changestatus($data);
 
     public function commment($id);
+
+    public function commentReply($id);
 }
