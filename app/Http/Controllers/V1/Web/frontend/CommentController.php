@@ -22,20 +22,12 @@ class CommentController extends Controller
         $this->repoFactory = $repoFactory;
     }
 
-    public function index()
+    public function store(Request $request)
     {
-        $fatories = $this->repoFactory->index();
-        $introduce = $this->repoIntroduce->paginate(3);
-
-        return view('frontend.contact.index', compact('fatories', 'introduce'));
-    }
-
-    public function store(CreateContactRequest $request)
-    {
-        $this->repoContact->store($request->all());
+        $this->repoComment->store($request->all());
 
         return redirect()
-        ->route('fe.contact.index')
-        ->with('msg', 'Bạn đã gửi liên hệ thành công !!! Hệ thống sẽ gửi mail xác nhận');
+        ->back()
+        ->with('msg', 'Bạn đã bình luận thành công !!!');
     }
 }

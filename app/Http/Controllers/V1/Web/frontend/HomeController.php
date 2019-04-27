@@ -262,13 +262,6 @@ class HomeController extends Controller
         foreach ($bills as $item){
             $bill_detail = BillDetail::where('bill_id', $item->id)->orderBy('created_at', 'desc')->get();
         }
-        // foreach ($bills as $item){
-        // $bill_detail = DB::table('bill_details')
-        // ->select(DB::raw('*'))
-        // ->join('bills', 'bills.id', '=', 'bill_details.bill_id')
-        // ->groupBy("bill_id")
-        // ->get();
-        // }
 
         return view('frontend.register.historybill', compact('fatories', 'bills', 'bill_detail'));
     }

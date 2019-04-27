@@ -204,22 +204,18 @@
                                                         @if(Auth::check())
                                                         <div class="add-comment" style="margin-bottom: 30px; padding-bottom: 40px; border-bottom: 1px solid #e5e5e5;">
                                                             <p style="font-weight:bold;">BÌNH LUẬN VỀ SẢN PHẨM</p>
-                                                            {{ Form::open(['url' => '/comment']) }}
-                                                            {{ Form::hidden('user_id', Auth::user()->user_id) }}
+                                                            {{ Form::open(['method' => 'POST', 'route' => 'fe.comment.store']) }}
+                                                            {{ Form::hidden('user_id', Auth::user()->id) }}
                                                             {{ Form::hidden('product_id', $productdetail->id) }}
                                                             <div>
-                                                                <textarea
-                                                                    name="content"
-                                                                    placeholder="Mời bạn nhập bình luận ..."
-                                                                    class="form-control"
-                                                                >
-                                                                </textarea>
+                                                            <textarea maxlength="1500" id="review_body" name="content" rows="1" placeholder="Mời bạn nhập bình luận ..."></textarea>
                                                                 @if ($errors->has('content'))
                                                                     <span class="invalid-feedback required" role="alert">
                                                                         <strong>{{ $errors->first('content') }}</strong>
                                                                     </span>
                                                                 @endif
-                                                                {{ Form::submit('Đăng',['class' => 'btn btn-warning', 'style' => 'float:right; margin-top: 5px;']) }}
+                                                            {{ Form::submit('Đăng',['class' => 'btn btn-warning', 'style' => 'float:right; margin-top: 5px;']) }}
+                                                            {{ Form::close() }}
                                                             </div>
                                                         </div>
                                                        @endif
@@ -254,13 +250,7 @@
                                                                     {{ Form::hidden('user_id', Auth::user()->id) }}
                                                                     {{ Form::hidden('parent_id', $comment['id']) }}
                                                                     <div>
-                                                                        <textarea
-                                                                            name="content"
-                                                                            placeholder="Mời bạn nhập bình luận ..."
-                                                                            class="form-control"
-                                                                            style="width: 99%; height: 150px; margin: 0 auto"
-                                                                        >
-                                                                        </textarea>
+                                                                        <textarea maxlength="1500" id="review_body" name="content" rows="1" placeholder="Mời bạn nhập bình luận ..."></textarea>
                                                                         @if ($errors->has('content'))
                                                                         <span class="invalid-feedback required" role="alert">
                                                                             <strong>{{ $errors->first('content') }}</strong>

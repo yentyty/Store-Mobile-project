@@ -42,18 +42,22 @@ class ProductController extends Controller
         $productdetail = $this->repoProduct->detail($id);
         $fatories = $this->repoFactory->index();
         $anotherproduct = $this->repoProduct->anotherProduct($id);
+        //Hiển thị danh sách bình luận
         $comments = $this->repoComment->commment($productdetail->id);
         // Chuyển thời gian bình luận qua tiếng việt
         foreach ($comments as $item){
             $datetime = Carbon::createFromDate(date_format($item['updated_at'], 'd-m-Y h:i:s'));
             $dateComment = $datetime->diffForHumans();
         }
-        $pagins = DB::table('comments')->where([
+        //reply lại bình luận
+        $pagins = DB::table('comments')
+        ->where([
             ['product_id', $productdetail->id],
             ['parent_id', null],
             ['status', 1]
-        ])->orderBy('created_at', 'desc')
-            ->paginate(15);
+        ])
+        ->orderBy('created_at', 'desc')
+        ->paginate(15);
 
         return view('frontend.products.detail', compact('productdetail', 'fatories', 'anotherproduct', 'comments', 'dateComment', 'pagins'));
     }
