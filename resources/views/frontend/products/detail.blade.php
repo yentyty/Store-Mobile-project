@@ -153,10 +153,9 @@
                                             </li>
                                             <li class="tab-link" data-tab="tab-review">
                                                 <h3>
-                                                    <span>Đánh giá (0)</span>
+                                                    <span>Bình Luận({{ count($comments) }})</span>
                                                 </h3>
                                             </li>
-
                                         </ul>
                                         <div class="tab-content current" id="tab-description">
                                             <div class="rte">
@@ -199,72 +198,101 @@
                                         </div>
                                         <div class="tab-content" id="tab-review">
                                             <div class="rte">
+                                                @if (!empty($comments) or Auth::check())
                                                 <div id="zozoweb-product-reviews" class="zozoweb-product-reviews">
                                                     <div class="">
-                                                        <div id="zozoweb-product-reviews-sub">
-                                                            <span class="product-reviews-summary-actions">
-                                                                <input type="button" data-fancybox=""
-                                                                    data-src="#bpr-form" id="btnnewreview"
-                                                                    value="Viết đánh giá">
-                                                            </span>
-                                                            <div class="zozoweb-product-reviews-form fancybox-content"
-                                                                id="bpr-form" style="display: none;">
-                                                                <form id="form-review"
-                                                                    name="zozoweb-product-reviews-frm">
-                                                                    <h4>Viết đánh giá</h4>
-                                                                    <fieldset class="bpr-form-rating">
-                                                                        <div id="dvRating"
-                                                                            style="cursor: pointer; color: rgb(255, 190, 0);">
-                                                                            Chưa tốt&nbsp;
-                                                                            <input type="radio" name="rating"
-                                                                                value="1">&nbsp;
-                                                                            <input type="radio" name="rating"
-                                                                                value="2">&nbsp;
-                                                                            <input type="radio" name="rating"
-                                                                                value="3">&nbsp;
-                                                                            <input type="radio" name="rating"
-                                                                                value="4">&nbsp;
-                                                                            <input type="radio" name="rating"
-                                                                                value="5">&nbsp;
-                                                                            Tốt </div>
-                                                                    </fieldset>
-                                                                    <fieldset class="bpr-form-contact">
-                                                                        <div class="bpr-form-contact-name require">
-                                                                            <input type="text" maxlength="128"
-                                                                                id="review_author" name="name" value=""
-                                                                                placeholder="Họ tên">
-                                                                        </div>
-                                                                        <div class="bpr-form-contact-email require">
-                                                                            <input type="text" maxlength="128"
-                                                                                id="review_email" name="email" value=""
-                                                                                placeholder="Họ tên">
-                                                                        </div>
-                                                                    </fieldset>
-                                                                    <fieldset class="bpr-form-review">
-                                                                        <div class="bpr-form-review-body">
-                                                                            <textarea maxlength="1500" id="review_body"
-                                                                                name="text" rows="5"
-                                                                                placeholder="Nội dung đánh giá"></textarea>
-                                                                            <span class="bpr-form-message-error"><span
-                                                                                    class="text-danger">Chú ý:</span>
-                                                                                Không sử dụng các định dạng HTML!</span>
-                                                                        </div>
-                                                                    </fieldset>
-                                                                    <fieldset class="bpr-form-review">
-                                                                    </fieldset>
-                                                                    <fieldset class="bpr-form-review-error valid">
-                                                                    </fieldset>
-                                                                    <fieldset class="bpr-form-actions">
-                                                                        <input type="button" id="button-review"
-                                                                            value="Tiếp tục"
-                                                                            class="bpr-button-submit btn btn-info">
-                                                                    </fieldset>
-                                                                </form>
+                                                        @if(Auth::check())
+                                                        <div class="add-comment" style="margin-bottom: 30px; padding-bottom: 40px; border-bottom: 1px solid #e5e5e5;">
+                                                            <p style="font-weight:bold;">BÌNH LUẬN VỀ SẢN PHẨM</p>
+                                                            {{ Form::open(['method' => 'POST', 'route' => 'fe.comment.store']) }}
+                                                            {{ Form::hidden('user_id', Auth::user()->id) }}
+                                                            {{ Form::hidden('product_id', $productdetail->id) }}
+                                                            <div>
+                                                            <textarea maxlength="1500" id="review_body" name="content" rows="1" placeholder="Mời bạn nhập bình luận ..."></textarea>
+                                                                @if ($errors->has('content'))
+                                                                    <span class="invalid-feedback required" role="alert">
+                                                                        <strong>{{ $errors->first('content') }}</strong>
+                                                                    </span>
+                                                                @endif
+                                                            {{ Form::submit('Đăng',['class' => 'btn btn-warning', 'style' => 'float:right; margin-top: 5px;']) }}
+                                                            {{ Form::close() }}
                                                             </div>
-                                                            <div id="review"></div>
                                                         </div>
+                                                       @else
+
+                                                       <h4>Bạn phải <a href="{{ route('fe.login')}}" style="color:red; font-weight: bold;">đăng nhập</a> để có thể bình luận</h4>
+
+                                                       @endif
+
+                                                       @php $i = 0; @endphp
+                                                       @foreach ($comments as $comment)
+                                                       @php $i++; @endphp
+                                                       <div class="comment-reply">
+                                                            @if (!empty($comment->user->avatar))
+                                                            <img
+                                                            data-img="uploads/images/users/{{ $comment->user->avatar }}"
+                                                            src="uploads/images/users/{{ $comment->user->avatar }}"
+                                                            alt="{{ $comment->user->name }} "
+                                                            style="padding-right: 1em; width:6%; margin-bottom:-1.5em;"
+                                                            >
+                                                            @endif
+                                                            <h5 style="margin-bottom:0em; color:#365899;">{{ $comment->user->username }}</h5>
+                                                            <p style="font-size:1.1em; margin-bottom: 0em;">{{ $comment['content'] }}</p>
+                                                            <p>
+                                                                {{$comment['created_at']->diffForHumans()}},
+                                                                {{ date_format($comment['updated_at'], 'd-m-Y') }}
+                                                            </p>
+                                                            <div style="margin-bottom: 30px; margin-top:10px; padding-bottom: 20px; @if (count($comment['reply']) >0) margin-left:3em; @endif ">
+                                                                @if(!empty($comment['reply']))
+                                                                    @foreach($comment['reply'] as $reply)
+                                                                        <img
+                                                                        data-img="uploads/images/users/{{ $reply->user->avatar }}"
+                                                                        src="uploads/images/users/{{ $reply->user->avatar }}"
+                                                                        alt="{{ $reply->user->name }}"
+                                                                        style="padding-right: 1em; width:6%; margin-bottom:-1.5em;"
+                                                                        >
+                                                                        <h5 style="margin-bottom:0em; color:#365899;">{{ $reply->user->username }}</h5>
+                                                                        <p style="font-size:1.1em; margin-bottom: 0em;">{{ $reply['content'] }}</p>
+                                                                        <p>
+                                                                            {{ $reply['created_at']->diffForHumans() }},
+                                                                            {{ date_format($comment['updated_at'], 'd-m-Y') }}
+                                                                        </p>
+                                                                    @endforeach
+                                                                @endif
+                                                        @if(Auth::check())
+                                                        <button onclick="$('#replybl{{$i}}').toggle()" class="btn btn-primary">
+                                                            Trả lời
+                                                        </button>
+                                                        <div
+                                                            class="add-comment"
+                                                            style="margin-top: 1em; display:none"
+                                                            id="replybl{{$i}}"
+                                                        >
+                                                            {{ Form::open(['url' => 'comment', 'id' => "reply$i"]) }}
+                                                            {{ Form::hidden('product_id', $productdetail->id) }}
+                                                            {{ Form::hidden('user_id', Auth::user()->id) }}
+                                                            {{ Form::hidden('parent_id',$comment['id']) }}
+                                                            <div>
+                                                                <textarea maxlength="1500" id="review_body" name="content" rows="1" placeholder="Mời bạn nhập bình luận ..."></textarea>
+                                                                @if ($errors->has('content'))
+                                                                <span class="invalid-feedback required" role="alert">
+                                                                    <strong>{{ $errors->first('content') }}</strong>
+                                                                </span>
+                                                                @endif
+                                                                {{ Form::submit('Đăng',['class' => 'btn btn-warning', 'style' => ' margin-top: 5px; float:right;']) }}
+                                                            </div>
+                                                            {{ Form::close() }}
+                                                        </div>
+                                                    @endif
+
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        </div>
+
+                                                       @endforeach
                                                     </div>
                                                 </div>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="tab-content fren" id="tab-specifications">

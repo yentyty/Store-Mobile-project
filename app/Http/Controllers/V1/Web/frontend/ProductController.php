@@ -6,19 +6,26 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\V1\Product\ProductRepositoryInterface;
 use App\Repositories\V1\Factory\FactoryRepositoryInterFace;
+use App\Repositories\V1\Comment\CommentRepositoryInterFace;
+use App\Models\Comment;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
     protected $repoProduct;
     protected $repoFactory;
+    protected $repoComment;
 
 
     public function __construct(
         ProductRepositoryInterface $repoProduct,
-        FactoryRepositoryInterface $repoFactory
+        FactoryRepositoryInterface $repoFactory,
+        CommentRepositoryInterface $repoComment
     ) {
         $this->repoProduct = $repoProduct;
         $this->repoFactory = $repoFactory;
+        $this->repoComment = $repoComment;
     }
 
     public function productNew()
@@ -31,10 +38,17 @@ class ProductController extends Controller
 
     public function detail($id, $slug)
     {
+        Carbon::setLocale('vi');
         $productdetail = $this->repoProduct->detail($id);
         $fatories = $this->repoFactory->index();
         $anotherproduct = $this->repoProduct->anotherProduct($id);
+        //Hiển thị danh sách bình luận
+        $comments = $this->repoComment->commment($productdetail->id);
+        // Hiển thị reply bình luận
+        foreach ($comments as $item){
+            $item->reply = $this->repoComment->commentReply($item->id);
+        }
 
-        return view('frontend.products.detail', compact('productdetail', 'fatories', 'anotherproduct'));
+        return view('frontend.products.detail', compact('productdetail', 'fatories', 'anotherproduct', 'comments'));
     }
 }
