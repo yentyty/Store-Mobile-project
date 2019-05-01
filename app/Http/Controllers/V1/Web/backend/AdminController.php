@@ -34,8 +34,24 @@ class AdminController extends Controller
         } elseif ($rs == 'password') {
             return redirect()->back()->with('msg', 'Password không chính xác !');
         }
+        $h = \App\Models\User::with('roles')->find(Auth::id());
+        $roles = $h->roles;
+        foreach ($roles as $role) {
+            if ($role->id == ROLE_ADMIN) {
+                return redirect()->route('home.index')->with('msg', 'Admin Logged in successfully !');
+            }
+            if ($role->id == ROLE_SALE) {
+                return redirect()->route('home.index')->with('msg', 'Salesman Logged in successfully !');
+            }
+            if ($role->id == ROLE_WRITER) {
+                return redirect()->route('contact.index')->with('msg', 'Post staff successfully logged in !');
+            }
+            if ($role->id == ROLE_CUSTOMER) {
+                return redirect()->route('fe.home.index')->with('msg', 'Bạn đã đăng nhập thành công !');
+            }
+        }
 
-        return redirect()->route('home.index')->with('msg', 'Logged in successfully !');
+        return redirect()->route('home.index')->with('msg','Logged in successfully !');
     }
 
     public function logout()

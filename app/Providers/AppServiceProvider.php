@@ -36,6 +36,8 @@ use App\Repositories\V1\Logo\LogoRepositoryInterface;
 use App\Repositories\V1\Comment\CommentRepository;
 use App\Repositories\V1\Comment\CommentRepositoryInterface;
 
+require_once app_path().'\const.php';
+
 class AppServiceProvider extends ServiceProvider
 {
     /**

@@ -18,26 +18,11 @@ Route::get('/', function () {
 // backend routes
 Route::get('admin/login', 'V1\Web\backend\AdminController@getlogin')->name('be.login');
 Route::post('admin/login', 'V1\Web\Backend\AdminController@postLogin')->name('be.postLogin');
-Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware' => 'auth'], function () {
+Route::get('admin/logout', 'V1\Web\Backend\AdminController@logout');
+Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware' => ['admin']], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::resource('/user', 'UserController');
-    Route::resource('/news', 'NewsController');
-    Route::resource('/information', 'InformationController');
-    Route::resource('/banner', 'BannerController');
-    Route::resource('/introduce', 'IntroduceController');
-    Route::resource('/contact', 'ContactController');
-    Route::post('/contact/changestatus', 'ContactController@changestatus')->name('contact.changestatus');
-    Route::resource('/promotion', 'PromotionController');
-    Route::post('/promotion/changestatus', 'PromotionController@changestatus')->name('promotion.changestatus');
     Route::resource('/factory', 'FactoryController');
-    Route::resource('/offer', 'OfferController');
-    Route::resource('/product', 'ProductController');
-    Route::resource('/bill', 'BillController');
-    Route::post('/bill/changestatus', 'BillController@changestatus')->name('bill.changestatus');
-    Route::get('/bill/pdfexport/{id}', 'BillController@pdfexport')->name('bill.pdfexport');
-    Route::resource('/service', 'ServiceController');
-    Route::resource('/logo', 'LogoController');
-    Route::get('/logout', 'AdminController@logout');
     Route::get('/statistics/product', [
         'uses' => 'StatisticController@getProductBill',
         'as' => 'statistic.getproductbill',
@@ -46,11 +31,32 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware
         'uses' => 'StatisticController@getBill',
         'as' => 'statistic.getbill',
     ]);
+});
+//quản trị nhân viên viết bài
+Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware' => ['writer']], function () {
     Route::resource('/comment', 'CommentController');
     Route::post('/comment/changestatus', 'CommentController@changestatus')
     ->name('comment.changestatus');
+    Route::resource('/news', 'NewsController');
+    Route::resource('/contact', 'ContactController');
+    Route::post('/contact/changestatus', 'ContactController@changestatus')->name('contact.changestatus');
+    Route::resource('/offer', 'OfferController');
+    Route::resource('/service', 'ServiceController');
+    Route::resource('/logo', 'LogoController');
+    Route::resource('/introduce', 'IntroduceController');
+    Route::post('/promotion/changestatus', 'PromotionController@changestatus')->name('promotion.changestatus');
+    Route::resource('/information', 'InformationController');
+    Route::resource('/banner', 'BannerController');
 });
-
+//quản trị nhân viên bán hàng
+Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware' => ['sale']], function () {
+    Route::get('/', 'HomeController@index')->name('home.index');
+    Route::resource('/promotion', 'PromotionController');
+    Route::resource('/bill', 'BillController');
+    Route::post('/bill/changestatus', 'BillController@changestatus')->name('bill.changestatus');
+    Route::get('/bill/pdfexport/{id}', 'BillController@pdfexport')->name('bill.pdfexport');
+    Route::resource('/product', 'ProductController');
+});
 //Front End
 Route::group(['namespace' => 'V1\Web\frontend'], function () {
     Route::get('/', 'HomeController@index')->name('fe.home.index');

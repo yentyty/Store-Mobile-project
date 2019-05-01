@@ -47,10 +47,20 @@
                     {{session('msg')}}
                 </div>
             @endif
-            @include('backend.layouts.header')
-            @include('backend.layouts.menu')
-            @yield('content')
-            @include('backend.layouts.footer')
+            @php
+                $h =  \App\Models\User::with('roles')->find(Auth::id());
+                $roles = $h->roles;
+            @endphp
+            @foreach ($roles as $role)
+                @if ($role->id == ROLE_CUSTOMER)
+                @else
+                    @include('backend.layouts.header')
+                    @include('backend.layouts.menu')
+                    @yield('content')
+                    @include('backend.layouts.footer')
+                @endif
+                @break
+            @endforeach
         </div>
     </div>
     <!-- jQuery -->
