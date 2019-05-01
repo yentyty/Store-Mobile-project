@@ -32,6 +32,6 @@ class SaleMiddleware
             }
             return new Response(view('backend.erorr.role'));
         }
-      return new Response(view('backend.login'));
+        return redirect('admin/login')->with('thongbao', 'Bạn chưa đăng nhập!');
     }
 }

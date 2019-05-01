@@ -22,11 +22,7 @@ Route::get('admin/logout', 'V1\Web\Backend\AdminController@logout');
 Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware' => ['admin']], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::resource('/user', 'UserController');
-    Route::resource('/information', 'InformationController');
-    Route::resource('/banner', 'BannerController');
-
     Route::resource('/factory', 'FactoryController');
-
     Route::get('/statistics/product', [
         'uses' => 'StatisticController@getProductBill',
         'as' => 'statistic.getproductbill',
@@ -49,6 +45,8 @@ Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware
     Route::resource('/logo', 'LogoController');
     Route::resource('/introduce', 'IntroduceController');
     Route::post('/promotion/changestatus', 'PromotionController@changestatus')->name('promotion.changestatus');
+    Route::resource('/information', 'InformationController');
+    Route::resource('/banner', 'BannerController');
 });
 //quản trị nhân viên bán hàng
 Route::group(['prefix' => '/admin', 'namespace' => 'V1\Web\backend', 'middleware' => ['sale']], function () {
