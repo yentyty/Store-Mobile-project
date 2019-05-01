@@ -11,7 +11,7 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section active">
                 <h3>Menu</h3>
-                <ul class="nav side-menu">
+            <ul class="nav side-menu">
                     <li class="">
                         <a href="{{ route('home.index') }}">
                             <i class="fa fa-home"></i> Home
@@ -23,13 +23,13 @@
                             <span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
-                                <li>
-                                    <a href="{{ route('user.index') }}">List User</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('user.create') }}">Create User</a>
-                                </li>
-                            </ul>
+                            <li>
+                                <a href="{{ route('user.index') }}">List User</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('user.create') }}">Create User</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a>
@@ -154,10 +154,10 @@
                         </a>
                     </li>
                     <li class="">
-                            <a href="{{ route('comment.index') }}">
-                                <i class="fa fa-envelope"></i> Comment
-                            </a>
-                        </li>
+                        <a href="{{ route('comment.index') }}">
+                            <i class="fa fa-envelope"></i> Comment
+                        </a>
+                    </li>
                     <li>
                         <a>
                             <i class="fa fa-building-o" aria-hidden="true"></i> Statistics
@@ -242,3 +242,4 @@
         <!-- /menu footer buttons -->
     </div>
 </div>
+

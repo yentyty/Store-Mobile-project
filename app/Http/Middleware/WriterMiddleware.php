@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
-class AdminMiddleware
+class WriterMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,10 +19,10 @@ class AdminMiddleware
     {
         if (Auth::check()) {
             $allowAccess = false;
-            $h =  \App\Models\User::with('roles')->find(Auth::id());
+            $h = \App\Models\User::with('roles')->find(Auth::id());
             $roles = $h->roles;
             foreach ($roles as $role) {
-                if ($role->id == ROLE_ADMIN) {
+                if ($role->id == ROLE_ADMIN || $role->id == ROLE_WRITER) {
                     $allowAccess = true;
                     break;
                 }
@@ -32,7 +32,6 @@ class AdminMiddleware
             }
             return new Response(view('backend.erorr.role'));
         }
-
         return new Response(view('backend.login'));
     }
 }

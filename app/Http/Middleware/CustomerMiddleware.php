@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Response;
 
-class AdminMiddleware
+class CustomerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -22,7 +21,7 @@ class AdminMiddleware
             $h =  \App\Models\User::with('roles')->find(Auth::id());
             $roles = $h->roles;
             foreach ($roles as $role) {
-                if ($role->id == ROLE_ADMIN) {
+                if ($role->id == ROLE_ADMIN || $role->id == ROLE_SALE || $role->id == ROLE_WRITER || $role->id == ROLE_CUSTOMER) {
                     $allowAccess = true;
                     break;
                 }
@@ -30,9 +29,8 @@ class AdminMiddleware
             if ($allowAccess) {
                 return $next($request);
             }
-            return new Response(view('backend.erorr.role'));
+            return redirect('admin/login')->with('thongbao', 'Bạn không có quyền truy cập!');
         }
-
-        return new Response(view('backend.login'));
+        return redirect('admin/login')->with('thongbao', 'Bạn chưa đăng nhập!');
     }
 }

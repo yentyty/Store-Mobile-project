@@ -30,7 +30,6 @@
 
             <div class="animate form login_form">
                 <section class="login_content">
-
                     {{ Form::open(['method' => 'POST', 'route' => ['be.postLogin'], 'class' => 'login-form']) }}
                         <h1>Login Form</h1>
                         <div>

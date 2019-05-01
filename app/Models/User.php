@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
+    protected $table = 'users';
     protected $fillable = [
         'username',
         'name',
@@ -44,4 +47,9 @@ class User extends Model
     {
         return $this->hasMany('App\Models\Comment', 'user_id', 'id');
     }
+
+    public function roles() {
+        return $this->belongsToMany('App\Models\Role', 'user_roles', 'user_id', 'role_id');
+    }
+
 }
