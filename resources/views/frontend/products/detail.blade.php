@@ -349,7 +349,7 @@
                                                     </span>
                                                     <br style="color: rgb(85, 85, 85); font-family: Roboto, sans-serif; font-size: 14px;">
                                                     <span style="color: rgb(85, 85, 85); font-family: Roboto, sans-serif; font-size: 14px;">
-                                                        {{ strip_tags($productdetail->body) }}
+                                                        {!! strip_tags($productdetail->body) !!}
                                                     </span>
                                                     <br>
                                                 </p>
