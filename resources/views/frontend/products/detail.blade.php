@@ -104,8 +104,16 @@
                             <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7 details-pro">
                                 <h1 class="title-product">{{ $productdetail->name }}</h1>
                                 <div class="group-status">
-                                    <span class="first_status">Mã sản phẩm:
-                                        <span class="status_name">{{ $productdetail->id }}</span>
+                                    <span class="first_status">Khuyến mãi:
+                                        @if($productdetail->promotion->status == 1)
+                                            @if ($productdetail->promotion->percent == 0)
+                                            <span class="status_name">Không có chương trình khuyến mãi</span>
+                                            @else
+                                            <span class="status_name">{{ $productdetail->promotion->percent }}%</span>
+                                            @endif
+                                        @else
+                                            <span class="status_name">Không có chương trình khuyến mãi</span>
+                                        @endif
                                         <span class="space">&nbsp; | &nbsp;</span>
                                     </span>
                                     <span class="first_status">
@@ -122,10 +130,12 @@
                                         <span class="price product-price" itemprop="price">
                                             {{ number_format($productdetail->price -($productdetail->price *($productdetail->promotion->percent /100)), 0, ',',',')}}đ
                                         </span>
-                                        @if($productdetail->promotion->id != 1)
-                                        <strike style="font-size: 1.25em;margin-left: 1em;">
-                                            {{ number_format($productdetail->price, 0, ',','.') }}đ
-                                        </strike>
+                                        @if($productdetail->promotion->status == 1)
+                                            @if($productdetail->promotion->id != 1)
+                                            <strike style="font-size: 1.25em;margin-left: 1em;">
+                                                {{ number_format($productdetail->price, 0, ',','.') }}đ
+                                            </strike>
+                                            @endif
                                         @endif
                                         <br>
                                         <span style="margin-right:1em;">Chọn màu :</span>
@@ -280,7 +290,7 @@
                                                                 <p style="font-size:1.1em; margin-bottom: 0em;">
                                                                     {{ $comment['content'] }}</p>
                                                                 <p>
-                                                                    {{$comment['created_at']->diffForHumans()}},
+                                                                    {{ $comment['created_at']->diffForHumans() }},
                                                                     {{ date_format($comment['updated_at'], 'd-m-Y') }}
                                                                 </p>
                                                                 <div style="margin-bottom: 30px; margin-top:10px; padding-bottom: 20px; @if (count($comment['reply']) >0) margin-left:3em; @endif ">

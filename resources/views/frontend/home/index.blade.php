@@ -86,8 +86,10 @@
                                                     <div class="wrp_item_small product-col">
                                                         <div class="product-box">
                                                             <div class="product-thumbnail">
-                                                                @if($pr->promotion->id != 1)
-                                                                <span class="sale-off">{{ $pr->promotion->percent }}%</span>
+                                                                @if($pr->promotion->status == 1)
+                                                                    @if($pr->promotion->id != 1)
+                                                                    <span class="sale-off">{{ $pr->promotion->percent }}%</span>
+                                                                    @endif
                                                                 @endif
                                                                 @php $someArray = json_decode($pr->image, true); @endphp
                                                                 <a class="image_link display_flex"
@@ -101,7 +103,6 @@
                                                                     @if ($pr->in_stock > 0)
                                                                         {!! Form::open(['url' => 'addCart/'. $pr->id, 'class' => 'variants form-nut-grid']) !!}
                                                                             <div>
-
                                                                                 {{ Form::hidden('color', 'Trắng') }}
                                                                                 {{ Form::hidden('in_stock', $pr->in_stock) }}
                                                                                 {{  Form::button('<i class="fa fa-refresh"></i> Mua ngay', ['type' => 'submit', 'class' => 'btn-cart button_wh_40 left-to', 'title' => 'Mua ngay']) }}
@@ -139,8 +140,10 @@
                                                                         </a>
                                                                     </h3>
                                                                     <div class="price-box clearfix">
-                                                                        @if($pr->promotion->id != 1)
-                                                                            <strike>{{ number_format($pr->price, 0, ',','.') }} đ</strike>
+                                                                        @if($pr->promotion->status == 1)
+                                                                            @if($pr->promotion->id != 1)
+                                                                                <strike>{{ number_format($pr->price, 0, ',','.') }} đ</strike>
+                                                                            @endif
                                                                         @endif
                                                                         <br>
                                                                         <span

@@ -41,7 +41,7 @@ class CreateRegisterRequest extends FormRequest
         return [
             'required' => 'Trường :attribute là bắt buộc.',
             'max' => 'Trường :attribute không được lớn hơn :max',
-            'min' => 'Trường :attribute không được nhở hơn :min',
+            'min' => 'Trường :attribute không được nhỏ hơn :min',
             'unique' => 'Trường :attribute đã bị trùng.',
             'numeric' => 'Trường :attribute phải là kiểu số.',
             'date_format' => 'Trường :attribute phải thuộc định dạng "Y-m-d"',
@@ -62,6 +62,8 @@ class CreateRegisterRequest extends FormRequest
             'total' => 'tổng tiền',
             'gender' => 'giới tính',
             'birthday' => 'ngày sinh',
+            'password' => 'mật khẩu',
+            'passwordAgain' => 'xác nhận mật khẩu',
         ];
     }
 }

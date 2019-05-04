@@ -10,6 +10,7 @@ use App\Repositories\V1\User\UserRepositoryInterFace;
 use App\Repositories\V1\News\NewsRepositoryInterFace;
 use App\Repositories\V1\Bill\BillRepositoryInterFace;
 use App\Repositories\V1\Product\ProductRepositoryInterFace;
+use App\Repositories\V1\Comment\CommentRepositoryInterFace;
 use App\Models\Role;
 use Illuminate\Support\Collection;
 
@@ -26,6 +27,7 @@ class HomeController extends Controller
     protected $repoNews;
     protected $repoBill;
     protected $repoProduct;
+    protected $repoComment;
 
     public function __construct(
         RoleRepositoryInterFace $repositoryRole,
@@ -33,7 +35,8 @@ class HomeController extends Controller
         UserRepositoryInterFace $repositoryUser,
         NewsRepositoryInterFace $repositoryNews,
         BillRepositoryInterFace $repositoryBill,
-        ProductRepositoryInterFace $repositoryProduct
+        ProductRepositoryInterFace $repositoryProduct,
+        CommentRepositoryInterFace $repositoryComment
     ) {
         $this->repoRole = $repositoryRole;
         $this->repoContact = $repositoryContact;
@@ -41,6 +44,7 @@ class HomeController extends Controller
         $this->repoNews = $repositoryNews;
         $this->repoBill = $repositoryBill;
         $this->repoProduct = $repositoryProduct;
+        $this->repoComment = $repositoryComment;
     }
 
     public function index(Request $request)
@@ -51,8 +55,9 @@ class HomeController extends Controller
         $news = $this->repoNews->countNew();
         $bills = $this->repoBill->countBill();
         $products = $this->repoProduct->countProduct();
+        $comments = $this->repoComment->paginate(4);
 
-        return view('backend.home.index', compact('roles', 'contacts', 'users', 'news', 'bills', 'products'));
+        return view('backend.home.index', compact('roles', 'contacts', 'users', 'news', 'bills', 'products', 'comments'));
     }
 
     /**

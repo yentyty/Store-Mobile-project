@@ -149,8 +149,9 @@
                                                             <div class="table_order_items-cell-title">
                                                                 <div class="table_order_items_product_name">
                                                                     <a target="_blank" rel="noopener"
-                                                                        href="kinh-mat-nam-nba-1150-a01.html"
-                                                                        title="Kính Mát Nam NBA 1150 A01">
+                                                                        href="{{ route('fe.product.detail', ['id'=>$item->id, 'slug'=>str_slug($item->name)]) }}"
+                                                                        title="{{ $item->name }}"
+                                                                        >
                                                                         <span class="title">
                                                                             {{ $item->name }}
                                                                         </span>
@@ -163,7 +164,7 @@
                                                         <div class="table_order_items-cell-price">
                                                             <div class="tt-price">{{ number_format($item->price,0 ,',', '.') }}đ</div>
                                                             <div class="quantity">x{{ $item->quantity }}</div>
-                                                            <div class="tt-price">{{ number_format($item->price*$item->quantity,0 ,',', '.') }}</div>
+                                                            <div class="tt-price">{{ number_format($item->price*$item->quantity,0 ,',', '.') }}đ</div>
                                                         </div>
                                                         <div class="table_order_items-cell-price"  style="padding-right:3em;">
                                                             {{ $item->attributes->color }}

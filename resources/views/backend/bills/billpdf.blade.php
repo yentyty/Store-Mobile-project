@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <base href="{{asset('')}}">
@@ -23,11 +23,16 @@
                 }
             });
     </script>
+    <style>
+        body {
+            font-family: DejaVu Sans;
+        }
+    </style>
 </head>
 <body>
 <div id="invoice">
     <div class="invoice overflow-auto">
-        <div style="min-width: 600px">
+        <div style="min-width: 600px;">
             <header>
                 <div class="row"  style="margin-bottom:-5em;">
                     <div class="col">
@@ -48,7 +53,7 @@
             <main>
                 <div class="row contacts" style="margin-bottom:-3em;">
                     <div class="col invoice-to" style="width:50%;">
-                        <div style="font-size:1em;">INVOICE TO:</div>
+                        <div style="font-size:1em;">INVOICE CODE:</div>
                         <div class="to" style="color:red;">Customer: {{ $bill->username }}</div>
                         <div class="address" style="font-size:13px;">Address: {{ $bill->address }}</div>
                         <div class="email" style="font-size:13px;">Email: {{ $bill->email }}</div>
@@ -79,7 +84,7 @@
                             <td>{{ $item->product_storage }}</td>
                             <td>{{ $item->product_color }}</td>
                             <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->product_promotion}}</td>
+                            <td>{{ $item->product_promotion}}%</td>
                             <td>{{ number_format($item->amount, 0, ',' ,'.') }}</td>
                         </tr>
                         @endforeach
