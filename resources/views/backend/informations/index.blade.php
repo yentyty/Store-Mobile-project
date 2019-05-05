@@ -40,7 +40,7 @@
                 <tr role="row" class="odd">
                     <td>{{ $key + 1 }}</td>
                     <td>{{ str_limit($information->title,40) }}</td>
-                    <td>{{ strip_tags(str_limit($information->content,100)) }}</td>
+                    <td>{!! strip_tags(str_limit($information->content,100)) !!}</td>
                     <td>
                         <a
                             href="{{ route('information.show', ['id'=>$information->id]) }}"

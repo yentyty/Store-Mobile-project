@@ -26,6 +26,7 @@ use App\Repositories\V1\Product\ProductRepositoryInterface;
 use App\Repositories\V1\Service\ServiceRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\V1\Bill\BillRepositoryInterface;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -104,7 +105,7 @@ class HomeController extends Controller
         $this->repoUser->update($id, $request->except('role'));
         $this->repoUserRole->updateUserRole($id, $request->only('role'));
 
-        return redirect()->route('fe.home.index')->with('msg', 'Edit Successful');
+        return redirect()->route('fe.home.index')->with('msg', 'Chỉnh sửa thông tin cá nhân thành công !!');
     }
 
     public function getLogin()
@@ -146,8 +147,9 @@ class HomeController extends Controller
     public function addCart($id, Request $request)
     {
         $pro = Product::find($id);
+        $slug = Str::slug($request->color);
         Cart::add([
-            'id' => $pro->id,
+            'id' => $pro->id.$slug,
             'name' => $pro->name,
             'quantity' => 1,
             'price' => $pro->price -($pro->price *($pro->promotion->percent /100)),
@@ -279,6 +281,7 @@ class HomeController extends Controller
         $bill = $this->repoBill->find($id);
         $bill->status = 2;
         $bill->update();
+
         return back();
     }
 }

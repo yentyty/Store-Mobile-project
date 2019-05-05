@@ -53,11 +53,11 @@
                             <br>
                             <p>{!! strip_tags($new["content"]) !!}</p>
                             <div class="">
-                                    <a
-                                    href="{{route('news.index')}}"
+                                <a
+                                    href="{{route('news.index') }}"
                                     class="btn btn-warning"
                                 >
-                                    <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
+                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
                                 </a>
                             </div>
                         </div>

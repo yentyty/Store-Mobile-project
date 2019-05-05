@@ -41,4 +41,14 @@ class BillRequest extends FormRequest
             'email.email' => 'Vui lòng nhập đúng định dạng email.',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'username' => 'tên đăng nhập',
+            'address' => 'địa chỉ',
+            'phone' => 'số điện thoại',
+            'note' => 'ghi chú',
+        ];
+    }
 }

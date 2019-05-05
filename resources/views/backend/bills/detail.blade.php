@@ -67,10 +67,10 @@
                                     <th style="width: 17%;">Product name</th>
                                     <th style="width: 10%;">Storage</th>
                                     <th style="width: 7%;">Color</th>
-                                    <th style="width: 20%;">Price</th>
+                                    <th style="width: 20%;">Price (VND)</th>
                                     <th style="width: 20%;">Quantity</th>
                                     <th style="width: 10%;">Promotion</th>
-                                    <th style="width: 13%;">Amount</th>
+                                    <th style="width: 13%;">Amount (VND)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,13 +82,13 @@
                                     <td>{{ $item->product_color }}</td>
                                     <td>{{ number_format($item->price, 0, ',' ,'.') }}</td>
                                     <td>{{ $item->quantity }}</td>
-                                    <td>{{ $item->product_promotion }}</td>
+                                    <td>{{ $item->product_promotion }}%</td>
                                     <td>{{ number_format($item->amount, 0, ',' ,'.') }}</td>
                                 </tr>
                                 @endforeach
                                 <tr>
                                     <td colspan="7" style="text-align:right; font-weight:bold;font-size:1.2em;">Total</td>
-                                    <td>{{ number_format($bill->total, 0, ',' ,'.') }}</td>
+                                    <td>{{ number_format($bill->total, 0, ',' ,'.') }}đ</td>
                                 </tr>
                             </tbody>
                         </table>

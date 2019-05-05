@@ -5,44 +5,52 @@
     <div class="">
         <div class="row top_tiles">
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                    <div class="icon">
-                        <i class="fa fa-group"></i>
+                <a href="{{ route('user.index') }}">
+                    <div class="tile-stats">
+                        <div class="icon">
+                            <i class="fa fa-group"></i>
+                        </div>
+                        <div class="count">{{ $users }}</div>
+                        <h3>Users</h3>
+                        <p>All user from the store.</p>
                     </div>
-                    <div class="count">{{ $users }}</div>
-                    <h3>Users</h3>
-                    <p>All user from the store.</p>
-                </div>
+                </a>
             </div>
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                    <div class="icon">
-                        <i class="fa fa-comments-o"></i>
+                <a href="{{ route('bill.index') }}">
+                    <div class="tile-stats">
+                        <div class="icon">
+                            <i class="fa fa-comments-o"></i>
+                        </div>
+                        <div class="count">{{ $bills }}</div>
+                        <h3>Bills</h3>
+                        <p>All customer orders</p>
                     </div>
-                    <div class="count">{{ $bills }}</div>
-                    <h3>Bills</h3>
-                    <p>All customer orders</p>
-                </div>
+                </a>
             </div>
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                    <div class="icon">
-                        <i class="fa fa-sort-amount-desc"></i>
+                <a href="{{ route('product.index') }}">
+                    <div class="tile-stats">
+                        <div class="icon">
+                            <i class="fa fa-sort-amount-desc"></i>
+                        </div>
+                        <div class="count">{{ $products }}</div>
+                        <h3>Products</h3>
+                        <p>All products from the store.</p>
                     </div>
-                    <div class="count">{{ $products }}</div>
-                    <h3>Products</h3>
-                    <p>All products from the store.</p>
-                </div>
+                </a>
             </div>
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                    <div class="icon">
-                        <i class="fa fa-newspaper-o"></i>
+                <a href="{{ route('news.index') }}">
+                    <div class="tile-stats">
+                        <div class="icon">
+                            <i class="fa fa-newspaper-o"></i>
+                        </div>
+                        <div class="count">{{ $news }}</div>
+                        <h3>News</h3>
+                        <p>News list</p>
                     </div>
-                    <div class="count">{{ $news }}</div>
-                    <h3>News</h3>
-                    <p>News list</p>
-                </div>
+                </a>
             </div>
         </div>
         <div class="row">
@@ -91,21 +99,34 @@
                 </div>
                 <div class="x_content">
                     <ul class="list-unstyled top_profiles scroll-view">
-                        <li class="media event">
-                            <a class="pull-left border-aero profile_thumb">
-                                <i class="fa fa-user aero"></i>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Ms. Mary Jane</a>
-                                <p>
-                                    <strong>$2300. </strong>
-                                    Agent Avarage Sales
-                                </p>
-                                <p>
-                                    <small>12 Sales Today</small>
-                                </p>
-                            </div>
-                        </li>
+                        @foreach ($comments as $item)
+                            <li class="media event">
+                                <a class="pull-left border-aero profile_thumb">
+                                    @if (isset($item->user->avatar))
+                                        <img src="uploads/images/users/{{ $item->user->avatar }}" width="150%" style="border-radius: 50%;width: 193%;margin-left: -0.84em;margin-top: -0.60em;">
+                                    @else
+                                        <i class="fa fa-user aero"></i>
+                                    @endif
+                                </a>
+                                <div class="media-body">
+                                    <a class="title" href="#">{{ $item->user->username }}</a>
+                                    <p>
+                                        <strong>
+                                            @if ($item->status == 0)
+                                            Chưa xem
+                                            @elseif ($item->status == 1)
+                                                Đã xem
+                                            @endif
+                                        </strong>
+                                        <br>
+                                        {{ $item->content }}
+                                    </p>
+                                    <p>
+                                        <small>{{ $item['created_at']->diffForHumans() }}, {{ date_format($item['updated_at'], 'd-m-Y') }}</small>
+                                    </p>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

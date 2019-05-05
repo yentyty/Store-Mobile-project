@@ -143,7 +143,7 @@
                                     href="{{ route('fe.cart.pay') }}"
                                     class="btn btn-primary pull-right button_checkout"
                                 >
-                                    Tiến hành thanh toán
+                                    Tiến hành đặt hàng
                                 </a>
                             </div>
                         </div>

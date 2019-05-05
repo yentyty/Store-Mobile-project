@@ -60,6 +60,8 @@ class EditRegisterRequest extends FormRequest
             'total' => 'tổng tiền',
             'gender' => 'giới tính',
             'birthday' => 'ngày sinh',
+            'password' => 'mật khẩu',
+            'passwordAgain' => 'xác nhận mật khẩu',
         ];
     }
 }

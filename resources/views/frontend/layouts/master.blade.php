@@ -67,7 +67,7 @@
                 <div class="modal-body" id="load_info_cart"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tiếp tục mua hàng</button>
-                    <a href="indexf1a8.html?route=checkout/checkout" class="btn btn-primary">Tiến hành thanh toán</a>
+                    <a href="indexf1a8.html?route=checkout/checkout" class="btn btn-primary">Tiến hành đặt hàng</a>
                 </div>
             </div>
         </div>

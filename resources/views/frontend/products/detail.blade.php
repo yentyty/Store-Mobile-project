@@ -47,65 +47,63 @@
                 <div class="details-product">
                     <div id="content" class="col-sm-12 col-xs-12 col-md-12">
                         <div class="rows">
-                            <div class="product-detail-left product-images col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                            <div class="product-detail-left product-images col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left:5em;">
                                 <div class="row">
                                     <!-- product images -->
                                     @php $someArray = json_decode($productdetail->image, true); @endphp
                                     <div class="col_large_default large-image" style="width: 80%;">
                                         <a class="large_image_url checkurl" data-rel="prettyPhoto[product-gallery]">
-                                            <div style="height:460.5px;width:460.5px;" class="zoomWrapper">
-                                                <img
-                                                    id="img_01" class="img-responsive"
-                                                    alt="{{ $productdetail->name }}"
-                                                    src="uploads/images/products/{{ $someArray[0] }}"
-                                                    data-zoom-image="uploads/images/products/{{ $someArray[0] }}"
-                                                    style="position: absolute;"
-                                                >
-                                            </div>
-                                        </a>
+                                            <div id="zoomWrapper">
+                                                    <img
+                                                        id="img_01" class="img-responsive"
+                                                        alt="{{ $productdetail->name }}"
+                                                        src="uploads/images/products/{{ $someArray[0] }}"
+                                                        data-zoom-image="uploads/images/products/{{ $someArray[0] }}"
+                                                        style="width:100%"
+                                                    >
+                                                </div>
+                                            </a>
                                         <div class="hidden">
                                         </div>
                                     </div>
-                                    <!-- product thumbs -->
-                                    <div class="product-detail-thumb" style="width: 22em; margin-left:3em;">
+                                    <div class="product-detail-thumb" >
                                         <div
                                             id="gallery_02"
                                             class="owl-carousel owl-theme thumbnail-product thumb_product_details not-dqowl owl-loaded owl-drag"
-                                            data-loop="false"
-                                            data-lg-items="4"
-                                            data-md-items="4"
-                                            data-sm-items="3"
-                                            data-xs-items="3"
-                                            data-xxs-items="3"
+                                            style="margin-top: 12px"
                                         >
-                                            @foreach (json_decode($productdetail->image) as $item)
+                                        @foreach (json_decode($productdetail->image) as $item)
                                             <div class="owl-stage-outer">
-                                                <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 116px;">
-                                                    <div class="owl-item active" style="width: 115.625px;">
-                                                        <div class="item">
-                                                            <a data-image="uploads/images/products/{{ $item }}" data-zoom-image="uploads/images/products/{{ $item }}">
-                                                                <img
-                                                                    data-img="uploads/images/products/{{ $item }}"
-                                                                    src="uploads/images/products/{{ $item }}"
-                                                                    alt="{{ $productdetail->name }} "
-                                                                    style="padding-right: 1em;"
-                                                                >
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                                <div class="item">
+                                                    <a data-image="uploads/images/products/{{ $item }}" data-zoom-image="uploads/images/products/{{ $item }}">
+                                                        <img
+                                                            data-img="uploads/images/products/{{ $item }}"
+                                                            src="uploads/images/products/{{ $item }}"
+                                                            alt="{{ $productdetail->name }} "
+                                                            style="margin-left: 0em;" onclick="myFunction(this);"
+                                                        >
+                                                    </a>
                                                 </div>
                                             </div>
-                                            @endforeach
+                                        @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             {!! Form::open(['url' => 'addCart/'. $productdetail->id]) !!}
-                            <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7 details-pro">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 details-pro">
                                 <h1 class="title-product">{{ $productdetail->name }}</h1>
                                 <div class="group-status">
-                                    <span class="first_status">Mã sản phẩm:
-                                        <span class="status_name">{{ $productdetail->id }}</span>
+                                    <span class="first_status">Khuyến mãi:
+                                        @if($productdetail->promotion->status == 1)
+                                            @if ($productdetail->promotion->percent == 0)
+                                            <span class="status_name">Không có chương trình khuyến mãi</span>
+                                            @else
+                                            <span class="status_name">{{ $productdetail->promotion->percent }}%</span>
+                                            @endif
+                                        @else
+                                            <span class="status_name">Không có chương trình khuyến mãi</span>
+                                        @endif
                                         <span class="space">&nbsp; | &nbsp;</span>
                                     </span>
                                     <span class="first_status">
@@ -122,10 +120,12 @@
                                         <span class="price product-price" itemprop="price">
                                             {{ number_format($productdetail->price -($productdetail->price *($productdetail->promotion->percent /100)), 0, ',',',')}}đ
                                         </span>
-                                        @if($productdetail->promotion->id != 1)
-                                        <strike style="font-size: 1.25em;margin-left: 1em;">
-                                            {{ number_format($productdetail->price, 0, ',','.') }}đ
-                                        </strike>
+                                        @if($productdetail->promotion->status == 1)
+                                            @if($productdetail->promotion->id != 1)
+                                            <strike style="font-size: 1.25em;margin-left: 1em;">
+                                                {{ number_format($productdetail->price, 0, ',','.') }}đ
+                                            </strike>
+                                            @endif
                                         @endif
                                         <br>
                                         <span style="margin-right:1em;">Chọn màu :</span>
@@ -280,7 +280,7 @@
                                                                 <p style="font-size:1.1em; margin-bottom: 0em;">
                                                                     {{ $comment['content'] }}</p>
                                                                 <p>
-                                                                    {{$comment['created_at']->diffForHumans()}},
+                                                                    {{ $comment['created_at']->diffForHumans() }},
                                                                     {{ date_format($comment['updated_at'], 'd-m-Y') }}
                                                                 </p>
                                                                 <div style="margin-bottom: 30px; margin-top:10px; padding-bottom: 20px; @if (count($comment['reply']) >0) margin-left:3em; @endif ">
@@ -481,3 +481,15 @@
     </div>
 </section>
 @endsection
+
+@push('script')
+<script>
+    function myFunction(imgs) {
+      var img_01 = document.getElementById("img_01");
+      img_01.src = imgs.src;
+      img_01.alt = imgs.alt;
+
+      img_01.parentElement.style.display = "block";
+    }
+    </script>
+@endpush

@@ -26,8 +26,10 @@
                     <div class="product-col">
                         <div class="product-box">
                             <div class="product-thumbnail">
-                                @if($product->promotion->id != 1)
-                                    <span class="sale-off">{{ $product->promotion->percent }}%</span>
+                                @if($product->promotion->status == 1)
+                                    @if($product->promotion->id != 1)
+                                        <span class="sale-off">{{ $product->promotion->percent }}%</span>
+                                    @endif
                                 @endif
                                 @php $someArray = json_decode($product->image, true); @endphp
                                 <a class="image_link display_flex" href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}"
@@ -38,19 +40,34 @@
                                         alt="{{ $product->name }}">
                                 </a>
                                 <div class="product-action-grid clearfix">
-                                    <form class="variants form-nut-grid">
+                                    @if ($product->in_stock > 0)
+                                        {{ Form::open(['url' => 'addCart/'. $product->id, 'class' => 'variants form-nut-grid']) }}
+                                            <div>
+                                                {{ Form::hidden('color', 'Trắng') }}
+                                                {{ Form::hidden('in_stock', $product->in_stock) }}
+                                                {{  Form::button('<i class="fa fa-refresh"></i> Mua ngay', ['type' => 'submit', 'class' => 'btn-cart button_wh_40 left-to', 'title' => 'Mua ngay']) }}
+                                                <a title="Xem" href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}"
+                                                    class="button_wh_40 btn_view right-to quick-view">
+                                                    <i class="fa fa-eye"></i>
+                                                    <span class="style-tooltip">Xem</span>
+                                                </a>
+                                            </div>
+                                        {{  Form::close() }}
+                                    @else
+                                        {{ Form::open(['url' => 'addCart/'. $product->id, 'class' => 'variants form-nut-grid']) }}
                                         <div>
-                                            <button class="btn-cart button_wh_40 left-to" title="Mua ngay" type="button"
-                                                onclick="window.location.href='indexf1a8.html?route=checkout/cart/add&amp;product_id=219&amp;redirect=true'">Mua
-                                                ngay</button>
-                                            <!--onclick="cart.add(, 1)"></button>-->
-                                            <a title="Xem" href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}"
+                                            {{ Form::hidden('color', 'Trắng') }}
+                                            <a class="btn-cart button_wh_40 left-to"><i class="fa fa-refresh"></i> Hết Hàng</a>
+                                            <a
+                                                title="Xem"
+                                                href="{{ route('fe.product.detail', ['id'=>$product->id, 'slug'=>$product->slug]) }}"
                                                 class="button_wh_40 btn_view right-to quick-view">
                                                 <i class="fa fa-eye"></i>
                                                 <span class="style-tooltip">Xem</span>
                                             </a>
                                         </div>
-                                    </form>
+                                        {{  Form::close() }}
+                                    @endif
                                 </div>
                             </div>
                             @if ($product->promotion->percent == 0)
@@ -76,7 +93,9 @@
                                             {{ $product->name }}
                                         </a>
                                         <br>
+                                        @if ($product->promotion->status == 1)
                                         <strike>{{ number_format($product->price, 0, ',','.') }} đ</strike>
+                                        @endif
                                     </h3>
                                     <div class="price-box clearfix">
                                         <span class="price product-price">{{ number_format($product->price -($product->price *($product->promotion->percent /100)), 0, ',','.')}} đ</span>

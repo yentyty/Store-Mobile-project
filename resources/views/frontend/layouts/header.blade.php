@@ -155,7 +155,7 @@
                                                                         <span>Giỏ hàng</span>
                                                                     </a>
                                                                     <a href="{{ route('fe.cart.pay') }}" class="btn btn-success">
-                                                                        <span>Thanh toán</span>
+                                                                        <span>Đặt hàng</span>
                                                                     </a>
                                                                 </div>
                                                             </li>
@@ -201,7 +201,7 @@
                                     <ul class="nav navbar-nav nav-verticalmenu">
                                         @foreach ($fatories as $factory)
                                             <li class="vermenu-option-11 ">
-                                                <a class="link-lv1" href="{{ route('fe.factory.postfactory', ['id'=>$factory->id, 'slug'=>$factory->slug]) }}" title="Balo và túi xách">
+                                                <a class="link-lv1" href="{{ route('fe.factory.postfactory', ['id'=>$factory->id, 'slug'=>$factory->slug]) }}" title="{{ $factory->name }}">
                                                     <span class="menu-icon">
                                                         <span class="menu-title">{{ $factory->name }}</span>
                                                     </span>
