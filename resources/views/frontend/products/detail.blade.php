@@ -250,7 +250,7 @@
                                                                     <textarea maxlength="1500" id="review_body" name="content" rows="1" placeholder="Mời bạn nhập bình luận ..."></textarea>
                                                                     @if ($errors->has('content'))
                                                                     <span class="invalid-feedback required" role="alert">
-                                                                        <strong>{{ $errors->first('content') }}</strong>
+                                                                        <strong style="color:red;">{{ $errors->first('content') }}</strong>
                                                                     </span>
                                                                     @endif
                                                                     {{ Form::submit('Đăng',['class' => 'btn btn-warning', 'style' => 'float:right; margin-top: 5px;']) }}
@@ -324,7 +324,7 @@
                                                                                 <textarea maxlength="1500" id="review_body" name="content" rows="1" placeholder="Mời bạn nhập bình luận ..."></textarea>
                                                                                 @if ($errors->has('content'))
                                                                                 <span class="invalid-feedback required" role="alert">
-                                                                                    <strong>{{ $errors->first('content') }}</strong>
+                                                                                    <strong style="color:red;">{{ $errors->first('content') }}</strong>
                                                                                 </span>
                                                                                 @endif
                                                                                 {{ Form::submit('Đăng',['class' => 'btn btn-warning', 'style' => ' margin-top: 5px; float:right;']) }}
