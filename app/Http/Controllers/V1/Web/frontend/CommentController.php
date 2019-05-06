@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\V1\Comment\CommentRepositoryInterface;
 use App\Repositories\V1\Factory\FactoryRepositoryInterFace;
+use App\Http\Requests\Comments\CreateCommentRequest;
 
 class CommentController extends Controller
 {
@@ -22,7 +23,7 @@ class CommentController extends Controller
         $this->repoFactory = $repoFactory;
     }
 
-    public function store(Request $request)
+    public function store(CreateCommentRequest $request)
     {
         $this->repoComment->store($request->all());
 

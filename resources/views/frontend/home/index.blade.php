@@ -75,12 +75,15 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div
-                                        class="tabs-content tabs-content-featured col-md-12 col-sm-12 col-xs-12 no-padding">
+                                    <div class="tabs-content tabs-content-featured col-md-12 col-sm-12 col-xs-12 no-padding">
                                         @foreach ($fatories as $ft)
-                                        <div id="content-tabb{{ $ft->id }}" class="content-tab content-tab-proindex"
-                                            style="display:none">
+                                        <div
+                                            id="content-tabb{{ $ft->id }}"
+                                            class="content-tab content-tab-proindex"
+                                            style="display:none"
+                                        >
                                             <div class="row">
+                                            @if ($ft->products->count() > 0)
                                                 @foreach ($ft->products as $pr)
                                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-20 custom-mobile">
                                                     <div class="wrp_item_small product-col">
@@ -135,8 +138,10 @@
                                                             <div class="product-info effect a-left">
                                                                 <div class="info_hhh">
                                                                     <h3 class="product-name ">
-                                                                        <a href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}"
-                                                                            title="{{ $pr->name }}">{{ $pr->name }}
+                                                                        <a
+                                                                            href="{{ route('fe.product.detail', ['id'=>$pr->id, 'slug'=>$pr->slug]) }}"
+                                                                            title="{{ $pr->name }}"
+                                                                        >{{ $pr->name }}
                                                                         </a>
                                                                     </h3>
                                                                     <div class="price-box clearfix">
@@ -146,10 +151,10 @@
                                                                             @endif
                                                                         @endif
                                                                         <br>
-                                                                        <span
-                                                                            class="price product-price">{{ number_format($pr->price -($pr->price *($pr->promotion->percent /100)), 0, ',','.')}} đ</span>
-                                                                        <span class="price product-price-old"
-                                                                            style="text-decoration: none">&nbsp;</span>
+                                                                        <span class="price product-price">
+                                                                            {{ number_format($pr->price -($pr->price *($pr->promotion->percent /100)), 0, ',','.')}} đ
+                                                                        </span>
+                                                                        <span class="price product-price-old" style="text-decoration: none">&nbsp;</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -157,6 +162,9 @@
                                                     </div>
                                                 </div>
                                                 @endforeach
+                                            @else
+                                                <h3 style="text-align:center;">Hiện tại cửa hàng chưa có sản phẩm thuộc hãng này !!!</h3>
+                                            @endif
                                                 <div class="clearfix hidden-xs hidden-sm hidden-md"></div>
                                                 <div class="clearfix hidden-sm hidden-md hidden-lg"></div>
                                             </div>
