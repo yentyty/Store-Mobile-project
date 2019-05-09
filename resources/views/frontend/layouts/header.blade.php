@@ -1,5 +1,46 @@
 <div class="hidden-md hidden-lg opacity_menu"></div>
     <div class="opacity_filter"></div>
+    <div id="mySidenav" class="sidenav menu_mobile hidden-md hidden-lg">
+        <div class="top_menu_mobile">
+            <span class="close_menu">
+                    @foreach ($logosAll as $logo)
+                    <img src="uploads/images/logos/{{ $logo->image }}" alt="Mobile Store">
+                @endforeach
+            </span>
+        </div>
+        <div class="content_memu_mb">
+            <div class="link_list_mobile">
+                <ul class="ct-mobile hidden"></ul>
+                <ul class="ct-mobile">
+                    <li class="level0 level-top parent level_ico">
+                        <a href="{{ route('fe.home.index') }}">Trang chủ</a>
+                    </li>
+                    <li class="level0 level-top parent level_ico">
+                        <a>Thông tin</a>
+                        <i class="ti-plus hide_close fa fa-sort-down"></i>
+                        <ul class="level0 sub-menu" style="display:none;">
+                            @foreach ($informations as $inf)
+                            <li class="level1">
+                                <a href="{{ route('fe.information.detail', ['slug'=>$inf->slug, 'id'=>$inf->id]) }}">
+                                    <span>{{ $inf->title }}</span>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="level0 level-top parent level_ico">
+                        <a href="{{ asset('/product-new') }}">Hàng mới</a>
+                    </li>
+                    <li class="level0 level-top parent level_ico">
+                        <a href="{{ asset('/news') }}">Tin tức</a>
+                    </li>
+                    <li class="level0 level-top parent level_ico">
+                        <a href="{{ route('fe.contact.index') }}">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <header class="header">
         <div class="topbar">
             <div class="container">
@@ -74,7 +115,7 @@
                                 <div class="logo">
                                     <a href="{{ route('fe.home.index') }}" class="logo-wrapper ">
                                         @foreach ($logosAll as $logo)
-                                            <img src="uploads/images/logos/{{ $logo->image }}" alt="Bigboom">
+                                            <img src="uploads/images/logos/{{ $logo->image }}" alt="Mobile Store">
                                         @endforeach
                                     </a>
                                 </div>
@@ -189,8 +230,10 @@
             <div class="container ">
                 <div class="row">
                     <div class="col-md-3 col-sm-12 col-xs-12 vertical-menu-home">
-                        <div id="section-verticalmenu"
-                            class="block block-verticalmenu float-vertical float-vertical-left">
+                        <div
+                            id="section-verticalmenu"
+                            class="block block-verticalmenu float-vertical float-vertical-left"
+                        >
                             <div class="bg-vertical"></div>
                             <h4 class="block-title float-vertical-button">
                                 <span class="verticalMenu-toggle"></span>
